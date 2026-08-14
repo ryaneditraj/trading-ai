@@ -3,7 +3,6 @@
 **A Bitcoin futures radar that scores which side is likelier to print a ±1% move first, plus a walk-forward Nifty / NSE research notebook that refuses to promote overfit sleeves.**
 
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
-[![Tests](https://github.com/ryaneditraj/trading-ai/actions/workflows/test.yml/badge.svg)](https://github.com/ryaneditraj/trading-ai/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Stack](https://img.shields.io/badge/stack-pandas%20%7C%20Binance%20public%20API%20%7C%20Pine%20v5-lightgrey.svg)](#tech-stack)
 
