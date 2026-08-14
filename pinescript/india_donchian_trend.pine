@@ -1,0 +1,85 @@
+//@version=5
+// =============================================================================
+// India Donchian Trend (EMA200 filter)
+// =============================================================================
+// Thesis: Break of structure — close above prior N-day high while above EMA200
+// signals range acceptance higher in a bullish auction. Exit on close below
+// prior exit-channel low (Turtle-style). Price/structure only (volume optional).
+//
+// Markets: Liquid NSE stocks, NIFTYBEES / BANKBEES, index charts if available.
+// Timeframe: Daily (primary). Research used a 20-name basket with max 5 slots;
+// this Pine script is single-symbol — size/risk accordingly.
+//
+// Defaults from research: entry=55, exit=20, EMA200 ON, long-only.
+// Costs: set commission ~0.04% per side (≈0.08% RT) + slippage to taste.
+//
+// SUPERSEDED by pinescript/india_nifty_adx_donchian_v2.pine (round-2).
+// Bare 55/20 basket OOS PF≈1.17 was rejected as unprofitable by user.
+// Keep for single-symbol comparison only.
+// =============================================================================
+strategy("India Donchian Trend (LEGACY)",
+     overlay              = true,
+     initial_capital      = 100000,
+     default_qty_type     = strategy.percent_of_equity,
+     default_qty_value    = 20,
+     pyramiding           = 0,
+     commission_type      = strategy.commission.percent,
+     commission_value     = 0.04,
+     slippage             = 2,
+     process_orders_on_close = true,
+     calc_on_order_fills  = false,
+     max_bars_back        = 500)
+
+string GRP_SYS  = "System"
+string GRP_FILT = "Filters"
+string GRP_VIS  = "Visuals"
+
+int    entryLen     = input.int(55,  "Entry Donchian", minval=10, maxval=120, group=GRP_SYS)
+int    exitLen      = input.int(20,  "Exit Donchian",  minval=5,  maxval=60,  group=GRP_SYS)
+int    emaLen       = input.int(200, "Trend EMA",      minval=50, maxval=400, group=GRP_FILT)
+bool   useEmaFilter = input.bool(true, "Require close > EMA", group=GRP_FILT)
+bool   useRvol      = input.bool(false, "Require relative volume", group=GRP_FILT, tooltip="Off by default — index cash volume on TV/Yahoo is unreliable. Enable on liquid stocks.")
+int    rvolLen      = input.int(20, "RVOL average length", minval=5, maxval=60, group=GRP_FILT)
+float  rvolMin      = input.float(1.1, "Min RVOL", minval=0.5, step=0.05, group=GRP_FILT)
+bool   longOnly     = input.bool(true, "Long only", group=GRP_SYS)
+
+bool   showChannels = input.bool(true, "Show channels", group=GRP_VIS)
+bool   showEma      = input.bool(true, "Show EMA", group=GRP_VIS)
+
+float entryHi = ta.highest(high[1], entryLen)
+float entryLo = ta.lowest(low[1],  entryLen)
+float exitLo  = ta.lowest(low[1],  exitLen)
+float exitHi  = ta.highest(high[1], exitLen)
+float ema     = ta.ema(close, emaLen)
+float volMa   = ta.sma(volume, rvolLen)
+float rvol    = volMa > 0 ? volume / volMa : na
+
+bool rvolOK   = not useRvol or (not na(rvol) and rvol >= rvolMin)
+bool trendLong  = not useEmaFilter or close > ema
+bool trendShort = not useEmaFilter or close < ema
+
+bool longEntry  = close > entryHi and trendLong  and rvolOK
+bool shortEntry = close < entryLo and trendShort and rvolOK and not longOnly
+bool longExit   = strategy.position_size > 0 and close < exitLo
+bool shortExit  = strategy.position_size < 0 and close > exitHi
+
+if longEntry and strategy.position_size <= 0
+    strategy.entry("Long", strategy.long)
+
+if shortEntry and strategy.position_size >= 0
+    strategy.entry("Short", strategy.short)
+
+if longExit
+    strategy.close("Long", comment="Donchian Exit")
+
+if shortExit
+    strategy.close("Short", comment="Donchian Exit")
+
+plot(showEma ? ema : na, "EMA", color=color.new(color.orange, 0), linewidth=2)
+plot(showChannels ? entryHi : na, "Entry High", color=color.new(color.teal, 40))
+plot(showChannels ? entryLo : na, "Entry Low",  color=color.new(color.teal, 40))
+plot(showChannels ? exitLo  : na, "Exit Low",   color=color.new(color.red, 50), style=plot.style_linebr)
+plot(showChannels ? exitHi  : na, "Exit High",  color=color.new(color.lime, 50), style=plot.style_linebr)
+
+plotshape(longEntry and strategy.position_size <= 0, title="Long", style=shape.triangleup, location=location.belowbar, color=color.teal, size=size.small)
+plotshape(shortEntry and strategy.position_size >= 0, title="Short", style=shape.triangledown, location=location.abovebar, color=color.red, size=size.small)

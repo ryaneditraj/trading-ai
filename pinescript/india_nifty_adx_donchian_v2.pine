@@ -1,0 +1,95 @@
+//@version=5
+// =============================================================================
+// India Nifty+ADX Donchian Trend v2
+// =============================================================================
+// Round-2 replacement for india_donchian_trend.pine (55/20 bare Donchian).
+//
+// Thesis: Stock breakouts only in a trending regime —
+//   1) Close > prior entryLen high
+//   2) Close > EMA200
+//   3) ADX >= adxMin and rising vs adxRiseBars ago
+//   4) Optional Nifty bull filter via request.security (close > EMA200 or HH55)
+// Exit: close < prior exitLen low. Long-only.
+//
+// Research (20-name basket, max 5 slots, 0.08% RT): OOS n≈74, PF≈1.86,
+// Tot≈+39%, MDD≈−14%. Stress 0.15% RT still PF≈1.83. Param ±20% stable.
+// Caveat: 2024-09→2026 WF chunk still negative — paper-trade first.
+//
+// This Pine is SINGLE-SYMBOL. Basket results need the Python runner.
+// Costs: commission ~0.04%/side (~0.08% RT) + slippage.
+// =============================================================================
+strategy("India Nifty+ADX Donchian v2",
+     overlay              = true,
+     initial_capital      = 100000,
+     default_qty_type     = strategy.percent_of_equity,
+     default_qty_value    = 20,
+     pyramiding           = 0,
+     commission_type      = strategy.commission.percent,
+     commission_value     = 0.04,
+     slippage             = 2,
+     process_orders_on_close = true,
+     calc_on_order_fills  = false,
+     max_bars_back        = 500)
+
+string GRP_SYS  = "System"
+string GRP_REG  = "Regime"
+string GRP_FILT = "Nifty filter"
+string GRP_VIS  = "Visuals"
+
+int    entryLen     = input.int(70,  "Entry Donchian", minval=20, maxval=150, group=GRP_SYS)
+int    exitLen      = input.int(25,  "Exit Donchian",  minval=5,  maxval=80,  group=GRP_SYS)
+int    emaLen       = input.int(200, "Trend EMA",      minval=50, maxval=400, group=GRP_SYS)
+int    adxLen       = input.int(14,  "ADX length",     minval=7,  maxval=30,  group=GRP_REG)
+float  adxMin       = input.float(18, "Min ADX",       minval=10, maxval=40, step=1, group=GRP_REG)
+int    adxRiseBars  = input.int(5,   "ADX rising lookback", minval=2, maxval=20, group=GRP_REG)
+bool   useAdx       = input.bool(true, "Require ADX rising + floor", group=GRP_REG)
+bool   useEmaFilter = input.bool(true, "Require close > EMA", group=GRP_SYS)
+
+bool   useNiftyFilter = input.bool(true, "Require Nifty bull", group=GRP_FILT,
+     tooltip="Uses NSE:NIFTY (change symbol if your TV feed differs). Bull = close>EMA200 OR close>prior 55d high.")
+string niftySymbol    = input.symbol("NSE:NIFTY", "Nifty symbol", group=GRP_FILT)
+int    niftyEmaLen    = input.int(200, "Nifty EMA", minval=50, maxval=400, group=GRP_FILT)
+int    niftyHhLen     = input.int(55,  "Nifty HH lookback", minval=20, maxval=120, group=GRP_FILT)
+
+bool   useRvol      = input.bool(false, "Require relative volume", group=GRP_SYS)
+int    rvolLen      = input.int(20, "RVOL average length", minval=5, maxval=60, group=GRP_SYS)
+float  rvolMin      = input.float(1.2, "Min RVOL", minval=0.5, step=0.05, group=GRP_SYS)
+
+bool   showChannels = input.bool(true, "Show channels", group=GRP_VIS)
+bool   showEma      = input.bool(true, "Show EMA", group=GRP_VIS)
+
+float entryHi = ta.highest(high[1], entryLen)
+float exitLo  = ta.lowest(low[1],  exitLen)
+float ema     = ta.ema(close, emaLen)
+[_, _, adxVal] = ta.dmi(adxLen, adxLen)
+float volMa   = ta.sma(volume, rvolLen)
+float rvol    = volMa > 0 ? volume / volMa : na
+
+bool rvolOK   = not useRvol or (not na(rvol) and rvol >= rvolMin)
+bool trendOK  = not useEmaFilter or close > ema
+bool adxOK    = not useAdx or (not na(adxVal) and adxVal >= adxMin and adxVal > adxVal[adxRiseBars])
+
+// Nifty regime via security — no lookahead
+[niftyClose, niftyEma, niftyHh] = request.security(
+     niftySymbol, timeframe.period,
+     [close, ta.ema(close, niftyEmaLen), ta.highest(high[1], niftyHhLen)],
+     lookahead=barmerge.lookahead_off)
+bool niftyBull = not useNiftyFilter or (niftyClose > niftyEma or niftyClose > niftyHh)
+
+bool longEntry = close > entryHi and trendOK and adxOK and niftyBull and rvolOK
+bool longExit  = strategy.position_size > 0 and close < exitLo
+
+if longEntry and strategy.position_size <= 0
+    strategy.entry("Long", strategy.long)
+
+if longExit
+    strategy.close("Long", comment="Donchian Exit")
+
+plot(showEma ? ema : na, "EMA", color=color.new(color.orange, 0), linewidth=2)
+plot(showChannels ? entryHi : na, "Entry High", color=color.new(color.teal, 40))
+plot(showChannels ? exitLo  : na, "Exit Low",   color=color.new(color.red, 50), style=plot.style_linebr)
+
+plotshape(longEntry and strategy.position_size <= 0, title="Long", style=shape.triangleup,
+     location=location.belowbar, color=color.teal, size=size.small)
+
+bgcolor(niftyBull ? na : color.new(color.red, 92), title="Nifty bear wash")

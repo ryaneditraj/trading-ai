@@ -1,0 +1,14 @@
+{
+  "rt_cost": 0.0008,
+  "winner_name": "H3_gap_fade",
+  "winner_symbol": "^NSEBANK",
+  "winner_params": {
+    "gap_min": 0.008,
+    "rvol_max": 1.0,
+    "side": 1
+  },
+  "winner_oos_exp": 0.003189011604118158,
+  "winner_oos_n": 25,
+  "winner_wf_exp": 0.001323652517848556,
+  "winner_pert_frac": 1.0
+}

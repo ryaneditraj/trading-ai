@@ -1,0 +1,344 @@
+{
+  "note": "Overnight sleeve PnL = NSE open gap (GIFT proxy). ES twin trades US session overlapping GIFT Session II. Drop real GIFT CSV to research/gift_overnight_edge/data/gift_nifty.csv for Phase 2.",
+  "prediction": {
+    "es_ret_prev\u2192gap": {
+      "corr": 0.4235389433247745,
+      "hit_rate": 0.690734055354994,
+      "r2": 0.17938523651266658,
+      "n": 831
+    },
+    "es_ret_prev\u2192day": {
+      "corr": -0.05853865925033586,
+      "hit_rate": 0.4741275571600481,
+      "r2": 0.003426774626826834,
+      "n": 831
+    },
+    "nq_ret_prev\u2192gap": {
+      "corr": 0.3662999886986266,
+      "hit_rate": 0.6714801444043321,
+      "r2": 0.13417568172061423,
+      "n": 831
+    },
+    "nq_ret_prev\u2192day": {
+      "corr": -0.06405871024328202,
+      "hit_rate": 0.46690734055354993,
+      "r2": 0.004103518358032687,
+      "n": 831
+    },
+    "overnight_proxy\u2192gap": {
+      "corr": 0.4784031412556717,
+      "hit_rate": 0.7075812274368231,
+      "r2": 0.22886956556329408,
+      "n": 831
+    },
+    "overnight_proxy\u2192day": {
+      "corr": -0.0469874328906334,
+      "hit_rate": 0.47653429602888087,
+      "r2": 0.0022078188496518214,
+      "n": 831
+    },
+    "nk_gap\u2192gap": {
+      "corr": 0.47311768069478477,
+      "hit_rate": 0.6885245901639344,
+      "r2": 0.22384033978601237,
+      "n": 732
+    },
+    "nk_gap\u2192day": {
+      "corr": 0.0019358991042266707,
+      "hit_rate": 0.48633879781420764,
+      "r2": 3.7477053418388806e-06,
+      "n": 732
+    },
+    "hs_gap\u2192gap": {
+      "corr": 0.4688329479692306,
+      "hit_rate": 0.6763540290620872,
+      "r2": 0.21980433310151914,
+      "n": 757
+    },
+    "hs_gap\u2192day": {
+      "corr": 0.03429402927763599,
+      "hit_rate": 0.5165125495376486,
+      "r2": 0.0011760804440952288,
+      "n": 757
+    },
+    "gap\u2192day": {
+      "corr": -0.06931877662771756,
+      "hit_rate": 0.4993983152827918,
+      "n": 831
+    }
+  },
+  "n_pass": 3,
+  "survivors": [
+    {
+      "name": "ON_mom_trend_0.004",
+      "params": {
+        "thr": 0.004
+      },
+      "OOS": {
+        "name": "ON_mom_trend_0.004",
+        "split": "OOS",
+        "n_trades": 186,
+        "win_rate": 0.5591397849462365,
+        "profit_factor": 1.4085874492768338,
+        "expectancy": 0.0005916506503835966,
+        "total_return": 0.11250039855085903,
+        "max_dd": -0.03757923289356602,
+        "sharpe": 1.5393391113278225
+      },
+      "wf_pos": 2
+    },
+    {
+      "name": "ON_mom_trend_0.006",
+      "params": {
+        "thr": 0.006
+      },
+      "OOS": {
+        "name": "ON_mom_trend_0.006",
+        "split": "OOS",
+        "n_trades": 123,
+        "win_rate": 0.5609756097560976,
+        "profit_factor": 1.542233223789353,
+        "expectancy": 0.0007937015262628601,
+        "total_return": 0.09928717479563365,
+        "max_dd": -0.03757923289356613,
+        "sharpe": 1.8078001323647404
+      },
+      "wf_pos": 2
+    },
+    {
+      "name": "ON_mom_trend_0.008",
+      "params": {
+        "thr": 0.008
+      },
+      "OOS": {
+        "name": "ON_mom_trend_0.008",
+        "split": "OOS",
+        "n_trades": 66,
+        "win_rate": 0.5757575757575758,
+        "profit_factor": 1.7363219096554048,
+        "expectancy": 0.0013381056796746968,
+        "total_return": 0.08938236059408888,
+        "max_dd": -0.03757923289356602,
+        "sharpe": 2.3374713345507856
+      },
+      "wf_pos": 3
+    }
+  ],
+  "top8": [
+    {
+      "name": "ON_mom_trend_0.008",
+      "pass": true,
+      "params": {
+        "thr": 0.008
+      },
+      "pnl_col": "gap",
+      "OOS": {
+        "name": "ON_mom_trend_0.008",
+        "split": "OOS",
+        "n_trades": 66,
+        "win_rate": 0.5757575757575758,
+        "profit_factor": 1.7363219096554048,
+        "expectancy": 0.0013381056796746968,
+        "total_return": 0.08938236059408888,
+        "max_dd": -0.03757923289356602,
+        "sharpe": 2.3374713345507856
+      },
+      "wf_pos": 3,
+      "last_wf_tot": 0.00486348119634461
+    },
+    {
+      "name": "ON_mom_trend_0.006",
+      "pass": true,
+      "params": {
+        "thr": 0.006
+      },
+      "pnl_col": "gap",
+      "OOS": {
+        "name": "ON_mom_trend_0.006",
+        "split": "OOS",
+        "n_trades": 123,
+        "win_rate": 0.5609756097560976,
+        "profit_factor": 1.542233223789353,
+        "expectancy": 0.0007937015262628601,
+        "total_return": 0.09928717479563365,
+        "max_dd": -0.03757923289356613,
+        "sharpe": 1.8078001323647404
+      },
+      "wf_pos": 2,
+      "last_wf_tot": 0.01124298700651094
+    },
+    {
+      "name": "ON_mom_trend_0.004",
+      "pass": true,
+      "params": {
+        "thr": 0.004
+      },
+      "pnl_col": "gap",
+      "OOS": {
+        "name": "ON_mom_trend_0.004",
+        "split": "OOS",
+        "n_trades": 186,
+        "win_rate": 0.5591397849462365,
+        "profit_factor": 1.4085874492768338,
+        "expectancy": 0.0005916506503835966,
+        "total_return": 0.11250039855085903,
+        "max_dd": -0.03757923289356602,
+        "sharpe": 1.5393391113278225
+      },
+      "wf_pos": 2,
+      "last_wf_tot": 0.01757790820491878
+    },
+    {
+      "name": "ON_mom_day_0.006",
+      "pass": false,
+      "params": {
+        "thr": 0.006
+      },
+      "pnl_col": "gap",
+      "OOS": {
+        "name": "ON_mom_day_0.006",
+        "split": "OOS",
+        "n_trades": 241,
+        "win_rate": 0.5269709543568465,
+        "profit_factor": 1.2839055978176652,
+        "expectancy": 0.0005217859157472705,
+        "total_return": 0.126526205333654,
+        "max_dd": -0.06792727746273264,
+        "sharpe": 1.112341773477838
+      },
+      "wf_pos": 2,
+      "last_wf_tot": 0.0442849025489338
+    },
+    {
+      "name": "ON_mom_day_0.004",
+      "pass": false,
+      "params": {
+        "thr": 0.004
+      },
+      "pnl_col": "gap",
+      "OOS": {
+        "name": "ON_mom_day_0.004",
+        "split": "OOS",
+        "n_trades": 376,
+        "win_rate": 0.4867021276595745,
+        "profit_factor": 1.0985200384797218,
+        "expectancy": 0.00017909478692554952,
+        "total_return": 0.061287159697248406,
+        "max_dd": -0.08892258537688635,
+        "sharpe": 0.43715404842057126
+      },
+      "wf_pos": 2,
+      "last_wf_tot": 0.0473115642696762
+    },
+    {
+      "name": "ON_mom_day_0.002",
+      "pass": false,
+      "params": {
+        "thr": 0.002
+      },
+      "pnl_col": "gap",
+      "OOS": {
+        "name": "ON_mom_day_0.002",
+        "split": "OOS",
+        "n_trades": 592,
+        "win_rate": 0.49155405405405406,
+        "profit_factor": 1.091838965017666,
+        "expectancy": 0.00015696651627279882,
+        "total_return": 0.08642652485227398,
+        "max_dd": -0.07481977366871051,
+        "sharpe": 0.42613752825541634
+      },
+      "wf_pos": 2,
+      "last_wf_tot": 0.04405914373609843
+    },
+    {
+      "name": "ON_trend_hold_long",
+      "pass": false,
+      "params": {
+        "allow_short": false
+      },
+      "pnl_col": "gap",
+      "OOS": {
+        "name": "ON_trend_hold_long",
+        "split": "OOS",
+        "n_trades": 511,
+        "win_rate": 0.5401174168297456,
+        "profit_factor": 1.0340245668877743,
+        "expectancy": 4.4273807212154515e-05,
+        "total_return": 0.018768029672093567,
+        "max_dd": -0.10291594955415295,
+        "sharpe": 0.17663746528203028
+      },
+      "wf_pos": 2,
+      "last_wf_tot": -0.06990931048102933
+    },
+    {
+      "name": "OP_disagree_fade",
+      "pass": false,
+      "params": {
+        "proxy_thr": 0.005,
+        "gap_max": 0.002
+      },
+      "pnl_col": "day",
+      "OOS": {
+        "name": "OP_disagree_fade",
+        "split": "OOS",
+        "n_trades": 130,
+        "win_rate": 0.5,
+        "profit_factor": 0.9896372200604371,
+        "expectancy": -2.2647344421281102e-05,
+        "total_return": -0.005037264685447518,
+        "max_dd": -0.06125984296021725,
+        "sharpe": -0.0628977375779662
+      },
+      "wf_pos": 1,
+      "last_wf_tot": -0.0061502545663847386
+    }
+  ],
+  "stress": [
+    {
+      "name": "ON_mom_trend_0.004",
+      "OOS_stress": {
+        "name": "ON_mom_trend_0.004",
+        "split": "OOS",
+        "n_trades": 186,
+        "win_rate": 0.4838709677419355,
+        "profit_factor": 0.9391528001417547,
+        "expectancy": -0.00010834934961640358,
+        "total_return": -0.02328775700066843,
+        "max_dd": -0.05358088955620721,
+        "sharpe": -0.2819001237357321
+      }
+    },
+    {
+      "name": "ON_mom_trend_0.006",
+      "OOS_stress": {
+        "name": "ON_mom_trend_0.006",
+        "split": "OOS",
+        "n_trades": 123,
+        "win_rate": 0.4796747967479675,
+        "profit_factor": 1.0521672581918864,
+        "expectancy": 9.370152626286008e-05,
+        "total_return": 0.008633108324954897,
+        "max_dd": -0.04265248988183701,
+        "sharpe": 0.21342233317651005
+      }
+    },
+    {
+      "name": "ON_mom_trend_0.008",
+      "OOS_stress": {
+        "name": "ON_mom_trend_0.008",
+        "split": "OOS",
+        "n_trades": 66,
+        "win_rate": 0.48484848484848486,
+        "profit_factor": 1.2973583467378098,
+        "expectancy": 0.0006381056796746967,
+        "total_return": 0.040241415701100625,
+        "max_dd": -0.04213072636678139,
+        "sharpe": 1.1146755875188104
+      }
+    }
+  ],
+  "champion": "ON_mom_trend_0.004",
+  "champion_pass": true
+}

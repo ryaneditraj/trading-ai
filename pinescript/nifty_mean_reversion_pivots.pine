@@ -1,0 +1,452 @@
+//@version=5
+// =============================================================================
+// Nifty Mean Reversion + Pivot Confirmation (Pine v5)
+// =============================================================================
+// Thesis: Fade stretched moves back toward VWAP / BB mid when:
+//   1) Price is near a classic pivot (S1/S2 or R1/R2),
+//   2) Higher-TF trend agrees (buy dips in HTF uptrend / sell rips in HTF down),
+//   3) A reversal candle prints,
+//   4) Volume / RVOL confirms (exhaustion or spike — selectable),
+//   5) Optional options walls / max-pain / gamma-flip levels act as magnets.
+//
+// Symbol: Prefer NSE Nifty futures (volume is real). Index NSE:NIFTY has weak/
+// synthetic volume — keep volume filter soft or off on the cash index.
+// Timeframe: 3m / 5m / 15m intraday. HTF default = 60 (or Daily for swing).
+// Session: NSE cash 09:15–15:30 IST (Asia/Kolkata).
+//
+// Options edge: TradingView has no live NSE option-chain Greeks. Paste Max Pain,
+// Put Wall, Call Wall, Gamma Flip from Sensibull / Opstra / NSE each morning.
+// Those levels often act as intraday magnets / pin zones into expiry.
+//
+// Not financial advice. Past ≠ future. Paper-test with realistic costs first.
+// =============================================================================
+strategy("Nifty MR + Pivots + Opt Levels",
+     overlay                 = true,
+     initial_capital         = 1000000,
+     currency                = currency.INR,
+     default_qty_type        = strategy.fixed,
+     default_qty_value       = 1,
+     pyramiding              = 0,
+     commission_type         = strategy.commission.percent,
+     commission_value        = 0.02,
+     slippage                = 2,
+     process_orders_on_close = true,
+     calc_on_order_fills     = false,
+     max_bars_back           = 500)
+     // Qty note: Nifty ~24k — percent-of-equity 10% of ₹1L → qty < 1 → ZERO fills
+     // ("report requires trade data"). Fixed 1 unit + ₹10L capital fixes that.
+
+// ── Groups ──────────────────────────────────────────────────────────────────
+string GRP_MR   = "Mean Reversion"
+string GRP_PIV  = "Pivot Confirmation"
+string GRP_HTF  = "Higher Timeframe Trend"
+string GRP_CND  = "Candlestick Patterns"
+string GRP_VOL  = "Volume"
+string GRP_OPT  = "Options Levels (manual daily)"
+string GRP_EXIT = "Exits & Risk"
+string GRP_FREQ = "Trade Frequency Caps"
+string GRP_SES  = "NSE Session"
+string GRP_VIS  = "Visuals"
+
+// ── Mean reversion (strict — fewer, better fades) ───────────────────────────
+string stretchMode = input.string("Both", "Stretch mode",
+     options=["VWAP + RSI", "Bollinger + RSI", "Both"], group=GRP_MR,
+     tooltip="Both = VWAP stretch AND BB touch (fewest trades, recommended).")
+float  vwapDevATR  = input.float(1.5, "Min |price−VWAP| in ATRs", minval=0.3, step=0.1, group=GRP_MR)
+int    bbLen       = input.int(20, "BB length", minval=5, group=GRP_MR)
+float  bbMult      = input.float(2.0, "BB mult", minval=1.0, step=0.1, group=GRP_MR)
+int    rsiLen      = input.int(14, "RSI length", minval=2, group=GRP_MR)
+float  rsiOversold = input.float(30, "RSI oversold (long)", minval=5, maxval=50, group=GRP_MR)
+float  rsiOverbought = input.float(70, "RSI overbought (short)", minval=50, maxval=95, group=GRP_MR)
+int    atrLen      = input.int(14, "ATR length", minval=5, group=GRP_MR)
+bool   tradeLong   = input.bool(true, "Allow longs", group=GRP_MR)
+bool   tradeShort  = input.bool(true, "Allow shorts", group=GRP_MR)
+bool   useAdxChop  = input.bool(true, "Only trade in chop (ADX filter)", group=GRP_MR,
+     tooltip="Mean reversion dies in strong trends. Require ADX below max.")
+int    adxLen      = input.int(14, "ADX length", minval=5, group=GRP_MR)
+float  adxMax      = input.float(25.0, "Max ADX (skip strong trend)", minval=10, maxval=50, group=GRP_MR)
+
+// ── Pivots ──────────────────────────────────────────────────────────────────
+string pivotTF     = input.timeframe("D", "Pivot timeframe", group=GRP_PIV,
+     tooltip="Daily pivots for intraday; Weekly for swing.")
+float  pivotProxATR = input.float(0.5, "Max distance to pivot (ATR)", minval=0.1, step=0.1, group=GRP_PIV)
+bool   useS1S2     = input.bool(true, "Longs near S1 / S2 only", group=GRP_PIV,
+     tooltip="PP excluded — too many false longs at mid.")
+bool   useR1R2     = input.bool(true, "Shorts near R1 / R2 only", group=GRP_PIV)
+bool   requirePivot = input.bool(true, "Require pivot proximity", group=GRP_PIV)
+
+// ── HTF trend ───────────────────────────────────────────────────────────────
+string htfTF       = input.timeframe("60", "HTF", group=GRP_HTF)
+int    htfEmaFast  = input.int(20, "HTF EMA fast", minval=5, group=GRP_HTF)
+int    htfEmaSlow  = input.int(50, "HTF EMA slow", minval=10, group=GRP_HTF)
+string htfMode     = input.string("With trend", "HTF filter mode",
+     options=["With trend", "Against stretch only", "Off"], group=GRP_HTF,
+     tooltip="With trend = buy dips only if HTF bullish, sell rips only if HTF bearish.")
+
+// ── Candles ─────────────────────────────────────────────────────────────────
+bool   useCandle   = input.bool(true, "Require reversal candle", group=GRP_CND)
+bool   useHammer   = input.bool(true, "Hammer / inverted hammer", group=GRP_CND)
+bool   useEngulf   = input.bool(true, "Engulfing", group=GRP_CND)
+bool   usePin      = input.bool(true, "Pin bar", group=GRP_CND)
+float  wickRatio   = input.float(2.0, "Min wick / body ratio", minval=1.2, step=0.1, group=GRP_CND)
+
+// ── Volume ──────────────────────────────────────────────────────────────────
+bool   useVol      = input.bool(false, "Use volume filter", group=GRP_VOL,
+     tooltip="Leave OFF on cash Nifty (volume often 0). ON for futures.")
+int    volLen      = input.int(20, "RVOL lookback", minval=5, group=GRP_VOL)
+string volMode     = input.string("Spike", "Volume mode",
+     options=["Spike", "Exhaustion", "Either"], group=GRP_VOL)
+float  rvolSpike   = input.float(1.3, "Spike RVOL min", minval=0.5, step=0.1, group=GRP_VOL)
+float  rvolExh     = input.float(0.85, "Exhaustion RVOL max", minval=0.2, step=0.1, group=GRP_VOL)
+
+// ── Options levels (manual) ─────────────────────────────────────────────────
+bool   useOptLevels = input.bool(true, "Use options levels", group=GRP_OPT,
+     tooltip="Paste from Sensibull/Opstra each session. 0 = unused.")
+float  maxPain     = input.float(0.0, "Max Pain", group=GRP_OPT, step=1)
+float  putWall     = input.float(0.0, "Put Wall (OI)", group=GRP_OPT, step=1)
+float  callWall    = input.float(0.0, "Call Wall (OI)", group=GRP_OPT, step=1)
+float  gammaFlip   = input.float(0.0, "Gamma Flip / dealer zero-gamma", group=GRP_OPT, step=1)
+float  optProxATR  = input.float(0.8, "Max distance to opt level (ATR)", minval=0.1, step=0.1, group=GRP_OPT)
+string optMode     = input.string("Boost only", "Options filter mode",
+     options=["Boost only", "Require near level", "Off"], group=GRP_OPT)
+bool   favourMagnet = input.bool(true, "Bias toward max-pain / walls as magnets", group=GRP_OPT)
+
+// ── Exits ( asymmetric R:R — don't take 1R risk for tiny VWAP scrapes ) ─────
+string exitTarget  = input.string("ATR multiple", "Target mode",
+     options=["VWAP", "Opposite Pivot", "VWAP then Pivot", "ATR multiple"], group=GRP_EXIT,
+     tooltip="ATR multiple keeps reward ≥ risk. VWAP targets often cut winners too early.")
+float  atrTarget   = input.float(2.0, "ATR target mult", minval=0.5, step=0.1, group=GRP_EXIT)
+float  atrStop     = input.float(1.0, "ATR stop mult", minval=0.3, step=0.1, group=GRP_EXIT)
+float  minRR       = input.float(1.5, "Min reward:risk to enter", minval=1.0, step=0.1, group=GRP_EXIT,
+     tooltip="Skip trade if target is closer than stop × this ratio.")
+bool   useTimeStop = input.bool(true, "Time stop (bars)", group=GRP_EXIT)
+int    maxBarsInTrade = input.int(18, "Max bars in trade", minval=2, group=GRP_EXIT)
+bool   flattenEOD  = input.bool(true, "Flatten before close", group=GRP_EXIT)
+
+// ── Frequency caps (stops death-by-overtrading) ─────────────────────────────
+int    cooldownBars = input.int(12, "Cooldown bars after exit", minval=0, maxval=100, group=GRP_FREQ,
+     tooltip="On 5m chart, 12 ≈ 1 hour. Blocks re-entry chop.")
+int    maxTradesDay = input.int(2, "Max trades per day", minval=1, maxval=20, group=GRP_FREQ)
+bool   noReverse    = input.bool(true, "No flip while in trade", group=GRP_FREQ,
+     tooltip="Only enter when flat — never reverse Long↔Short on the next signal.")
+bool   oneSignalBar = input.bool(true, "Signal only on first bar of setup", group=GRP_FREQ,
+     tooltip="Avoids stacking entries across consecutive stretch bars.")
+
+// ── Session (skip open auction chaos + late drift) ──────────────────────────
+bool   useSession   = input.bool(true, "NSE session filter", group=GRP_SES)
+string sessTrade   = input.session("1000-1430", "Trade window (IST)", group=GRP_SES,
+     tooltip="Skip 09:15–10:00 open and last hour — highest fake mean-reversion.")
+string sessFlat    = input.session("1430-1530", "Flatten window (IST)", group=GRP_SES)
+string sessTZ      = input.string("Asia/Kolkata", "Timezone", group=GRP_SES)
+
+// ── Visuals ─────────────────────────────────────────────────────────────────
+bool   showPivots  = input.bool(true, "Show pivots", group=GRP_VIS)
+bool   showVwap    = input.bool(true, "Show VWAP", group=GRP_VIS)
+bool   showOpt     = input.bool(true, "Show options levels", group=GRP_VIS)
+bool   showBg      = input.bool(true, "HTF background tint", group=GRP_VIS)
+
+// =============================================================================
+// Calculations
+// =============================================================================
+float atr = ta.atr(atrLen)
+float rsi = ta.rsi(close, rsiLen)
+
+// Session VWAP (resets each NSE day)
+var float vwapNum = 0.0
+var float vwapDen = 0.0
+bool newDay = ta.change(time("D", "0915-1530", sessTZ)) != 0
+if newDay or na(vwapNum)
+    vwapNum := 0.0
+    vwapDen := 0.0
+float typical = hlc3
+float volForVwap = nz(volume, 1.0)
+vwapNum += typical * volForVwap
+vwapDen += volForVwap
+float vwap = vwapDen != 0 ? vwapNum / vwapDen : typical
+
+float bbBasis = ta.sma(close, bbLen)
+float bbDev   = bbMult * ta.stdev(close, bbLen)
+float bbUpper = bbBasis + bbDev
+float bbLower = bbBasis - bbDev
+
+float vwapDistATR = atr > 0 ? (close - vwap) / atr : 0.0
+bool stretchLongVWAP  = vwapDistATR <= -vwapDevATR and rsi <= rsiOversold
+bool stretchShortVWAP = vwapDistATR >=  vwapDevATR and rsi >= rsiOverbought
+bool stretchLongBB    = close <= bbLower and rsi <= rsiOversold
+bool stretchShortBB   = close >= bbUpper and rsi >= rsiOverbought
+
+bool stretchLong =
+     stretchMode == "VWAP + RSI"     ? stretchLongVWAP :
+     stretchMode == "Bollinger + RSI" ? stretchLongBB :
+     stretchLongVWAP and stretchLongBB
+bool stretchShort =
+     stretchMode == "VWAP + RSI"     ? stretchShortVWAP :
+     stretchMode == "Bollinger + RSI" ? stretchShortBB :
+     stretchShortVWAP and stretchShortBB
+
+// ── Classic floor-trader pivots from prior HTF bar ──────────────────────────
+[ph, pl, pc] = request.security(syminfo.tickerid, pivotTF, [high[1], low[1], close[1]], lookahead=barmerge.lookahead_on)
+float pp = (ph + pl + pc) / 3.0
+float r1 = 2.0 * pp - pl
+float s1 = 2.0 * pp - ph
+float r2 = pp + (ph - pl)
+float s2 = pp - (ph - pl)
+float r3 = ph + 2.0 * (pp - pl)
+float s3 = pl - 2.0 * (ph - pp)
+
+f_near(float level, float prox) =>
+    not na(level) and atr > 0 and math.abs(close - level) <= prox * atr
+
+float pivProx = pivotProxATR
+// S1/S2/S3 only for longs; R1/R2/R3 only for shorts — never PP (too noisy)
+bool nearSupport = useS1S2 and (f_near(s1, pivProx) or f_near(s2, pivProx) or f_near(s3, pivProx))
+bool nearResist  = useR1R2 and (f_near(r1, pivProx) or f_near(r2, pivProx) or f_near(r3, pivProx))
+bool pivotLongOK  = not requirePivot or nearSupport
+bool pivotShortOK = not requirePivot or nearResist
+
+// ── HTF trend ───────────────────────────────────────────────────────────────
+[htfClose, htfEmaF, htfEmaS] = request.security(syminfo.tickerid, htfTF,
+     [close, ta.ema(close, htfEmaFast), ta.ema(close, htfEmaSlow)],
+     lookahead=barmerge.lookahead_off)
+bool htfBull = htfClose > htfEmaF and htfEmaF > htfEmaS
+bool htfBear = htfClose < htfEmaF and htfEmaF < htfEmaS
+bool htfLongOK =
+     htfMode == "Off"                 ? true :
+     htfMode == "With trend"          ? htfBull :
+     true  // Against stretch only — HTF not used as directional gate
+bool htfShortOK =
+     htfMode == "Off"                 ? true :
+     htfMode == "With trend"          ? htfBear :
+     true
+
+// ── ADX chop filter (MR only when market isn't trending hard) ───────────────
+[diPlus, diMinus, adxVal] = ta.dmi(adxLen, adxLen)
+bool chopOK = not useAdxChop or (not na(adxVal) and adxVal <= adxMax)
+
+// ── Candlestick patterns ────────────────────────────────────────────────────
+float body     = math.abs(close - open)
+float upperW   = high - math.max(open, close)
+float lowerW   = math.min(open, close) - low
+float range_   = high - low
+bool  hasBody  = body > syminfo.mintick
+
+bool bullHammer = useHammer and hasBody and lowerW >= body * wickRatio and upperW <= body * 0.5 and close >= open
+bool bearInvHam = useHammer and hasBody and upperW >= body * wickRatio and lowerW <= body * 0.5 and close <= open
+bool bullEngulf = useEngulf and close > open and close[1] < open[1] and close >= open[1] and open <= close[1]
+bool bearEngulf = useEngulf and close < open and close[1] > open[1] and close <= open[1] and open >= close[1]
+bool bullPin    = usePin and range_ > 0 and lowerW / range_ >= 0.6 and upperW / range_ <= 0.25 and close > open
+bool bearPin    = usePin and range_ > 0 and upperW / range_ >= 0.6 and lowerW / range_ <= 0.25 and close < open
+
+bool bullCandle = bullHammer or bullEngulf or bullPin
+bool bearCandle = bearInvHam or bearEngulf or bearPin
+bool candleLongOK  = not useCandle or bullCandle
+bool candleShortOK = not useCandle or bearCandle
+
+// ── Volume / RVOL ───────────────────────────────────────────────────────────
+float volSma = ta.sma(volume, volLen)
+bool  volAvailable = not na(volume) and volume > 0 and not na(volSma) and volSma > 0
+float rvol   = volAvailable ? volume / volSma : 1.0
+bool volSpike = rvol >= rvolSpike
+bool volExh   = rvol <= rvolExh
+// If symbol has no usable volume (cash index), never block on volume
+bool volOK =
+     not useVol or not volAvailable ? true :
+     volMode == "Spike"      ? volSpike :
+     volMode == "Exhaustion" ? volExh :
+     volSpike or volExh
+
+// ── Options levels ──────────────────────────────────────────────────────────
+bool hasMaxPain  = useOptLevels and maxPain > 0
+bool hasPutWall  = useOptLevels and putWall > 0
+bool hasCallWall = useOptLevels and callWall > 0
+bool hasGamma    = useOptLevels and gammaFlip > 0
+
+bool nearMaxPain  = hasMaxPain  and f_near(maxPain, optProxATR)
+bool nearPutWall  = hasPutWall  and f_near(putWall, optProxATR)
+bool nearCallWall = hasCallWall and f_near(callWall, optProxATR)
+bool nearGamma    = hasGamma    and f_near(gammaFlip, optProxATR)
+
+// Magnet bias: under put wall / max pain → support; over call wall / max pain → resistance
+bool optSupportZone =
+     (hasPutWall and close <= putWall + optProxATR * atr) or
+     (hasMaxPain and close <= maxPain + optProxATR * atr) or
+     (hasGamma and close <= gammaFlip)
+bool optResistZone =
+     (hasCallWall and close >= callWall - optProxATR * atr) or
+     (hasMaxPain and close >= maxPain - optProxATR * atr) or
+     (hasGamma and close >= gammaFlip)
+
+bool nearAnyOpt = nearMaxPain or nearPutWall or nearCallWall or nearGamma
+
+bool optLongOK =
+     optMode == "Off" or not useOptLevels ? true :
+     optMode == "Require near level" ? (nearPutWall or nearMaxPain or nearGamma or nearAnyOpt) and (not favourMagnet or optSupportZone) :
+     true  // Boost only — never blocks
+bool optShortOK =
+     optMode == "Off" or not useOptLevels ? true :
+     optMode == "Require near level" ? (nearCallWall or nearMaxPain or nearGamma or nearAnyOpt) and (not favourMagnet or optResistZone) :
+     true
+
+// Soft boost: when Boost only + near supportive option level, relax RSI by a few pts (visual / alert quality)
+bool optBoostLong  = favourMagnet and (nearPutWall or (hasMaxPain and close < maxPain) or (hasGamma and close < gammaFlip))
+bool optBoostShort = favourMagnet and (nearCallWall or (hasMaxPain and close > maxPain) or (hasGamma and close > gammaFlip))
+
+// ── Session (intraday only — on Daily/Weekly, session time() often never matches) ─
+bool inTradeWin = not useSession or not timeframe.isintraday or not na(time(timeframe.period, sessTrade, sessTZ))
+bool inFlatWin  = useSession and timeframe.isintraday and not na(time(timeframe.period, sessFlat, sessTZ))
+
+// =============================================================================
+// Targets / stops (compute before RR gate)
+// =============================================================================
+float longStop  = close - atrStop * atr
+float shortStop = close + atrStop * atr
+
+float longT1 =
+     exitTarget == "VWAP"            ? vwap :
+     exitTarget == "Opposite Pivot"  ? math.max(pp, r1) :
+     exitTarget == "ATR multiple"    ? close + atrTarget * atr :
+     vwap
+float longT2 = exitTarget == "VWAP then Pivot" ? math.max(pp, r1) : longT1
+
+float shortT1 =
+     exitTarget == "VWAP"            ? vwap :
+     exitTarget == "Opposite Pivot"  ? math.min(pp, s1) :
+     exitTarget == "ATR multiple"    ? close - atrTarget * atr :
+     vwap
+float shortT2 = exitTarget == "VWAP then Pivot" ? math.min(pp, s1) : shortT1
+
+if longT1 <= close
+    longT1 := close + atrTarget * atr
+if shortT1 >= close
+    shortT1 := close - atrTarget * atr
+
+float longRisk   = close - longStop
+float shortRisk  = shortStop - close
+float longReward = longT1 - close
+float shortReward = close - shortT1
+bool longRROK  = longRisk > 0 and longReward / longRisk >= minRR
+bool shortRROK = shortRisk > 0 and shortReward / shortRisk >= minRR
+
+// =============================================================================
+// Frequency / cooldown
+// =============================================================================
+var int lastExitBar  = na
+var int tradesToday  = 0
+int dayId = time("D", "0915-1530", sessTZ)
+if ta.change(dayId) != 0
+    tradesToday := 0
+
+bool inCooldown = cooldownBars > 0 and not na(lastExitBar) and (bar_index - lastExitBar) < cooldownBars
+bool underDayCap = tradesToday < maxTradesDay
+bool isFlat = strategy.position_size == 0
+
+// Detect exits for cooldown / day count
+bool justClosed = strategy.position_size == 0 and strategy.position_size[1] != 0
+if justClosed
+    lastExitBar := bar_index
+
+// =============================================================================
+// Signals
+// =============================================================================
+bool longSetupRaw  = tradeLong and stretchLong and pivotLongOK and htfLongOK and candleLongOK and volOK and optLongOK and inTradeWin and chopOK and longRROK
+bool shortSetupRaw = tradeShort and stretchShort and pivotShortOK and htfShortOK and candleShortOK and volOK and optShortOK and inTradeWin and chopOK and shortRROK
+
+bool longSetup  = oneSignalBar ? longSetupRaw and not longSetupRaw[1] : longSetupRaw
+bool shortSetup = oneSignalBar ? shortSetupRaw and not shortSetupRaw[1] : shortSetupRaw
+
+bool canEnter = isFlat and not inCooldown and underDayCap and not inFlatWin and (not noReverse or isFlat)
+bool longCand  = longSetup and canEnter
+bool shortCand = shortSetup and canEnter
+// If both fire same bar, skip (ambiguous)
+bool longSignal  = longCand and not shortCand
+bool shortSignal = shortCand and not longCand
+
+// =============================================================================
+// Orders
+// =============================================================================
+if flattenEOD and inFlatWin and strategy.position_size != 0
+    strategy.close_all(comment="EOD flat")
+
+if longSignal
+    strategy.entry("Long", strategy.long, qty=1, comment="MR Long")
+    strategy.exit("XL", from_entry="Long", stop=longStop, limit=longT1, comment="XR Long")
+    tradesToday += 1
+
+if shortSignal
+    strategy.entry("Short", strategy.short, qty=1, comment="MR Short")
+    strategy.exit("XS", from_entry="Short", stop=shortStop, limit=shortT1, comment="XR Short")
+    tradesToday += 1
+
+// Time stop
+if useTimeStop and strategy.opentrades > 0
+    int entryBar = strategy.opentrades.entry_bar_index(strategy.opentrades - 1)
+    if not na(entryBar) and bar_index - entryBar >= maxBarsInTrade
+        strategy.close_all(comment="Time stop")
+
+// Secondary target: if VWAP then Pivot and price reached VWAP, move limit toward pivot
+if exitTarget == "VWAP then Pivot" and strategy.position_size > 0 and close >= vwap and longT2 > close
+    strategy.exit("XL", from_entry="Long", stop=longStop, limit=longT2, comment="XR Long T2")
+if exitTarget == "VWAP then Pivot" and strategy.position_size < 0 and close <= vwap and shortT2 < close
+    strategy.exit("XS", from_entry="Short", stop=shortStop, limit=shortT2, comment="XR Short T2")
+
+// =============================================================================
+// Plots
+// =============================================================================
+plot(showVwap ? vwap : na, "VWAP", color=color.new(color.orange, 0), linewidth=2)
+
+plot(showPivots ? pp : na, "PP", color=color.new(color.gray, 0), style=plot.style_linebr)
+plot(showPivots ? r1 : na, "R1", color=color.new(color.red, 30), style=plot.style_linebr)
+plot(showPivots ? r2 : na, "R2", color=color.new(color.red, 50), style=plot.style_linebr)
+plot(showPivots ? s1 : na, "S1", color=color.new(color.green, 30), style=plot.style_linebr)
+plot(showPivots ? s2 : na, "S2", color=color.new(color.green, 50), style=plot.style_linebr)
+
+plot(showOpt and hasMaxPain  ? maxPain  : na, "Max Pain",  color=color.new(color.purple, 0), linewidth=2, style=plot.style_linebr)
+plot(showOpt and hasPutWall  ? putWall  : na, "Put Wall",  color=color.new(color.teal, 0), linewidth=2, style=plot.style_linebr)
+plot(showOpt and hasCallWall ? callWall : na, "Call Wall", color=color.new(color.maroon, 0), linewidth=2, style=plot.style_linebr)
+plot(showOpt and hasGamma    ? gammaFlip : na, "Gamma Flip", color=color.new(color.blue, 0), linewidth=2, style=plot.style_linebr)
+
+bgcolor(showBg ? (htfBull ? color.new(color.green, 94) : htfBear ? color.new(color.red, 94) : na) : na)
+
+plotshape(longSignal,  title="Long",  style=shape.triangleup,   location=location.belowbar, color=color.new(color.lime, 0),   size=size.small)
+plotshape(shortSignal, title="Short", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0),    size=size.small)
+plotshape(longSignal and optBoostLong,  title="Opt boost L", style=shape.circle, location=location.belowbar, color=color.new(color.aqua, 0), size=size.tiny)
+plotshape(shortSignal and optBoostShort, title="Opt boost S", style=shape.circle, location=location.abovebar, color=color.new(color.fuchsia, 0), size=size.tiny)
+
+// =============================================================================
+// Alerts & dashboard
+// =============================================================================
+alertcondition(longSignal,  "Nifty MR Long",  "Nifty mean-reversion LONG")
+alertcondition(shortSignal, "Nifty MR Short", "Nifty mean-reversion SHORT")
+alertcondition(longSignal and optBoostLong,   "Nifty MR Long + Opt",  "Nifty LONG near options support")
+alertcondition(shortSignal and optBoostShort, "Nifty MR Short + Opt", "Nifty SHORT near options resistance")
+
+var table dash = table.new(position.top_right, 2, 11, bgcolor=color.new(color.black, 75), border_width=1)
+if barstate.islast
+    table.cell(dash, 0, 0, "Filter", text_color=color.gray)
+    table.cell(dash, 1, 0, "State", text_color=color.gray)
+    table.cell(dash, 0, 1, "HTF")
+    table.cell(dash, 1, 1, htfBull ? "BULL" : htfBear ? "BEAR" : "RANGE",
+         text_color=htfBull ? color.lime : htfBear ? color.red : color.yellow)
+    table.cell(dash, 0, 2, "ADX")
+    table.cell(dash, 1, 2, str.tostring(adxVal, "#.1") + (chopOK ? " ok" : " TREND"),
+         text_color=chopOK ? color.lime : color.red)
+    table.cell(dash, 0, 3, "RSI")
+    table.cell(dash, 1, 3, str.tostring(rsi, "#.1"))
+    table.cell(dash, 0, 4, "VWAP σ")
+    table.cell(dash, 1, 4, str.tostring(vwapDistATR, "#.2") + " ATR")
+    table.cell(dash, 0, 5, "Pivot")
+    table.cell(dash, 1, 5, nearSupport ? "S1/S2" : nearResist ? "R1/R2" : "—",
+         text_color=nearSupport ? color.lime : nearResist ? color.red : color.gray)
+    table.cell(dash, 0, 6, "Candle")
+    table.cell(dash, 1, 6, bullCandle ? "BULL" : bearCandle ? "BEAR" : "—",
+         text_color=bullCandle ? color.lime : bearCandle ? color.red : color.gray)
+    table.cell(dash, 0, 7, "Cooldown")
+    table.cell(dash, 1, 7, inCooldown ? "YES" : "no", text_color=inCooldown ? color.orange : color.gray)
+    table.cell(dash, 0, 8, "Trades/day")
+    table.cell(dash, 1, 8, str.tostring(tradesToday) + "/" + str.tostring(maxTradesDay))
+    table.cell(dash, 0, 9, "Options")
+    table.cell(dash, 1, 9, nearAnyOpt ? "NEAR LVL" : useOptLevels ? "far" : "off",
+         text_color=nearAnyOpt ? color.aqua : color.gray)
+    table.cell(dash, 0, 10, "Setup")
+    table.cell(dash, 1, 10, longSignal ? "LONG" : shortSignal ? "SHORT" : "wait",
+         text_color=longSignal ? color.lime : shortSignal ? color.red : color.gray)

@@ -1,0 +1,17 @@
+{
+  "winner": "H13_failed_breakout",
+  "symbol": "^NSEI",
+  "params": {
+    "n": 20,
+    "rvol_min": 1.2,
+    "side": 1
+  },
+  "oos_n": 5,
+  "oos_exp": 0.0427301634432481,
+  "oos_pf": 25.43523521653463,
+  "oos_mdd": -0.008743554761104666,
+  "wf_n": 1,
+  "wf_exp": 0.10433741118448228,
+  "pert_frac": 1.0,
+  "rt_cost": 0.0008
+}

@@ -1,0 +1,992 @@
+# Nifty Edge 8h — Append-only Log
+
+- `2026-08-04 18:05:42 UTC` === Block 1 start ===
+- `2026-08-04 18:05:42 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 18:05:50 UTC` Buy&hold ^NSEI OOS: tot=69.5% MDD=-17.2% Sharpe=0.76
+- `2026-08-04 18:05:50 UTC` Reproducing baseline india_nifty_adx_donchian_v2…
+- `2026-08-04 18:05:52 UTC` Baseline OOS: n=74 PF=1.86 tot=38.7% MDD=-14.4% stress_PF=1.83
+- `2026-08-04 18:05:52 UTC`   WF 2021-01-15→2022-11-21: n=29 exp=1.95% tot=10.7%
+- `2026-08-04 18:05:52 UTC`   WF 2022-11-21→2024-09-27: n=26 exp=7.80% tot=42.5%
+- `2026-08-04 18:05:52 UTC`   WF 2024-09-27→2026-08-04: n=23 exp=-1.61% tot=-7.3%
+- `2026-08-04 18:05:52 UTC` Screening 26 hypotheses × 3 symbols…
+- `2026-08-04 18:05:52 UTC`   B1-01_donchian_55_20 @ ^NSEI: OOS n=12 PF=1.57 exp=0.91% tot=9.7% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-01_donchian_55_20 @ NIFTYBEES.NS: OOS n=6 PF=7.67 exp=5.68% tot=38.2% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-01_donchian_55_20 @ ^NSEBANK: OOS n=13 PF=1.01 exp=0.01% tot=-1.8% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-02_turtle_100_50 @ ^NSEI: OOS n=7 PF=5.68 exp=2.98% tot=22.2% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-02_turtle_100_50 @ NIFTYBEES.NS: OOS n=3 PF=999.00 exp=4.67% tot=14.5% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-02_turtle_100_50 @ ^NSEBANK: OOS n=7 PF=1.52 exp=0.60% tot=3.7% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-03_adx_donchian_70_25 @ ^NSEI: OOS n=8 PF=5.57 exp=3.66% tot=31.4% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-03_adx_donchian_70_25 @ NIFTYBEES.NS: OOS n=2 PF=999.00 exp=7.61% tot=15.8% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-03_adx_donchian_70_25 @ ^NSEBANK: OOS n=10 PF=0.16 exp=-1.33% tot=-12.8% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-04_ma_pullback @ ^NSEI: OOS n=21 PF=1.59 exp=0.56% tot=11.2% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-04_ma_pullback @ NIFTYBEES.NS: OOS n=17 PF=1.70 exp=0.86% tot=14.0% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-04_ma_pullback @ ^NSEBANK: OOS n=28 PF=0.86 exp=-0.22% tot=-7.8% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-05_atr_expansion @ ^NSEI: OOS n=16 PF=3.06 exp=1.55% tot=26.5% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-05_atr_expansion @ NIFTYBEES.NS: OOS n=9 PF=1.81 exp=0.90% tot=7.8% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-05_atr_expansion @ ^NSEBANK: OOS n=15 PF=4.66 exp=2.40% tot=40.5% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-06_nr7_thrust @ ^NSEI: OOS n=53 PF=1.69 exp=0.29% tot=16.1% WF=3/4
+- `2026-08-04 18:05:52 UTC`   B1-06_nr7_thrust @ NIFTYBEES.NS: OOS n=37 PF=0.24 exp=-0.77% tot=-25.2% WF=3/4
+- `2026-08-04 18:05:52 UTC`   B1-06_nr7_thrust @ ^NSEBANK: OOS n=53 PF=0.87 exp=-0.09% tot=-5.6% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-07_rsi_mr @ ^NSEI: OOS n=4 PF=5.28 exp=0.48% tot=1.9% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-07_rsi_mr @ NIFTYBEES.NS: OOS n=6 PF=1.12 exp=0.05% tot=0.3% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-07_rsi_mr @ ^NSEBANK: OOS n=3 PF=1.61 exp=0.31% tot=0.9% WF=0/4
+- `2026-08-04 18:05:52 UTC`   FAIL B1-08_zscore_mr @ ^NSEI: 'bars_in'
+- `2026-08-04 18:05:52 UTC`   FAIL B1-08_zscore_mr @ NIFTYBEES.NS: 'bars_in'
+- `2026-08-04 18:05:52 UTC`   FAIL B1-08_zscore_mr @ ^NSEBANK: 'bars_in'
+- `2026-08-04 18:05:52 UTC`   B1-09_gap_cont @ ^NSEI: OOS n=51 PF=1.20 exp=0.16% tot=7.1% WF=3/4
+- `2026-08-04 18:05:52 UTC`   B1-09_gap_cont @ NIFTYBEES.NS: OOS n=38 PF=1.18 exp=0.14% tot=4.2% WF=3/4
+- `2026-08-04 18:05:52 UTC`   B1-09_gap_cont @ ^NSEBANK: OOS n=45 PF=1.39 exp=0.38% tot=15.8% WF=3/4
+- `2026-08-04 18:05:52 UTC`   B1-10_gap_fade @ ^NSEI: OOS n=20 PF=0.29 exp=-0.66% tot=-12.6% WF=0/4
+- `2026-08-04 18:05:52 UTC`   B1-10_gap_fade @ NIFTYBEES.NS: OOS n=34 PF=0.08 exp=-1.50% tot=-40.8% WF=2/4
+- `2026-08-04 18:05:52 UTC`   B1-10_gap_fade @ ^NSEBANK: OOS n=32 PF=1.16 exp=0.11% tot=2.8% WF=1/4
+- `2026-08-04 18:05:52 UTC`   B1-11_dow_monday @ ^NSEI: OOS n=173 PF=0.75 exp=-0.15% tot=-23.6% WF=4/4
+- `2026-08-04 18:05:52 UTC`   B1-11_dow_monday @ NIFTYBEES.NS: OOS n=159 PF=0.30 exp=-0.78% tot=-71.9% WF=3/4
+- `2026-08-04 18:05:53 UTC`   B1-11_dow_monday @ ^NSEBANK: OOS n=166 PF=0.56 exp=-0.36% tot=-46.4% WF=3/4
+- `2026-08-04 18:05:53 UTC`   B1-12_month_turn @ ^NSEI: OOS n=57 PF=1.47 exp=0.33% tot=18.6% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-12_month_turn @ NIFTYBEES.NS: OOS n=54 PF=0.43 exp=-0.88% tot=-39.2% WF=1/4
+- `2026-08-04 18:05:53 UTC`   B1-12_month_turn @ ^NSEBANK: OOS n=59 PF=1.71 exp=0.59% tot=36.7% WF=2/4
+- `2026-08-04 18:05:53 UTC`   B1-13_ma_cross_vol @ ^NSEI: OOS n=4 PF=1.59 exp=0.74% tot=2.8% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-13_ma_cross_vol @ NIFTYBEES.NS: OOS n=2 PF=3.03 exp=1.66% tot=3.2% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-13_ma_cross_vol @ ^NSEBANK: OOS n=6 PF=1.26 exp=0.40% tot=1.9% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-14_bb_walk @ ^NSEI: OOS n=18 PF=0.98 exp=-0.02% tot=-1.5% WF=2/4
+- `2026-08-04 18:05:53 UTC`   B1-14_bb_walk @ NIFTYBEES.NS: OOS n=18 PF=1.54 exp=0.68% tot=11.4% WF=1/4
+- `2026-08-04 18:05:53 UTC`   B1-14_bb_walk @ ^NSEBANK: OOS n=24 PF=1.15 exp=0.19% tot=3.2% WF=3/4
+- `2026-08-04 18:05:53 UTC`   B1-15_keltner @ ^NSEI: OOS n=32 PF=1.45 exp=0.52% tot=15.4% WF=3/4
+- `2026-08-04 18:05:53 UTC`   B1-15_keltner @ NIFTYBEES.NS: OOS n=15 PF=1.42 exp=0.46% tot=6.3% WF=1/4
+- `2026-08-04 18:05:53 UTC`   B1-15_keltner @ ^NSEBANK: OOS n=32 PF=1.22 exp=0.27% tot=6.9% WF=3/4
+- `2026-08-04 18:05:53 UTC`   B1-16_supertrend @ ^NSEI: OOS n=12 PF=1.24 exp=0.28% tot=2.9% WF=1/4
+- `2026-08-04 18:05:53 UTC`   B1-16_supertrend @ NIFTYBEES.NS: OOS n=1 PF=0.00 exp=-3.39% tot=-3.4% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-16_supertrend @ ^NSEBANK: OOS n=8 PF=1.48 exp=0.85% tot=5.7% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-17_failed_bd_fade @ ^NSEI: OOS n=14 PF=0.96 exp=-0.04% tot=-0.8% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-17_failed_bd_fade @ NIFTYBEES.NS: OOS n=12 PF=0.52 exp=-0.81% tot=-10.1% WF=1/4
+- `2026-08-04 18:05:53 UTC`   B1-17_failed_bd_fade @ ^NSEBANK: OOS n=17 PF=0.84 exp=-0.20% tot=-4.1% WF=1/4
+- `2026-08-04 18:05:53 UTC`   B1-18_time_structure @ ^NSEI: OOS n=29 PF=1.17 exp=0.21% tot=4.7% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-18_time_structure @ NIFTYBEES.NS: OOS n=11 PF=1.46 exp=0.43% tot=4.5% WF=1/4
+- `2026-08-04 18:05:53 UTC`   B1-18_time_structure @ ^NSEBANK: OOS n=27 PF=0.76 exp=-0.34% tot=-9.7% WF=2/4
+- `2026-08-04 18:05:53 UTC`   B1-19_vol_bo @ ^NSEI: OOS n=11 PF=1.40 exp=0.33% tot=3.3% WF=0/4
+- `2026-08-04 18:05:53 UTC`   B1-19_vol_bo @ NIFTYBEES.NS: OOS n=5 PF=0.05 exp=-0.97% tot=-4.8% WF=1/4
+- `2026-08-04 18:05:54 UTC`   B1-19_vol_bo @ ^NSEBANK: OOS n=16 PF=0.73 exp=-0.45% tot=-7.8% WF=1/4
+- `2026-08-04 18:05:54 UTC`   B1-20_downstreak_rev @ ^NSEI: OOS n=15 PF=0.46 exp=-0.62% tot=-9.2% WF=0/4
+- `2026-08-04 18:05:54 UTC`   B1-20_downstreak_rev @ NIFTYBEES.NS: OOS n=5 PF=0.17 exp=-1.58% tot=-7.8% WF=1/4
+- `2026-08-04 18:05:54 UTC`   B1-20_downstreak_rev @ ^NSEBANK: OOS n=18 PF=0.48 exp=-0.36% tot=-6.3% WF=0/4
+- `2026-08-04 18:05:54 UTC`   B1-21_close_loc @ ^NSEI: OOS n=16 PF=2.77 exp=1.14% tot=19.0% WF=1/4
+- `2026-08-04 18:05:54 UTC`   B1-21_close_loc @ NIFTYBEES.NS: OOS n=6 PF=0.17 exp=-1.37% tot=-8.0% WF=1/4
+- `2026-08-04 18:05:54 UTC`   B1-21_close_loc @ ^NSEBANK: OOS n=17 PF=0.66 exp=-0.55% tot=-9.6% WF=1/4
+- `2026-08-04 18:05:54 UTC`   B1-22_di_momentum @ ^NSEI: OOS n=15 PF=1.14 exp=0.17% tot=1.6% WF=1/4
+- `2026-08-04 18:05:54 UTC`   B1-22_di_momentum @ NIFTYBEES.NS: OOS n=6 PF=5.47 exp=1.75% tot=10.7% WF=1/4
+- `2026-08-04 18:05:54 UTC`   B1-22_di_momentum @ ^NSEBANK: OOS n=16 PF=0.48 exp=-1.07% tot=-16.5% WF=2/4
+- `2026-08-04 18:05:54 UTC`   B1-23_rs_nifty_bank @ ^NSEI: OOS n=16 PF=1.55 exp=0.43% tot=6.4% WF=0/4
+- `2026-08-04 18:05:54 UTC`   B1-23_rs_nifty_bank @ NIFTYBEES.NS: OOS n=0 PF=0.00 exp=0.00% tot=0.0% WF=0/4
+- `2026-08-04 18:05:54 UTC`   B1-23_rs_nifty_bank @ ^NSEBANK: OOS n=0 PF=0.00 exp=0.00% tot=0.0% WF=0/4
+- `2026-08-04 18:05:54 UTC`   B1-24_breadth_thrust @ ^NSEI: OOS n=30 PF=1.53 exp=0.69% tot=19.6% WF=4/4
+- `2026-08-04 18:05:54 UTC`   B1-24_breadth_thrust @ NIFTYBEES.NS: OOS n=0 PF=0.00 exp=0.00% tot=0.0% WF=0/4
+- `2026-08-04 18:05:54 UTC`   B1-24_breadth_thrust @ ^NSEBANK: OOS n=0 PF=0.00 exp=0.00% tot=0.0% WF=0/4
+- `2026-08-04 18:05:54 UTC`   B1-25_orb_daily @ ^NSEI: OOS n=106 PF=0.98 exp=-0.02% tot=-3.8% WF=3/4
+- `2026-08-04 18:05:54 UTC`   B1-25_orb_daily @ NIFTYBEES.NS: OOS n=70 PF=0.89 exp=-0.11% tot=-9.0% WF=4/4
+- `2026-08-04 18:05:54 UTC`   B1-25_orb_daily @ ^NSEBANK: OOS n=98 PF=1.03 exp=0.04% tot=-0.9% WF=3/4
+- `2026-08-04 18:05:54 UTC`   B1-26_ema_ribbon @ ^NSEI: OOS n=30 PF=1.37 exp=0.51% tot=13.0% WF=2/4
+- `2026-08-04 18:05:54 UTC`   B1-26_ema_ribbon @ NIFTYBEES.NS: OOS n=21 PF=1.85 exp=1.22% tot=25.8% WF=2/4
+- `2026-08-04 18:05:54 UTC`   B1-26_ema_ribbon @ ^NSEBANK: OOS n=32 PF=0.97 exp=-0.04% tot=-3.1% WF=1/4
+- `2026-08-04 18:05:54 UTC` Basket promotion pass: ['B1-05_atr_expansion', 'B1-21_close_loc', 'B1-24_breadth_thrust', 'B1-06_nr7_thrust', 'B1-15_keltner', 'B1-26_ema_ribbon', 'B1-04_ma_pullback', 'B1-12_month_turn', 'B1-03_adx_donchian_70_25', 'B1-04_ma_pullback', 'B1-14_bb_walk', 'B1-15_keltner', 'B1-16_supertrend', 'B1-17_failed_bd_fade', 'B1-22_di_momentum', 'B1-26_ema_ribbon', 'B1-05_atr_expansion', 'B1-18_time_structure']
+- `2026-08-04 18:05:55 UTC`   BASKET B1-05_atr_expansion: OOS n=118 PF=1.65 tot=27.7% WF+=2/3 stress_PF=1.60
+- `2026-08-04 18:05:57 UTC`   BASKET B1-21_close_loc: OOS n=180 PF=1.12 tot=5.4% WF+=1/3 stress_PF=1.08
+- `2026-08-04 18:05:58 UTC`   BASKET B1-24_breadth_thrust: OOS n=0 PF=0.00 tot=0.0% WF+=0/3 stress_PF=0.00
+- `2026-08-04 18:06:00 UTC`   BASKET B1-06_nr7_thrust: OOS n=580 PF=0.86 tot=-21.7% WF+=2/3 stress_PF=0.81
+- `2026-08-04 18:06:01 UTC`   BASKET B1-15_keltner: OOS n=299 PF=1.04 tot=-1.3% WF+=2/3 stress_PF=1.00
+- `2026-08-04 18:06:03 UTC`   BASKET B1-26_ema_ribbon: OOS n=257 PF=1.45 tot=43.6% WF+=2/3 stress_PF=1.40
+- `2026-08-04 18:06:05 UTC`   BASKET B1-04_ma_pullback: OOS n=283 PF=0.96 tot=-7.1% WF+=1/3 stress_PF=0.93
+- `2026-08-04 18:06:06 UTC`   BASKET B1-12_month_turn: OOS n=224 PF=1.02 tot=-2.2% WF+=1/3 stress_PF=0.98
+- `2026-08-04 18:06:08 UTC`   BASKET B1-03_adx_donchian_70_25: OOS n=74 PF=1.86 tot=38.7% WF+=2/3 stress_PF=1.83
+- `2026-08-04 18:06:09 UTC`   BASKET B1-14_bb_walk: OOS n=270 PF=0.82 tot=-20.0% WF+=1/3 stress_PF=0.79
+- `2026-08-04 18:07:43 UTC`   BASKET B1-16_supertrend: OOS n=77 PF=1.89 tot=33.8% WF+=2/3 stress_PF=1.85
+- `2026-08-04 18:07:45 UTC`   BASKET B1-17_failed_bd_fade: OOS n=215 PF=1.11 tot=4.6% WF+=2/3 stress_PF=1.06
+- `2026-08-04 18:07:47 UTC`   BASKET B1-22_di_momentum: OOS n=187 PF=0.83 tot=-18.7% WF+=1/3 stress_PF=0.81
+- `2026-08-04 18:07:49 UTC`   BASKET B1-18_time_structure: OOS n=249 PF=0.93 tot=-12.4% WF+=1/3 stress_PF=0.90
+- `2026-08-04 18:07:49 UTC` Refining BASKET_B1-16_supertrend with 3 param variants…
+- `2026-08-04 18:07:52 UTC`   perturb {'mult': 3.0}: PF=1.89 tot=33.8% n=77
+- `2026-08-04 18:07:55 UTC`   perturb {'mult': 2.4000000000000004}: PF=1.45 tot=24.6% n=137
+- `2026-08-04 18:07:58 UTC`   perturb {'mult': 3.5999999999999996}: PF=2.56 tot=38.1% n=44
+- `2026-08-04 18:07:58 UTC` === Block 1 screen complete ===
+- `2026-08-04 18:07:58 UTC` Current #1: BASKET_B1-16_supertrend_refined OOS PF=2.56 tot=38.1% n=44
+- `2026-08-04 18:09:07 UTC` === Block 1 start ===
+- `2026-08-04 18:09:07 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 18:09:16 UTC` Buy&hold ^NSEI OOS: tot=69.5% MDD=-17.2% Sharpe=0.76
+- `2026-08-04 18:09:16 UTC` Reproducing baseline india_nifty_adx_donchian_v2…
+- `2026-08-04 18:09:18 UTC` Baseline OOS: n=74 PF=1.86 tot=38.7% MDD=-14.4% stress_PF=1.83
+- `2026-08-04 18:09:18 UTC`   WF 2021-01-15→2022-11-21: n=29 exp=1.95% tot=10.7%
+- `2026-08-04 18:09:18 UTC`   WF 2022-11-21→2024-09-27: n=26 exp=7.80% tot=42.5%
+- `2026-08-04 18:09:18 UTC`   WF 2024-09-27→2026-08-04: n=23 exp=-1.61% tot=-7.3%
+- `2026-08-04 18:09:18 UTC` Screening 26 hypotheses × 3 symbols…
+- `2026-08-04 18:09:18 UTC`   B1-01_donchian_55_20 @ ^NSEI: OOS n=12 PF=1.57 exp=0.91% tot=9.7% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-01_donchian_55_20 @ NIFTYBEES.NS: OOS n=6 PF=7.67 exp=5.68% tot=38.2% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-01_donchian_55_20 @ ^NSEBANK: OOS n=13 PF=1.01 exp=0.01% tot=-1.8% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-02_turtle_100_50 @ ^NSEI: OOS n=7 PF=5.68 exp=2.98% tot=22.2% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-02_turtle_100_50 @ NIFTYBEES.NS: OOS n=3 PF=999.00 exp=4.67% tot=14.5% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-02_turtle_100_50 @ ^NSEBANK: OOS n=7 PF=1.52 exp=0.60% tot=3.7% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-03_adx_donchian_70_25 @ ^NSEI: OOS n=8 PF=5.57 exp=3.66% tot=31.4% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-03_adx_donchian_70_25 @ NIFTYBEES.NS: OOS n=2 PF=999.00 exp=7.61% tot=15.8% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-03_adx_donchian_70_25 @ ^NSEBANK: OOS n=10 PF=0.16 exp=-1.33% tot=-12.8% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-04_ma_pullback @ ^NSEI: OOS n=21 PF=1.59 exp=0.56% tot=11.2% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-04_ma_pullback @ NIFTYBEES.NS: OOS n=17 PF=1.70 exp=0.86% tot=14.0% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-04_ma_pullback @ ^NSEBANK: OOS n=28 PF=0.86 exp=-0.22% tot=-7.8% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-05_atr_expansion @ ^NSEI: OOS n=16 PF=3.06 exp=1.55% tot=26.5% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-05_atr_expansion @ NIFTYBEES.NS: OOS n=9 PF=1.81 exp=0.90% tot=7.8% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-05_atr_expansion @ ^NSEBANK: OOS n=15 PF=4.66 exp=2.40% tot=40.5% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-06_nr7_thrust @ ^NSEI: OOS n=53 PF=1.69 exp=0.29% tot=16.1% WF=3/4
+- `2026-08-04 18:09:18 UTC`   B1-06_nr7_thrust @ NIFTYBEES.NS: OOS n=37 PF=0.24 exp=-0.77% tot=-25.2% WF=3/4
+- `2026-08-04 18:09:18 UTC`   B1-06_nr7_thrust @ ^NSEBANK: OOS n=53 PF=0.87 exp=-0.09% tot=-5.6% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-07_rsi_mr @ ^NSEI: OOS n=4 PF=5.28 exp=0.48% tot=1.9% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-07_rsi_mr @ NIFTYBEES.NS: OOS n=6 PF=1.12 exp=0.05% tot=0.3% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-07_rsi_mr @ ^NSEBANK: OOS n=3 PF=1.61 exp=0.31% tot=0.9% WF=0/4
+- `2026-08-04 18:09:18 UTC`   FAIL B1-08_zscore_mr @ ^NSEI: 'bars_in'
+- `2026-08-04 18:09:18 UTC`   FAIL B1-08_zscore_mr @ NIFTYBEES.NS: 'bars_in'
+- `2026-08-04 18:09:18 UTC`   FAIL B1-08_zscore_mr @ ^NSEBANK: 'bars_in'
+- `2026-08-04 18:09:18 UTC`   B1-09_gap_cont @ ^NSEI: OOS n=51 PF=1.20 exp=0.16% tot=7.1% WF=3/4
+- `2026-08-04 18:09:18 UTC`   B1-09_gap_cont @ NIFTYBEES.NS: OOS n=38 PF=1.18 exp=0.14% tot=4.2% WF=3/4
+- `2026-08-04 18:09:18 UTC`   B1-09_gap_cont @ ^NSEBANK: OOS n=45 PF=1.39 exp=0.38% tot=15.8% WF=3/4
+- `2026-08-04 18:09:18 UTC`   B1-10_gap_fade @ ^NSEI: OOS n=20 PF=0.29 exp=-0.66% tot=-12.6% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-10_gap_fade @ NIFTYBEES.NS: OOS n=34 PF=0.08 exp=-1.50% tot=-40.8% WF=2/4
+- `2026-08-04 18:09:18 UTC`   B1-10_gap_fade @ ^NSEBANK: OOS n=32 PF=1.16 exp=0.11% tot=2.8% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-11_dow_monday @ ^NSEI: OOS n=173 PF=0.75 exp=-0.15% tot=-23.6% WF=4/4
+- `2026-08-04 18:09:18 UTC`   B1-11_dow_monday @ NIFTYBEES.NS: OOS n=159 PF=0.30 exp=-0.78% tot=-71.9% WF=3/4
+- `2026-08-04 18:09:18 UTC`   B1-11_dow_monday @ ^NSEBANK: OOS n=166 PF=0.56 exp=-0.36% tot=-46.4% WF=3/4
+- `2026-08-04 18:09:18 UTC`   B1-12_month_turn @ ^NSEI: OOS n=57 PF=1.47 exp=0.33% tot=18.6% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-12_month_turn @ NIFTYBEES.NS: OOS n=54 PF=0.43 exp=-0.88% tot=-39.2% WF=1/4
+- `2026-08-04 18:09:18 UTC`   B1-12_month_turn @ ^NSEBANK: OOS n=59 PF=1.71 exp=0.59% tot=36.7% WF=2/4
+- `2026-08-04 18:09:18 UTC`   B1-13_ma_cross_vol @ ^NSEI: OOS n=4 PF=1.59 exp=0.74% tot=2.8% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-13_ma_cross_vol @ NIFTYBEES.NS: OOS n=2 PF=3.03 exp=1.66% tot=3.2% WF=0/4
+- `2026-08-04 18:09:18 UTC`   B1-13_ma_cross_vol @ ^NSEBANK: OOS n=6 PF=1.26 exp=0.40% tot=1.9% WF=0/4
+- `2026-08-04 18:09:19 UTC`   B1-14_bb_walk @ ^NSEI: OOS n=18 PF=0.98 exp=-0.02% tot=-1.5% WF=2/4
+- `2026-08-04 18:09:19 UTC`   B1-14_bb_walk @ NIFTYBEES.NS: OOS n=18 PF=1.54 exp=0.68% tot=11.4% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-14_bb_walk @ ^NSEBANK: OOS n=24 PF=1.15 exp=0.19% tot=3.2% WF=3/4
+- `2026-08-04 18:09:19 UTC`   B1-15_keltner @ ^NSEI: OOS n=32 PF=1.45 exp=0.52% tot=15.4% WF=3/4
+- `2026-08-04 18:09:19 UTC`   B1-15_keltner @ NIFTYBEES.NS: OOS n=15 PF=1.42 exp=0.46% tot=6.3% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-15_keltner @ ^NSEBANK: OOS n=32 PF=1.22 exp=0.27% tot=6.9% WF=3/4
+- `2026-08-04 18:09:19 UTC`   B1-16_supertrend @ ^NSEI: OOS n=12 PF=1.24 exp=0.28% tot=2.9% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-16_supertrend @ NIFTYBEES.NS: OOS n=1 PF=0.00 exp=-3.39% tot=-3.4% WF=0/4
+- `2026-08-04 18:09:19 UTC`   B1-16_supertrend @ ^NSEBANK: OOS n=8 PF=1.48 exp=0.85% tot=5.7% WF=0/4
+- `2026-08-04 18:09:19 UTC`   B1-17_failed_bd_fade @ ^NSEI: OOS n=14 PF=0.96 exp=-0.04% tot=-0.8% WF=0/4
+- `2026-08-04 18:09:19 UTC`   B1-17_failed_bd_fade @ NIFTYBEES.NS: OOS n=12 PF=0.52 exp=-0.81% tot=-10.1% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-17_failed_bd_fade @ ^NSEBANK: OOS n=17 PF=0.84 exp=-0.20% tot=-4.1% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-18_time_structure @ ^NSEI: OOS n=29 PF=1.17 exp=0.21% tot=4.7% WF=0/4
+- `2026-08-04 18:09:19 UTC`   B1-18_time_structure @ NIFTYBEES.NS: OOS n=11 PF=1.46 exp=0.43% tot=4.5% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-18_time_structure @ ^NSEBANK: OOS n=27 PF=0.76 exp=-0.34% tot=-9.7% WF=2/4
+- `2026-08-04 18:09:19 UTC`   B1-19_vol_bo @ ^NSEI: OOS n=11 PF=1.40 exp=0.33% tot=3.3% WF=0/4
+- `2026-08-04 18:09:19 UTC`   B1-19_vol_bo @ NIFTYBEES.NS: OOS n=5 PF=0.05 exp=-0.97% tot=-4.8% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-19_vol_bo @ ^NSEBANK: OOS n=16 PF=0.73 exp=-0.45% tot=-7.8% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-20_downstreak_rev @ ^NSEI: OOS n=15 PF=0.46 exp=-0.62% tot=-9.2% WF=0/4
+- `2026-08-04 18:09:19 UTC`   B1-20_downstreak_rev @ NIFTYBEES.NS: OOS n=5 PF=0.17 exp=-1.58% tot=-7.8% WF=1/4
+- `2026-08-04 18:09:19 UTC`   B1-20_downstreak_rev @ ^NSEBANK: OOS n=18 PF=0.48 exp=-0.36% tot=-6.3% WF=0/4
+- `2026-08-04 18:09:20 UTC`   B1-21_close_loc @ ^NSEI: OOS n=16 PF=2.77 exp=1.14% tot=19.0% WF=1/4
+- `2026-08-04 18:09:20 UTC`   B1-21_close_loc @ NIFTYBEES.NS: OOS n=6 PF=0.17 exp=-1.37% tot=-8.0% WF=1/4
+- `2026-08-04 18:09:20 UTC`   B1-21_close_loc @ ^NSEBANK: OOS n=17 PF=0.66 exp=-0.55% tot=-9.6% WF=1/4
+- `2026-08-04 18:09:20 UTC`   B1-22_di_momentum @ ^NSEI: OOS n=15 PF=1.14 exp=0.17% tot=1.6% WF=1/4
+- `2026-08-04 18:09:20 UTC`   B1-22_di_momentum @ NIFTYBEES.NS: OOS n=6 PF=5.47 exp=1.75% tot=10.7% WF=1/4
+- `2026-08-04 18:09:20 UTC`   B1-22_di_momentum @ ^NSEBANK: OOS n=16 PF=0.48 exp=-1.07% tot=-16.5% WF=2/4
+- `2026-08-04 18:09:20 UTC`   B1-23_rs_nifty_bank @ ^NSEI: OOS n=16 PF=1.55 exp=0.43% tot=6.4% WF=0/4
+- `2026-08-04 18:09:20 UTC`   B1-23_rs_nifty_bank @ NIFTYBEES.NS: OOS n=0 PF=0.00 exp=0.00% tot=0.0% WF=0/4
+- `2026-08-04 18:09:20 UTC`   B1-23_rs_nifty_bank @ ^NSEBANK: OOS n=0 PF=0.00 exp=0.00% tot=0.0% WF=0/4
+- `2026-08-04 18:09:20 UTC`   B1-24_breadth_thrust @ ^NSEI: OOS n=30 PF=1.53 exp=0.69% tot=19.6% WF=4/4
+- `2026-08-04 18:09:20 UTC`   B1-24_breadth_thrust @ NIFTYBEES.NS: OOS n=0 PF=0.00 exp=0.00% tot=0.0% WF=0/4
+- `2026-08-04 18:09:20 UTC`   B1-24_breadth_thrust @ ^NSEBANK: OOS n=0 PF=0.00 exp=0.00% tot=0.0% WF=0/4
+- `2026-08-04 18:09:20 UTC`   B1-25_orb_daily @ ^NSEI: OOS n=106 PF=0.98 exp=-0.02% tot=-3.8% WF=3/4
+- `2026-08-04 18:09:20 UTC`   B1-25_orb_daily @ NIFTYBEES.NS: OOS n=70 PF=0.89 exp=-0.11% tot=-9.0% WF=4/4
+- `2026-08-04 18:09:20 UTC`   B1-25_orb_daily @ ^NSEBANK: OOS n=98 PF=1.03 exp=0.04% tot=-0.9% WF=3/4
+- `2026-08-04 18:09:20 UTC`   B1-26_ema_ribbon @ ^NSEI: OOS n=30 PF=1.37 exp=0.51% tot=13.0% WF=2/4
+- `2026-08-04 18:09:20 UTC`   B1-26_ema_ribbon @ NIFTYBEES.NS: OOS n=21 PF=1.85 exp=1.22% tot=25.8% WF=2/4
+- `2026-08-04 18:09:20 UTC`   B1-26_ema_ribbon @ ^NSEBANK: OOS n=32 PF=0.97 exp=-0.04% tot=-3.1% WF=1/4
+- `2026-08-04 18:09:20 UTC` Basket promotion pass: ['B1-05_atr_expansion', 'B1-21_close_loc', 'B1-24_breadth_thrust', 'B1-06_nr7_thrust', 'B1-15_keltner', 'B1-26_ema_ribbon', 'B1-04_ma_pullback', 'B1-12_month_turn', 'B1-03_adx_donchian_70_25', 'B1-04_ma_pullback', 'B1-14_bb_walk', 'B1-15_keltner', 'B1-16_supertrend', 'B1-17_failed_bd_fade', 'B1-22_di_momentum', 'B1-26_ema_ribbon', 'B1-05_atr_expansion', 'B1-18_time_structure']
+- `2026-08-04 18:09:21 UTC`   BASKET B1-05_atr_expansion: OOS n=118 PF=1.65 tot=27.7% WF+=2/3 stress_PF=1.60
+- `2026-08-04 18:09:23 UTC`   BASKET B1-21_close_loc: OOS n=180 PF=1.12 tot=5.4% WF+=1/3 stress_PF=1.08
+- `2026-08-04 18:09:25 UTC`   BASKET B1-24_breadth_thrust: OOS n=0 PF=0.00 tot=0.0% WF+=0/3 stress_PF=0.00
+- `2026-08-04 18:09:27 UTC`   BASKET B1-06_nr7_thrust: OOS n=580 PF=0.86 tot=-21.7% WF+=2/3 stress_PF=0.81
+- `2026-08-04 18:09:28 UTC`   BASKET B1-15_keltner: OOS n=299 PF=1.04 tot=-1.3% WF+=2/3 stress_PF=1.00
+- `2026-08-04 18:09:30 UTC`   BASKET B1-26_ema_ribbon: OOS n=257 PF=1.45 tot=43.6% WF+=2/3 stress_PF=1.40
+- `2026-08-04 18:09:32 UTC`   BASKET B1-04_ma_pullback: OOS n=283 PF=0.96 tot=-7.1% WF+=1/3 stress_PF=0.93
+- `2026-08-04 18:09:33 UTC`   BASKET B1-12_month_turn: OOS n=224 PF=1.02 tot=-2.2% WF+=1/3 stress_PF=0.98
+- `2026-08-04 18:09:35 UTC`   BASKET B1-03_adx_donchian_70_25: OOS n=74 PF=1.86 tot=38.7% WF+=2/3 stress_PF=1.83
+- `2026-08-04 18:09:37 UTC`   BASKET B1-14_bb_walk: OOS n=270 PF=0.82 tot=-20.0% WF+=1/3 stress_PF=0.79
+- `2026-08-04 18:09:56 UTC`   BASKET B1-16_supertrend: OOS n=77 PF=1.89 tot=33.8% WF+=2/3 stress_PF=1.85
+- `2026-08-04 18:09:59 UTC`   BASKET B1-17_failed_bd_fade: OOS n=215 PF=1.11 tot=4.6% WF+=2/3 stress_PF=1.06
+- `2026-08-04 18:10:01 UTC`   BASKET B1-22_di_momentum: OOS n=187 PF=0.83 tot=-18.7% WF+=1/3 stress_PF=0.81
+- `2026-08-04 18:10:03 UTC`   BASKET B1-18_time_structure: OOS n=249 PF=0.93 tot=-12.4% WF+=1/3 stress_PF=0.90
+- `2026-08-04 18:10:03 UTC` Refining BASKET_B1-16_supertrend with 3 param variants…
+- `2026-08-04 18:10:06 UTC`   perturb {'mult': 3.0}: PF=1.89 tot=33.8% n=77
+- `2026-08-04 18:10:10 UTC`   perturb {'mult': 2.4000000000000004}: PF=1.45 tot=24.6% n=137
+- `2026-08-04 18:10:13 UTC`   perturb {'mult': 3.5999999999999996}: PF=2.56 tot=38.1% n=44
+- `2026-08-04 18:10:13 UTC` === Block 1 screen complete ===
+- `2026-08-04 18:10:13 UTC` Current #1: BASKET_B1-16_supertrend_refined OOS PF=2.56 tot=38.1% n=44
+- `2026-08-04 18:16:41 UTC` === Block 1b deep refine start ===
+- `2026-08-04 18:16:51 UTC`   ST_m2.0_n1_e1: OOS n=232 PF=1.47 tot=47.1% WF+=2/3 stress=1.43
+- `2026-08-04 18:16:53 UTC`   ST_m2.0_n1_e0: OOS n=245 PF=1.49 tot=54.1% WF+=3/3 stress=1.44
+- `2026-08-04 18:16:55 UTC`   ST_m2.0_n0_e1: OOS n=291 PF=1.42 tot=55.6% WF+=2/3 stress=1.38
+- `2026-08-04 18:16:57 UTC`   ST_m2.0_n0_e0: OOS n=303 PF=1.66 tot=107.8% WF+=3/3 stress=1.61
+- `2026-08-04 18:16:59 UTC`   ST_m2.5_n1_e1: OOS n=167 PF=1.41 tot=33.4% WF+=2/3 stress=1.38
+- `2026-08-04 18:17:01 UTC`   ST_m2.5_n1_e0: OOS n=169 PF=1.39 tot=28.7% WF+=2/3 stress=1.36
+- `2026-08-04 18:17:03 UTC`   ST_m2.5_n0_e1: OOS n=211 PF=1.29 tot=29.9% WF+=2/3 stress=1.26
+- `2026-08-04 18:17:04 UTC`   ST_m2.5_n0_e0: OOS n=220 PF=1.60 tot=70.1% WF+=2/3 stress=1.56
+- `2026-08-04 18:17:06 UTC`   ST_m3.0_n1_e1: OOS n=119 PF=2.05 tot=79.4% WF+=3/3 stress=2.01
+- `2026-08-04 18:17:08 UTC`   ST_m3.0_n1_e0: OOS n=135 PF=1.57 tot=42.3% WF+=2/3 stress=1.53
+- `2026-08-04 18:17:10 UTC`   ST_m3.0_n0_e1: OOS n=150 PF=2.02 tot=98.0% WF+=3/3 stress=1.98
+- `2026-08-04 18:17:12 UTC`   ST_m3.0_n0_e0: OOS n=169 PF=2.01 tot=114.7% WF+=3/3 stress=1.97
+- `2026-08-04 18:17:14 UTC`   ST_m3.5_n1_e1: OOS n=91 PF=2.11 tot=61.3% WF+=3/3 stress=2.07
+- `2026-08-04 18:17:16 UTC`   ST_m3.5_n1_e0: OOS n=114 PF=1.68 tot=49.2% WF+=3/3 stress=1.65
+- `2026-08-04 18:17:18 UTC`   ST_m3.5_n0_e1: OOS n=114 PF=1.83 tot=59.8% WF+=3/3 stress=1.80
+- `2026-08-04 18:17:19 UTC`   ST_m3.5_n0_e0: OOS n=137 PF=2.06 tot=99.9% WF+=3/3 stress=2.03
+- `2026-08-04 18:17:21 UTC`   ST_m3.6_n1_e1: OOS n=75 PF=3.90 tot=110.2% WF+=3/3 stress=3.82
+- `2026-08-04 18:17:23 UTC`   ST_m3.6_n1_e0: OOS n=100 PF=2.37 tot=89.3% WF+=3/3 stress=2.33
+- `2026-08-04 18:17:25 UTC`   ST_m3.6_n0_e1: OOS n=98 PF=2.58 tot=95.5% WF+=2/3 stress=2.53
+- `2026-08-04 18:17:27 UTC`   ST_m3.6_n0_e0: OOS n=129 PF=2.20 tot=108.7% WF+=3/3 stress=2.16
+- `2026-08-04 18:17:29 UTC`   ST_m4.0_n1_e1: OOS n=75 PF=2.46 tot=63.8% WF+=2/3 stress=2.42
+- `2026-08-04 18:17:31 UTC`   ST_m4.0_n1_e0: OOS n=93 PF=1.62 tot=39.0% WF+=2/3 stress=1.60
+- `2026-08-04 18:17:33 UTC`   ST_m4.0_n0_e1: OOS n=96 PF=1.58 tot=31.7% WF+=2/3 stress=1.55
+- `2026-08-04 18:17:35 UTC`   ST_m4.0_n0_e0: OOS n=110 PF=2.48 tot=110.8% WF+=3/3 stress=2.44
+- `2026-08-04 18:17:37 UTC`   ST_m4.5_n1_e1: OOS n=69 PF=1.61 tot=23.2% WF+=2/3 stress=1.58
+- `2026-08-04 18:17:39 UTC`   ST_m4.5_n1_e0: OOS n=81 PF=1.30 tot=13.2% WF+=2/3 stress=1.28
+- `2026-08-04 18:17:41 UTC`   ST_m4.5_n0_e1: OOS n=85 PF=1.35 tot=16.8% WF+=2/3 stress=1.33
+- `2026-08-04 18:17:43 UTC`   ST_m4.5_n0_e0: OOS n=95 PF=2.04 tot=81.2% WF+=3/3 stress=2.01
+- `2026-08-04 18:17:45 UTC`   ST_m5.0_n1_e1: OOS n=53 PF=2.30 tot=42.3% WF+=2/3 stress=2.26
+- `2026-08-04 18:17:47 UTC`   ST_m5.0_n1_e0: OOS n=62 PF=2.76 tot=77.1% WF+=2/3 stress=2.72
+- `2026-08-04 18:17:49 UTC`   ST_m5.0_n0_e1: OOS n=64 PF=1.80 tot=31.3% WF+=2/3 stress=1.77
+- `2026-08-04 18:17:51 UTC`   ST_m5.0_n0_e0: OOS n=72 PF=2.77 tot=84.9% WF+=2/3 stress=2.73
+- `2026-08-04 18:17:53 UTC`   RIBBON_adx0_n1: OOS n=257 PF=1.45 tot=43.6% WF+=2/3
+- `2026-08-04 18:17:54 UTC`   RIBBON_adx0_n0: OOS n=285 PF=1.48 tot=53.7% WF+=2/3
+- `2026-08-04 18:17:56 UTC`   RIBBON_adx15_n1: OOS n=206 PF=1.12 tot=7.8% WF+=1/3
+- `2026-08-04 18:17:58 UTC`   RIBBON_adx15_n0: OOS n=221 PF=1.13 tot=9.0% WF+=1/3
+- `2026-08-04 18:18:00 UTC`   RIBBON_adx18_n1: OOS n=185 PF=1.21 tot=14.2% WF+=1/3
+- `2026-08-04 18:18:04 UTC`   RIBBON_adx18_n0: OOS n=197 PF=1.23 tot=17.8% WF+=2/3
+- `2026-08-04 18:18:06 UTC`   RIBBON_adx22_n1: OOS n=169 PF=1.16 tot=9.4% WF+=2/3
+- `2026-08-04 18:18:08 UTC`   RIBBON_adx22_n0: OOS n=177 PF=1.23 tot=17.6% WF+=2/3
+- `2026-08-04 18:18:09 UTC`   ATREXP_n15_r0.2: OOS n=113 PF=1.56 tot=23.8% WF+=2/3
+- `2026-08-04 18:18:11 UTC`   ATREXP_n15_r0.3: OOS n=129 PF=1.32 tot=13.1% WF+=2/3
+- `2026-08-04 18:18:12 UTC`   ATREXP_n15_r0.4: OOS n=142 PF=1.32 tot=16.2% WF+=2/3
+- `2026-08-04 18:18:13 UTC`   ATREXP_n20_r0.2: OOS n=104 PF=1.83 tot=32.5% WF+=2/3
+- `2026-08-04 18:18:15 UTC`   ATREXP_n20_r0.3: OOS n=118 PF=1.65 tot=27.7% WF+=2/3
+- `2026-08-04 18:18:16 UTC`   ATREXP_n20_r0.4: OOS n=127 PF=1.57 tot=29.6% WF+=2/3
+- `2026-08-04 18:18:18 UTC`   ATREXP_n25_r0.2: OOS n=95 PF=2.07 tot=37.8% WF+=2/3
+- `2026-08-04 18:18:19 UTC`   ATREXP_n25_r0.3: OOS n=116 PF=1.43 tot=18.6% WF+=2/3
+- `2026-08-04 18:18:21 UTC`   ATREXP_n25_r0.4: OOS n=124 PF=1.67 tot=33.0% WF+=2/3
+- `2026-08-04 18:18:22 UTC`   ATREXP_n40_r0.2: OOS n=78 PF=1.77 tot=23.1% WF+=2/3
+- `2026-08-04 18:18:23 UTC`   ATREXP_n40_r0.3: OOS n=98 PF=1.57 tot=21.8% WF+=2/3
+- `2026-08-04 18:18:25 UTC`   ATREXP_n40_r0.4: OOS n=106 PF=1.64 tot=27.6% WF+=2/3
+- `2026-08-04 18:18:27 UTC`   HYBRID_70_25_m3.0_a18: OOS n=116 PF=0.90 tot=-8.4% WF+=1/3
+- `2026-08-04 18:18:29 UTC`   HYBRID_70_25_m3.6_a18: OOS n=98 PF=0.97 tot=-3.7% WF+=1/3
+- `2026-08-04 18:18:31 UTC`   HYBRID_55_20_m3.0_a18: OOS n=122 PF=1.02 tot=-1.4% WF+=1/3
+- `2026-08-04 18:18:33 UTC`   HYBRID_80_30_m3.5_a20: OOS n=100 PF=0.87 tot=-10.4% WF+=1/3
+- `2026-08-04 18:18:35 UTC`   HYBRID_70_25_m4.0_a15: OOS n=95 PF=1.00 tot=-2.2% WF+=1/3
+- `2026-08-04 18:18:37 UTC`   KELT_m1.5_a15: OOS n=255 PF=0.93 tot=-12.6% WF+=1/3
+- `2026-08-04 18:18:38 UTC`   KELT_m1.5_a18: OOS n=247 PF=0.92 tot=-12.5% WF+=1/3
+- `2026-08-04 18:18:39 UTC`   KELT_m1.5_a22: OOS n=228 PF=0.88 tot=-14.7% WF+=1/3
+- `2026-08-04 18:18:41 UTC`   KELT_m2.0_a15: OOS n=216 PF=0.82 tot=-20.2% WF+=1/3
+- `2026-08-04 18:18:42 UTC`   KELT_m2.0_a18: OOS n=207 PF=0.84 tot=-17.4% WF+=1/3
+- `2026-08-04 18:18:44 UTC`   KELT_m2.0_a22: OOS n=191 PF=0.85 tot=-15.4% WF+=1/3
+- `2026-08-04 18:18:45 UTC`   KELT_m2.5_a15: OOS n=171 PF=0.91 tot=-10.0% WF+=1/3
+- `2026-08-04 18:18:46 UTC`   KELT_m2.5_a18: OOS n=166 PF=0.91 tot=-9.5% WF+=1/3
+- `2026-08-04 18:18:48 UTC`   KELT_m2.5_a22: OOS n=151 PF=0.89 tot=-10.1% WF+=1/3
+- `2026-08-04 18:18:48 UTC`   IDX_breadth_donchian: OOS n=12 PF=1.57 tot=9.7% WF=1/4
+- `2026-08-04 18:18:48 UTC`   IDX_breadth_donchian_70: OOS n=8 PF=13.24 tot=50.7% WF=0/4
+- `2026-08-04 18:18:48 UTC`   IDX_nr7: OOS n=53 PF=1.69 tot=16.1% WF=3/4
+- `2026-08-04 18:18:48 UTC`   IDX_zscore: OOS n=31 PF=1.21 tot=3.1% WF=1/4
+- `2026-08-04 18:18:48 UTC`   IDX_zscore_25: OOS n=6 PF=6.83 tot=5.4% WF=0/4
+- `2026-08-04 18:18:48 UTC`   IDX_keltner: OOS n=32 PF=1.45 tot=15.4% WF=3/4
+- `2026-08-04 18:18:48 UTC`   IDX_st_3.6: OOS n=7 PF=1.00 tot=-0.5% WF=1/4
+- `2026-08-04 18:18:49 UTC` --- Top 10 basket ---
+- `2026-08-04 18:18:49 UTC`   ST_m3.6_n1_e1: PF=3.90 tot=110.2% n=75 MDD=-14.8% WF+=3/3 stressPF=3.82
+- `2026-08-04 18:18:49 UTC`   ST_m5.0_n0_e0: PF=2.77 tot=84.9% n=72 MDD=-17.8% WF+=2/3 stressPF=2.73
+- `2026-08-04 18:18:49 UTC`   ST_m5.0_n1_e0: PF=2.76 tot=77.1% n=62 MDD=-22.2% WF+=2/3 stressPF=2.72
+- `2026-08-04 18:18:49 UTC`   ST_m3.6_n0_e1: PF=2.58 tot=95.5% n=98 MDD=-17.6% WF+=2/3 stressPF=2.53
+- `2026-08-04 18:18:49 UTC`   ST_m4.0_n0_e0: PF=2.48 tot=110.8% n=110 MDD=-16.7% WF+=3/3 stressPF=2.44
+- `2026-08-04 18:18:49 UTC`   ST_m4.0_n1_e1: PF=2.46 tot=63.8% n=75 MDD=-15.7% WF+=2/3 stressPF=2.42
+- `2026-08-04 18:18:49 UTC`   ST_m3.6_n1_e0: PF=2.37 tot=89.3% n=100 MDD=-27.9% WF+=3/3 stressPF=2.33
+- `2026-08-04 18:18:49 UTC`   ST_m5.0_n1_e1: PF=2.30 tot=42.3% n=53 MDD=-16.2% WF+=2/3 stressPF=2.26
+- `2026-08-04 18:18:49 UTC`   ST_m3.6_n0_e0: PF=2.20 tot=108.7% n=129 MDD=-26.1% WF+=3/3 stressPF=2.16
+- `2026-08-04 18:18:49 UTC`   ST_m3.5_n1_e1: PF=2.11 tot=61.3% n=91 MDD=-18.7% WF+=3/3 stressPF=2.07
+- `2026-08-04 18:18:49 UTC` Selected #1: ST_m3.6_n1_e1 PF=3.90 n=75
+- `2026-08-04 18:18:49 UTC`   WF 2021-01-15→2022-11-21: exp=6.15% tot=33.8% n=27
+- `2026-08-04 18:18:49 UTC`   WF 2022-11-21→2024-09-27: exp=6.08% tot=45.5% n=34
+- `2026-08-04 18:18:49 UTC`   WF 2024-09-27→2026-08-04: exp=1.84% tot=5.8% n=19
+- `2026-08-04 18:18:49 UTC` Wrote /Users/ryaneditraj/trading-ai/strategies/nifty_edge_best.py and /Users/ryaneditraj/trading-ai/pinescript/nifty_edge_best.pine
+- `2026-08-04 18:18:49 UTC` Runner-up saved nifty_edge_r1.py: ST_m5.0_n0_e0
+- `2026-08-04 18:18:49 UTC` === Block 1b complete ===
+- `2026-08-04 18:34:00 UTC` === Block 1c honesty + extras ===
+- `2026-08-04 18:34:10 UTC`   neigh m=2.8: PF=1.97 tot=76.3% n=137 WF+=3/3 lastWF=7.5%
+- `2026-08-04 18:34:12 UTC`   neigh m=3.0: PF=2.05 tot=79.4% n=119 WF+=3/3 lastWF=4.2%
+- `2026-08-04 18:34:14 UTC`   neigh m=3.2: PF=2.32 tot=89.0% n=110 WF+=2/3 lastWF=-2.7%
+- `2026-08-04 18:34:16 UTC`   neigh m=3.4: PF=2.49 tot=77.6% n=94 WF+=2/3 lastWF=-1.7%
+- `2026-08-04 18:34:19 UTC`   neigh m=3.5: PF=2.11 tot=61.3% n=91 WF+=3/3 lastWF=-0.3%
+- `2026-08-04 18:34:21 UTC`   neigh m=3.6: PF=3.90 tot=110.2% n=75 WF+=3/3 lastWF=5.8%
+- `2026-08-04 18:34:23 UTC`   neigh m=3.8: PF=2.52 tot=77.6% n=81 WF+=3/3 lastWF=4.2%
+- `2026-08-04 18:34:25 UTC`   neigh m=4.0: PF=2.46 tot=63.8% n=75 WF+=2/3 lastWF=-1.7%
+- `2026-08-04 18:34:27 UTC`   neigh m=4.2: PF=2.81 tot=81.0% n=71 WF+=2/3 lastWF=-3.3%
+- `2026-08-04 18:34:29 UTC`   EXTRA ST_ADX18_m3.0: PF=1.25 tot=7.5% n=61 WF+=1/3
+- `2026-08-04 18:34:31 UTC`   EXTRA ST_ADX18_m3.6: PF=2.49 tot=34.8% n=47 WF+=2/3
+- `2026-08-04 18:34:33 UTC`   EXTRA DON_ST_exit_55_m3: PF=1.11 tot=5.9% n=131 WF+=1/3
+- `2026-08-04 18:34:36 UTC`   EXTRA DON_ST_exit_70_m3.6: PF=1.00 tot=-2.6% n=105 WF+=1/3
+- `2026-08-04 18:34:38 UTC`   EXTRA PB_ST_m3: PF=1.11 tot=5.6% n=259 WF+=2/3
+- `2026-08-04 18:34:40 UTC`   EXTRA PB_ST_m3.6: PF=1.22 tot=12.6% n=239 WF+=2/3
+- `2026-08-04 18:34:42 UTC`   EXTRA NR7_basket: PF=0.86 tot=-21.7% n=580 WF+=2/3
+- `2026-08-04 18:34:44 UTC`   EXTRA DUALMA_ST_20_50: PF=1.45 tot=23.9% n=109 WF+=2/3
+- `2026-08-04 18:34:45 UTC`   EXTRA ATREXP_25_0.2: PF=2.07 tot=37.8% n=95 WF+=2/3
+- `2026-08-04 18:34:47 UTC`   EXTRA RIBBON_plain: PF=1.45 tot=43.6% n=257 WF+=2/3
+- `2026-08-04 18:34:47 UTC` Neighborhood WF=3/3 & PF>=1.5: [2.8, 3.0, 3.5, 3.6, 3.8]
+- `2026-08-04 18:34:47 UTC` Wrote clean best → /Users/ryaneditraj/trading-ai/strategies/nifty_edge_best.py
+- `2026-08-04 18:34:47 UTC` Saved nifty_edge_r1.py: ST_neigh_3.0
+- `2026-08-04 18:34:47 UTC` Saved nifty_edge_r2.py: ATREXP_25_0.2
+- `2026-08-04 18:34:47 UTC` Saved nifty_edge_r3.py: RIBBON_plain
+- `2026-08-04 18:34:47 UTC` === Block 1c complete ===
+-  BLOCK1_COMPLETE
+-  ## Block 1 summary checkpoint
+-  - Hypotheses: 26 single-symbol (B1-01..26) × 3 symbols + basket promotions + ST/ribbon/ATR/hybrid/keltner grids + 1c extras
+-  - Baseline v2 reproduced: OOS PF 1.86 / +39% / last WF −7.3%
+-  - #1: ST mult=3.6 + Nifty + EMA200 basket — OOS PF 3.90 / +110% / WF 3/3 / stress PF 3.82
+-  - Conservative: ST mult=3.0 — PF 2.05 / +79% / n=119 / WF 3/3
+-  - Rejected families: DOW Mon, gap fade, NR7 basket, BB walk basket, MA pullback basket, hybrid Donchian+ST exit, most calendar
+-  - Index-only NR7 and breadth thrust interesting but thin / not basket-stable
+-  - Next block: bootstrap CI on mult=3.6 peak; futures continuous; breadth×ST combo; cost model on futures points; try hourly stocks ORB without index volume
+- `2026-08-04 18:36:10 UTC` BLOCK1_COMPLETE
+- `2026-08-04 18:36:10 UTC` Hypotheses: 26 single-symbol (B1-01..26) x 3 symbols + basket promotions + ST/ribbon/ATR/hybrid/keltner grids + 1c extras
+- `2026-08-04 18:36:10 UTC` Baseline v2 reproduced: OOS PF 1.86 / +39% / last WF -7.3%
+- `2026-08-04 18:36:10 UTC` #1: ST mult=3.6 + Nifty + EMA200 basket — OOS PF 3.90 / +110% / WF 3/3 / stress PF 3.82
+- `2026-08-04 18:36:10 UTC` Conservative: ST mult=3.0 — PF 2.05 / +79% / n=119 / WF 3/3
+- `2026-08-04 18:36:10 UTC` Rejected: DOW Mon, gap fade, NR7 basket, BB walk basket, MA pullback basket, hybrid Donchian+ST exit
+- `2026-08-04 18:36:10 UTC` Next block: bootstrap CI on mult=3.6 peak; futures continuous; breadth x ST; futures point costs; hourly stock ORB
+- `2026-08-04 18:38:45 UTC` === Block 2 start ===
+- `2026-08-04 18:38:45 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 18:38:53 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 18:38:53 UTC` Reproducing #1 ST_m3.6_n1_e1…
+- `2026-08-04 18:39:49 UTC` === Block 2 start ===
+- `2026-08-04 18:39:49 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 18:39:57 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 18:39:57 UTC` Reproducing #1 ST_m3.6_n1_e1…
+- `2026-08-04 18:39:59 UTC`   REPRO n=75 PF=3.90 tot=110.2% MDD=-14.8% Sharpe=1.10 stressPF=3.82 WF=3/3 lastWF=5.8% drift_PF=-0.00
+- `2026-08-04 18:39:59 UTC`   WF 2021-01-15→2022-11-21: n=27 exp=6.15% tot=33.8%
+- `2026-08-04 18:39:59 UTC`   WF 2022-11-21→2024-09-27: n=34 exp=6.08% tot=45.5%
+- `2026-08-04 18:39:59 UTC`   WF 2024-09-27→2026-08-04: n=19 exp=1.84% tot=5.8%
+- `2026-08-04 18:39:59 UTC` Bootstrap + sleeve CI on mult 3.0–3.8…
+- `2026-08-04 18:40:01 UTC`   sleeve m=3.0: PF=2.05 n=119 tot=79.4% WF=3/3 lastWF=4.2% holdPF=1.25 bootCI=[1.3103822328286203, 3.2458516895861935]
+- `2026-08-04 18:40:04 UTC`   sleeve m=3.2: PF=2.32 n=110 tot=89.0% WF=2/3 lastWF=-2.7% holdPF=0.87 bootCI=[1.4796292973855054, 3.631405131609309]
+- `2026-08-04 18:40:07 UTC`   sleeve m=3.4: PF=2.49 n=94 tot=77.6% WF=2/3 lastWF=-1.7% holdPF=1.00 bootCI=[1.4394713917359356, 4.201288854458653]
+- `2026-08-04 18:40:09 UTC`   sleeve m=3.5: PF=2.11 n=91 tot=61.3% WF=3/3 lastWF=-0.3% holdPF=1.05 bootCI=[1.2223233450177933, 3.5995879604561147]
+- `2026-08-04 18:40:12 UTC`   sleeve m=3.6: PF=3.90 n=75 tot=110.2% WF=3/3 lastWF=5.8% holdPF=1.62 bootCI=[2.1594426603420867, 7.102213671967232]
+- `2026-08-04 18:40:15 UTC`   sleeve m=3.7: PF=3.05 n=76 tot=95.8% WF=3/3 lastWF=7.1% holdPF=1.67 bootCI=[1.7848612975834157, 5.296564201617043]
+- `2026-08-04 18:40:18 UTC`   sleeve m=3.8: PF=2.52 n=81 tot=77.6% WF=3/3 lastWF=4.2% holdPF=1.42 bootCI=[1.357093439787229, 4.448507645003334]
+- `2026-08-04 18:40:18 UTC`   VERDICT: mult=3.6 elevated; neighborhood still strong — keep #1, track 3.0 as conservative
+- `2026-08-04 18:40:18 UTC`   Robust sleeve pick by boot CI_lo: mult=3.6 PF=3.90 CI_lo=2.1594426603420867
+- `2026-08-04 18:40:18 UTC` Screening ≥15 NEW Block-2 variants…
+- `2026-08-04 18:40:20 UTC`   B2_ST_breadth65_m3.6: n=50 PF=1.70 tot=17.1% MDD=-13.7% WF=2/3 lastWF=-5.1% stressPF=1.67
+- `2026-08-04 18:40:22 UTC`   B2_ST_breadth70_m3.6: n=41 PF=2.36 tot=29.8% MDD=-13.0% WF=2/3 lastWF=-4.1% stressPF=2.31
+- `2026-08-04 18:40:24 UTC`   B2_ST_breadth55_m3.0: n=86 PF=1.54 tot=25.9% MDD=-25.8% WF=2/3 lastWF=-6.5% stressPF=1.51
+- `2026-08-04 18:40:26 UTC`   B2_ST_breadth60_m3.8: n=52 PF=1.90 tot=26.8% MDD=-15.9% WF=3/3 lastWF=3.2% stressPF=1.87
+- `2026-08-04 18:40:28 UTC`   B2_ST_kill_breadth40_m3.6: n=65 PF=3.94 tot=105.0% MDD=-13.0% WF=3/3 lastWF=8.0% stressPF=3.86
+- `2026-08-04 18:40:30 UTC`   B2_ST_kill_breadth45_m3.0: n=96 PF=1.41 tot=22.3% MDD=-26.3% WF=2/3 lastWF=-8.9% stressPF=1.38
+- `2026-08-04 18:40:33 UTC`   B2_ST_kill_nifty_ema50_m3.6: n=61 PF=3.25 tot=74.7% MDD=-11.5% WF=3/3 lastWF=2.9% stressPF=3.18
+- `2026-08-04 18:40:35 UTC`   B2_ATRin_STout_25_0.2_m3.6: n=67 PF=1.66 tot=25.4% MDD=-18.2% WF=2/3 lastWF=2.3% stressPF=1.63
+- `2026-08-04 18:40:37 UTC`   B2_ATRin_STout_20_0.3_m3.0: n=56 PF=1.65 tot=16.8% MDD=-14.1% WF=2/3 lastWF=3.2% stressPF=1.61
+- `2026-08-04 18:40:39 UTC`   B2_ATRin_STout_40_0.2_m3.6: n=69 PF=1.62 tot=25.4% MDD=-15.1% WF=3/3 lastWF=-0.1% stressPF=1.59
+- `2026-08-04 18:40:41 UTC`   B2_ST_rs_bank_m3.6: n=40 PF=4.33 tot=58.2% MDD=-9.7% WF=3/3 lastWF=4.6% stressPF=4.25
+- `2026-08-04 18:40:43 UTC`   B2_ST_rs_bank_m3.0: n=41 PF=1.65 tot=13.1% MDD=-10.2% WF=2/3 lastWF=-5.4% stressPF=1.61
+- `2026-08-04 18:40:46 UTC`   B2_ST_rs_nifty_m3.6: n=36 PF=2.85 tot=41.2% MDD=-11.5% WF=3/3 lastWF=0.6% stressPF=2.80
+- `2026-08-04 18:40:48 UTC`   B2_ST_heat3_m3.6: n=48 PF=4.15 tot=78.7% MDD=-13.6% WF=3/3 lastWF=4.2% stressPF=4.06
+- `2026-08-04 18:40:50 UTC`   B2_ST_heat4_m3.6: n=63 PF=3.95 tot=89.1% MDD=-11.8% WF=3/3 lastWF=0.8% stressPF=3.86
+- `2026-08-04 18:40:51 UTC`   B2_ST_heat3_m3.0: n=73 PF=2.33 tot=72.7% MDD=-24.5% WF=3/3 lastWF=6.1% stressPF=2.29
+- `2026-08-04 18:40:54 UTC`   B2_ST_delay1_m3.6: n=82 PF=2.90 tot=94.3% MDD=-14.2% WF=3/3 lastWF=5.5% stressPF=2.85
+- `2026-08-04 18:40:56 UTC`   B2_ST_delay2_m3.6: n=84 PF=2.70 tot=85.3% MDD=-12.5% WF=3/3 lastWF=4.9% stressPF=2.65
+- `2026-08-04 18:40:58 UTC`   B2_ST_delay1_m3.0: n=119 PF=2.11 tot=74.0% MDD=-17.8% WF=3/3 lastWF=0.4% stressPF=2.06
+- `2026-08-04 18:41:00 UTC`   B2_ST_rvol1.2_m3.6: n=59 PF=1.93 tot=33.2% MDD=-19.2% WF=2/3 lastWF=-1.7% stressPF=1.90
+- `2026-08-04 18:41:02 UTC`   B2_ST_rvol1.5_m3.6: n=34 PF=2.94 tot=34.3% MDD=-14.4% WF=3/3 lastWF=1.4% stressPF=2.89
+- `2026-08-04 18:41:04 UTC`   B2_ST_rvol1.2_m3.0: n=100 PF=1.38 tot=18.3% MDD=-27.1% WF=3/3 lastWF=0.2% stressPF=1.35
+- `2026-08-04 18:41:06 UTC`   B2_ST_hyb_br55_rv1.1_m3.6: n=47 PF=1.69 tot=17.4% MDD=-14.8% WF=3/3 lastWF=3.1% stressPF=1.66
+- `2026-08-04 18:41:09 UTC`   B2_ST_hyb_br60_rv1.2_m3.0: n=52 PF=1.33 tot=7.8% MDD=-12.9% WF=2/3 lastWF=2.1% stressPF=1.30
+- `2026-08-04 18:41:11 UTC`   B2_ST_atr_exp_gate_m3.6: n=38 PF=1.74 tot=17.9% MDD=-18.0% WF=2/3 lastWF=-4.5% stressPF=1.71
+- `2026-08-04 18:41:13 UTC`   B2_ST_atr_exp_gate_m3.0: n=43 PF=1.42 tot=9.9% MDD=-18.0% WF=2/3 lastWF=-5.6% stressPF=1.39
+- `2026-08-04 18:41:14 UTC`   B2_ATREXP_n25_r0.2: n=95 PF=2.07 tot=37.8% MDD=-13.7% WF=2/3 lastWF=-7.1% stressPF=2.01
+- `2026-08-04 18:41:14 UTC` Screened 27 new variants
+- `2026-08-04 18:41:14 UTC`   #1 ST_m3.6_n1_e1 REMAINS best — no challenger clearly better on OOS/WF/robustness
+- `2026-08-04 18:41:15 UTC`   Saved nifty_edge_r4.py: B2_ST_rs_bank_m3.6 PF=4.33
+- `2026-08-04 18:41:15 UTC`   Saved nifty_edge_r5.py: B2_ST_heat3_m3.6 PF=4.15
+- `2026-08-04 18:41:15 UTC`   Saved nifty_edge_r6.py: B2_ST_heat4_m3.6 PF=3.95
+- `2026-08-04 18:41:15 UTC`   Kept strategies/nifty_edge_best.py unchanged (Block1 #1 still leads)
+- `2026-08-04 18:41:15 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block2_summary.json
+- `2026-08-04 18:41:15 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 18:41:15 UTC` --- Block 2 top 5 new ---
+- `2026-08-04 18:41:15 UTC`   B2_ST_rs_bank_m3.6: PF=4.33 tot=58.2% n=40 WF=3/3
+- `2026-08-04 18:41:15 UTC`   B2_ST_heat3_m3.6: PF=4.15 tot=78.7% n=48 WF=3/3
+- `2026-08-04 18:41:15 UTC`   B2_ST_heat4_m3.6: PF=3.95 tot=89.1% n=63 WF=3/3
+- `2026-08-04 18:41:15 UTC`   B2_ST_kill_breadth40_m3.6: PF=3.94 tot=105.0% n=65 WF=3/3
+- `2026-08-04 18:41:15 UTC`   B2_ST_kill_nifty_ema50_m3.6: PF=3.25 tot=74.7% n=61 WF=3/3
+- `2026-08-04 18:41:15 UTC` === Block 2 complete === champion=ST_m3.6_n1_e1 PF=3.90 promoted=False fragile_36=False
+- `2026-08-04 18:41:15 UTC` Next Block 3: futures/point costs if data appears; hourly ORB on stocks; ensemble ST 3.0+3.6 sleeve; volatility targeting; sector-neutral heat
+- `2026-08-04 18:41:30 UTC` Re-saved honest runners-up r4=kill_breadth40 r5=heat4 r6=delay1 (rs_bank vanity demoted)
+- `2026-08-04 18:41:40 UTC` Re-saved honest runners-up r4=kill_breadth40 r5=heat4 r6=delay1 (rs_bank vanity demoted)
+- `2026-08-04 18:41:40 UTC` BLOCK2_COMPLETE
+- `2026-08-04 18:41:40 UTC` Repro #1: n=75 PF=3.90 tot=110.2% MDD=-14.8% Sharpe=1.10 WF=3/3 drift≈0
+- `2026-08-04 18:41:40 UTC` Bootstrap: m3.6 CI[2.16,7.10] CI_lo best in sleeve — elevated peak, not fragile collapse; keep 3.6; twin 3.0
+- `2026-08-04 18:41:40 UTC` 27 new variants; none clearly beat #1 on OOS tot+WF+robustness
+- `2026-08-04 18:41:40 UTC` Closest: kill_breadth40 PF3.94 tot105% lastWF+8.0% → r4; heat4 → r5; delay1 → r6
+- `2026-08-04 18:41:40 UTC` best.py/.pine UNCHANGED; #1 still ST_m3.6_n1_e1
+- `2026-08-04 18:41:40 UTC` Block3 attack: ensemble 3.0+3.6 sleeve; vol targeting; sector-neutral heat; refine kill_breadth; hourly stock ORB; futures if available
+- `2026-08-04 18:44:59 UTC` === Block 3 start ===
+- `2026-08-04 18:44:59 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 18:45:07 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 18:45:07 UTC` Reproducing #1 ST_m3.6_n1_e1…
+- `2026-08-04 18:45:09 UTC`   REPRO n=75 PF=3.90 tot=110.2% MDD=-14.8% Sharpe=1.10 WF=3/3 lastWF=5.8% drift_PF=-0.00
+- `2026-08-04 18:45:09 UTC`   WF 2021-01-15→2022-11-21: n=27 exp=6.15% tot=33.8%
+- `2026-08-04 18:45:09 UTC`   WF 2022-11-21→2024-09-27: n=34 exp=6.08% tot=45.5%
+- `2026-08-04 18:45:09 UTC`   WF 2024-09-27→2026-08-04: n=19 exp=1.84% tot=5.8%
+- `2026-08-04 18:45:09 UTC` Ensemble / blend ST 3.0 + 3.6…
+- `2026-08-04 18:45:11 UTC`   B3_ENS_agree_36_while_30: n=113 PF=1.84 tot=48.0% MDD=-15.6% WF=2/3 lastWF=-5.5%
+- `2026-08-04 18:45:14 UTC`   B3_ENS_agree_both_look3: n=95 PF=1.82 tot=40.2% MDD=-17.5% WF=2/3 lastWF=-7.4%
+- `2026-08-04 18:45:17 UTC`   B3_ENS_agree_both_look5: n=102 PF=1.88 tot=48.1% MDD=-18.1% WF=2/3 lastWF=-2.6%
+- `2026-08-04 18:45:20 UTC`   B3_ENS_or_union_loose_exit: n=41 PF=3.86 tot=63.9% MDD=-21.0% WF=3/3 lastWF=4.1%
+- `2026-08-04 18:45:24 UTC`   B3_ENS_equal_risk_3.0_3.6: n=110 PF=2.57 tot=48.4% MDD=-14.3% WF=3/3 lastWF=2.9%
+- `2026-08-04 18:45:24 UTC` Kill-breadth threshold sweep…
+- `2026-08-04 18:45:26 UTC`   B3_ST_kill_breadth30_m3.6: n=69 PF=3.78 tot=106.0% lastWF=5.8% beat_tot+last=no
+- `2026-08-04 18:45:28 UTC`   B3_ST_kill_breadth35_m3.6: n=69 PF=3.31 tot=95.7% lastWF=6.3% beat_tot+last=no
+- `2026-08-04 18:45:30 UTC`   B3_ST_kill_breadth40_m3.6: n=65 PF=3.94 tot=105.0% lastWF=8.0% beat_tot+last=no
+- `2026-08-04 18:45:33 UTC`   B3_ST_kill_breadth45_m3.6: n=61 PF=3.13 tot=76.0% lastWF=7.6% beat_tot+last=no
+- `2026-08-04 18:45:35 UTC`   B3_ST_kill_breadth50_m3.6: n=60 PF=2.72 tot=60.8% lastWF=2.9% beat_tot+last=no
+- `2026-08-04 18:45:37 UTC`   B3_ST_kill_breadth55_m3.6: n=59 PF=2.59 tot=50.1% lastWF=2.9% beat_tot+last=no
+- `2026-08-04 18:45:39 UTC`   B3_ST_killhard_br35_m3.6: n=106 PF=1.71 tot=34.4% lastWF=-8.7%
+- `2026-08-04 18:45:41 UTC`   B3_ST_killhard_br40_m3.6: n=105 PF=1.80 tot=34.0% lastWF=-3.6%
+- `2026-08-04 18:45:44 UTC`   B3_ST_kill_breadth40_m3.0: n=107 PF=2.01 tot=64.1% lastWF=-0.2%
+- `2026-08-04 18:45:46 UTC`   B3_ST_kill_breadth45_m3.0: n=96 PF=1.41 tot=22.3% lastWF=-8.9%
+- `2026-08-04 18:45:46 UTC` Vol targeting / sector-neutral / heat caps…
+- `2026-08-04 18:45:48 UTC`   B3_ST_voltarget15_m3.6: n=75 PF=3.90 tot=70.8% MDD=-10.8% (ΔMDD=+4.0pp) WF=3/3 lastWF=8.9%
+- `2026-08-04 18:45:50 UTC`   B3_ST_voltarget12_m3.6: n=75 PF=3.90 tot=59.9% MDD=-9.3% (ΔMDD=+5.5pp) WF=3/3 lastWF=7.3%
+- `2026-08-04 18:45:52 UTC`   B3_ST_voltarget18_m3.6: n=75 PF=3.90 tot=82.5% MDD=-12.0% (ΔMDD=+2.8pp) WF=3/3 lastWF=8.5%
+- `2026-08-04 18:45:54 UTC`   B3_ST_voltarget15_m3.0: n=119 PF=2.05 tot=66.9% MDD=-14.0% (ΔMDD=+0.8pp) WF=3/3 lastWF=7.8%
+- `2026-08-04 18:45:56 UTC`   B3_ST_sectorcap1_m3.6: n=75 PF=2.81 tot=82.2% MDD=-16.8% (ΔMDD=-1.9pp) WF=3/3 lastWF=5.8%
+- `2026-08-04 18:45:58 UTC`   B3_ST_sectorcap2_m3.6: n=76 PF=3.55 tot=103.8% MDD=-14.8% (ΔMDD=-0.0pp) WF=3/3 lastWF=5.8%
+- `2026-08-04 18:46:00 UTC`   B3_ST_sectorcap1_heat4_m3.6: n=64 PF=2.82 tot=85.2% MDD=-14.0% (ΔMDD=+0.8pp) WF=3/3 lastWF=0.3%
+- `2026-08-04 18:46:02 UTC`   B3_ST_heat3_vol15_m3.6: n=48 PF=4.15 tot=62.8% MDD=-11.3% (ΔMDD=+3.6pp) WF=3/3 lastWF=0.8%
+- `2026-08-04 18:46:04 UTC`   B3_ST_sectorcap2_vol15_m3.6: n=76 PF=3.55 tot=67.1% MDD=-10.8% (ΔMDD=+4.0pp) WF=3/3 lastWF=8.9%
+- `2026-08-04 18:46:06 UTC`   B3_ST_kill40_sectorcap2_m3.6: n=65 PF=3.94 tot=105.0% MDD=-13.0% (ΔMDD=+1.8pp) WF=3/3 lastWF=8.0%
+- `2026-08-04 18:46:08 UTC`   B3_ST_kill40_vol15_m3.6: n=65 PF=3.94 tot=68.7% MDD=-9.5% (ΔMDD=+5.3pp) WF=3/3 lastWF=10.9%
+- `2026-08-04 18:46:08 UTC` Probing hourly stock ORB data quality…
+- `2026-08-04 18:46:09 UTC`   hourly RELIANCE.NS: bars=5055 zero_vol=0.14 med_vol=1045194 usable=True
+- `2026-08-04 18:46:09 UTC`   B3_ORB_1h_RELIANCE.NS_1.2: n=23 PF=1.55 tot=5.9% exp=0.27% WF=2/3
+- `2026-08-04 18:46:09 UTC`   B3_ORB_1h_RELIANCE.NS_1.5: n=17 PF=0.93 tot=-0.7% exp=-0.03% WF=1/3
+- `2026-08-04 18:46:09 UTC`   hourly HDFCBANK.NS: bars=5054 zero_vol=0.14 med_vol=1919959 usable=True
+- `2026-08-04 18:46:09 UTC`   B3_ORB_1h_HDFCBANK.NS_1.2: n=19 PF=0.74 tot=-3.2% exp=-0.16% WF=1/3
+- `2026-08-04 18:46:09 UTC`   B3_ORB_1h_HDFCBANK.NS_1.5: n=17 PF=0.53 tot=-5.3% exp=-0.31% WF=1/3
+- `2026-08-04 18:46:10 UTC`   hourly ICICIBANK.NS: bars=5054 zero_vol=0.14 med_vol=1393007 usable=True
+- `2026-08-04 18:46:10 UTC`   B3_ORB_1h_ICICIBANK.NS_1.2: n=18 PF=1.60 tot=5.6% exp=0.32% WF=2/3
+- `2026-08-04 18:46:10 UTC`   B3_ORB_1h_ICICIBANK.NS_1.5: n=12 PF=1.69 tot=5.2% exp=0.45% WF=2/3
+- `2026-08-04 18:46:10 UTC`   hourly INFY.NS: bars=5048 zero_vol=0.13 med_vol=802954 usable=True
+- `2026-08-04 18:46:10 UTC`   B3_ORB_1h_INFY.NS_1.2: n=20 PF=1.00 tot=-0.4% exp=0.00% WF=1/3
+- `2026-08-04 18:46:10 UTC`   B3_ORB_1h_INFY.NS_1.5: n=16 PF=1.47 tot=4.6% exp=0.31% WF=3/3
+- `2026-08-04 18:46:11 UTC`   hourly TCS.NS: bars=5046 zero_vol=0.13 med_vol=281173 usable=True
+- `2026-08-04 18:46:11 UTC`   B3_ORB_1h_TCS.NS_1.2: n=24 PF=0.59 tot=-9.7% exp=-0.41% WF=1/3
+- `2026-08-04 18:46:11 UTC`   B3_ORB_1h_TCS.NS_1.5: n=19 PF=0.79 tot=-3.9% exp=-0.19% WF=1/3
+- `2026-08-04 18:46:11 UTC`   Hourly ORB verdict: Measured 10 ORB variants on 5 symbols. Best: B3_ORB_1h_ICICIBANK.NS_1.5 PF=1.69 tot=5.2% n=12
+- `2026-08-04 18:46:11 UTC` Screened 36 Block-3 variants (target ≥12)
+- `2026-08-04 18:46:11 UTC`   Kill-breadth: NO threshold cleared both OOS tot AND last WF vs #1 — not promoted
+- `2026-08-04 18:46:11 UTC`   #1 ST_m3.6_n1_e1 REMAINS best — no challenger clearly better
+- `2026-08-04 18:46:11 UTC`   Saved nifty_edge_r7.py: B3_ST_heat3_vol15_m3.6 PF=4.15 tot=62.8%
+- `2026-08-04 18:46:11 UTC`   Saved nifty_edge_r8.py: B3_ST_kill_breadth40_m3.6 PF=3.94 tot=105.0%
+- `2026-08-04 18:46:11 UTC`   Saved nifty_edge_r9.py: B3_ST_kill40_sectorcap2_m3.6 PF=3.94 tot=105.0%
+- `2026-08-04 18:46:11 UTC`   Saved nifty_edge_r10.py: B3_ST_kill40_vol15_m3.6 PF=3.94 tot=68.7%
+- `2026-08-04 18:46:11 UTC`   Kept strategies/nifty_edge_best.py unchanged (Block1 #1 still leads)
+- `2026-08-04 18:46:11 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block3_summary.json
+- `2026-08-04 18:46:11 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 18:46:11 UTC` --- Block 3 top 5 basket ---
+- `2026-08-04 18:46:11 UTC`   B3_ST_heat3_vol15_m3.6: PF=4.15 tot=62.8% n=48 WF=3/3 lastWF=0.8%
+- `2026-08-04 18:46:11 UTC`   B3_ST_kill_breadth40_m3.6: PF=3.94 tot=105.0% n=65 WF=3/3 lastWF=8.0%
+- `2026-08-04 18:46:11 UTC`   B3_ST_kill40_sectorcap2_m3.6: PF=3.94 tot=105.0% n=65 WF=3/3 lastWF=8.0%
+- `2026-08-04 18:46:11 UTC`   B3_ST_kill40_vol15_m3.6: PF=3.94 tot=68.7% n=65 WF=3/3 lastWF=10.9%
+- `2026-08-04 18:46:11 UTC`   B3_ST_voltarget18_m3.6: PF=3.90 tot=82.5% n=75 WF=3/3 lastWF=8.5%
+- `2026-08-04 18:46:11 UTC` === Block 3 complete === champion=ST_m3.6_n1_e1 PF=3.90 tot=110.2% promoted=False n_variants=36
+- `2026-08-04 18:46:11 UTC` Next Block 4: stress costs on ensemble; regime half-life; cross-asset breadth (FII proxy if available); tighter WF last-chunk attack; parameter freeze + paper rules
+- `2026-08-04 19:01:36 UTC` === Block 4 start ===
+- `2026-08-04 19:01:36 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:01:45 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 19:01:45 UTC` Reproducing #1 ST_m3.6_n1_e1…
+- `2026-08-04 19:01:47 UTC`   REPRO n=75 PF=3.90 tot=110.2% MDD=-14.8% Sharpe=1.10 WF=3/3 lastWF=5.8% drift_PF=-0.00
+- `2026-08-04 19:01:47 UTC` Stress 0.15% RT on #1, ensembles, kill40…
+- `2026-08-04 19:01:47 UTC`   STRESS ST_m3.6_n1_e1: PF 3.90→3.82 tot 110.2%→107.1% (Δ-3.1pp)
+- `2026-08-04 19:01:48 UTC`   STRESS B2_ST_kill_breadth40_m3.6: PF 3.94→3.86 tot 105.0%→102.4% (Δ-2.6pp)
+- `2026-08-04 19:01:49 UTC`   STRESS B3_ENS_agree_36_while_30: PF 1.84→1.79 tot 48.0%→44.7% (Δ-3.3pp)
+- `2026-08-04 19:01:50 UTC`   STRESS B3_ENS_or_union_loose_exit: PF 3.86→3.79 tot 63.9%→62.5% (Δ-1.4pp)
+- `2026-08-04 19:01:51 UTC`   STRESS B3_ENS_agree_both_look5: PF 1.88→1.84 tot 48.1%→45.0% (Δ-3.0pp)
+- `2026-08-04 19:01:53 UTC`   STRESS B3_ENS_equal_risk_3.0_3.6: PF 2.57→2.52 tot 48.4%→46.8% (Δ-1.6pp)
+- `2026-08-04 19:01:53 UTC` Soft vol-target (scale_hi≈1.0)…
+- `2026-08-04 19:01:55 UTC`   B4_ST_softvol18_shi1.0_m3.6: tot=84.9% MDD=-12.4% lastWF=6.5% vs #1 tot=110.2% MDD=-14.8% lastWF=5.8% → promote=False (tradeoff_only)
+- `2026-08-04 19:01:57 UTC`   B4_ST_softvol20_shi1.0_m3.6: tot=91.8% MDD=-12.9% lastWF=6.0% vs #1 tot=110.2% MDD=-14.8% lastWF=5.8% → promote=False (tradeoff_only)
+- `2026-08-04 19:01:59 UTC`   B4_ST_softvol16_shi1.05_m3.6: tot=81.8% MDD=-12.2% lastWF=7.2% vs #1 tot=110.2% MDD=-14.8% lastWF=5.8% → promote=False (tradeoff_only)
+- `2026-08-04 19:02:01 UTC`   B4_ST_softvol18_shi1.0_m3.0: tot=70.5% MDD=-16.7% lastWF=5.1% vs #1 tot=110.2% MDD=-14.8% lastWF=5.8% → promote=False (tradeoff_only)
+- `2026-08-04 19:02:03 UTC`   B4_ST_kill40_softvol18_shi1.0: tot=81.6% MDD=-10.9% lastWF=8.7% vs #1 tot=110.2% MDD=-14.8% lastWF=5.8% → promote=False (tradeoff_only)
+- `2026-08-04 19:02:05 UTC`   B4_ST_softvol22_shi1.0_floor0.85: tot=100.7% MDD=-13.7% lastWF=5.8% vs #1 tot=110.2% MDD=-14.8% lastWF=5.8% → promote=False (tradeoff_only)
+- `2026-08-04 19:02:05 UTC` Kill-breadth entry-only floors 0.30–0.38…
+- `2026-08-04 19:02:07 UTC`   B4_ST_kill_entry_br30_m3.6: n=69 PF=3.78 tot=106.0% lastWF=5.8% beat=no
+- `2026-08-04 19:02:10 UTC`   B4_ST_kill_entry_br32_m3.6: n=69 PF=3.31 tot=95.7% lastWF=6.3% beat=no
+- `2026-08-04 19:02:12 UTC`   B4_ST_kill_entry_br34_m3.6: n=69 PF=3.31 tot=95.7% lastWF=6.3% beat=no
+- `2026-08-04 19:02:14 UTC`   B4_ST_kill_entry_br36_m3.6: n=65 PF=3.94 tot=105.0% lastWF=8.0% beat=no
+- `2026-08-04 19:02:16 UTC`   B4_ST_kill_entry_br38_m3.6: n=65 PF=3.94 tot=105.0% lastWF=8.0% beat=no
+- `2026-08-04 19:02:18 UTC` Regime half-life / Nifty EMA50 soft-gate hybrids…
+- `2026-08-04 19:02:20 UTC`   B4_ST_ema50_soft_tol1_d5: n=65 PF=3.22 tot=80.3% MDD=-16.9% WF=3/3 lastWF=1.9%
+- `2026-08-04 19:02:22 UTC`   B4_ST_ema50_soft_tol15_d8: n=66 PF=3.55 tot=92.5% MDD=-17.1% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:02:25 UTC`   B4_ST_ema50_hard_entry: n=61 PF=3.25 tot=74.7% MDD=-11.5% WF=3/3 lastWF=2.9%
+- `2026-08-04 19:02:27 UTC`   B4_ST_ema50_hard_forcexit: n=81 PF=1.56 tot=17.4% MDD=-12.6% WF=3/3 lastWF=1.4%
+- `2026-08-04 19:02:29 UTC`   B4_ST_regime_hl8: n=74 PF=3.93 tot=110.7% MDD=-14.8% WF=3/3 lastWF=7.5%
+- `2026-08-04 19:02:31 UTC`   B4_ST_regime_hl5_softexit: n=73 PF=3.10 tot=77.9% MDD=-13.1% WF=2/3 lastWF=-1.6%
+- `2026-08-04 19:02:33 UTC`   B4_ST_regime_hl12: n=74 PF=3.93 tot=110.7% MDD=-14.8% WF=3/3 lastWF=7.5%
+- `2026-08-04 19:02:35 UTC`   B4_ST_kill40_ema50_soft: n=67 PF=3.26 tot=85.6% MDD=-17.1% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:02:38 UTC`   B4_ST_breadth_hl5_fl40: n=75 PF=3.78 tot=108.4% MDD=-14.8% WF=3/3 lastWF=6.3%
+- `2026-08-04 19:02:40 UTC`   B4_ST_breadth_hl8_fl35: n=75 PF=3.78 tot=108.4% MDD=-14.8% WF=3/3 lastWF=6.3%
+- `2026-08-04 19:02:42 UTC`   B4_ST_kill_nifty_ema50: n=61 PF=3.25 tot=74.7% MDD=-11.5% WF=3/3 lastWF=2.9%
+- `2026-08-04 19:02:44 UTC`   B4_ST_killhard_br38_m3.6: n=105 PF=1.80 tot=34.0% MDD=-14.4% WF=2/3 lastWF=-3.6%
+- `2026-08-04 19:02:44 UTC` Hourly ORB: SKIPPED (Block 4 — only if multi-name n≥40; not attempted)
+- `2026-08-04 19:02:44 UTC` Screened 23 Block-4 variants (target ≥10)
+- `2026-08-04 19:02:44 UTC`   Kill entry-only 0.30–0.38: none cleared tot AND lastWF vs #1
+- `2026-08-04 19:02:44 UTC`   Soft vol-target: no promote (tradeoff-only → runners-up)
+- `2026-08-04 19:02:44 UTC`   #1 ST_m3.6_n1_e1 REMAINS best
+- `2026-08-04 19:02:44 UTC`   Saved nifty_edge_r11.py: B4_ST_kill40_softvol18_shi1.0 PF=3.94 tot=81.6%
+- `2026-08-04 19:02:44 UTC`   Saved nifty_edge_r12.py: B4_ST_kill_entry_br36_m3.6 PF=3.94 tot=105.0%
+- `2026-08-04 19:02:44 UTC`   Saved nifty_edge_r13.py: B4_ST_ema50_soft_tol15_d8 PF=3.55 tot=92.5%
+- `2026-08-04 19:02:44 UTC`   Saved nifty_edge_r14.py: B4_ST_kill40_ema50_soft PF=3.26 tot=85.6%
+- `2026-08-04 19:02:44 UTC`   Kept strategies/nifty_edge_best.py unchanged (Block1 #1 still leads)
+- `2026-08-04 19:02:44 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/PAPER_TRADE_RULES.md
+- `2026-08-04 19:02:44 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block4_summary.json
+- `2026-08-04 19:02:44 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:02:44 UTC` --- Block 4 top 5 ---
+- `2026-08-04 19:02:44 UTC`   B4_ST_kill_entry_br36_m3.6: PF=3.94 tot=105.0% n=65 WF=3/3 lastWF=8.0%
+- `2026-08-04 19:02:44 UTC`   B4_ST_kill_entry_br38_m3.6: PF=3.94 tot=105.0% n=65 WF=3/3 lastWF=8.0%
+- `2026-08-04 19:02:44 UTC`   B4_ST_kill40_softvol18_shi1.0: PF=3.94 tot=81.6% n=65 WF=3/3 lastWF=8.7%
+- `2026-08-04 19:02:44 UTC`   B4_ST_regime_hl8: PF=3.93 tot=110.7% n=74 WF=3/3 lastWF=7.5%
+- `2026-08-04 19:02:44 UTC`   B4_ST_regime_hl12: PF=3.93 tot=110.7% n=74 WF=3/3 lastWF=7.5%
+- `2026-08-04 19:02:44 UTC` === Block 4 complete === champion=ST_m3.6_n1_e1 PF=3.90 tot=110.2% promoted=False n_variants=23
+- `2026-08-04 19:02:44 UTC` Next Block 5: freeze paper A/B; attack last-WF chunk with causal features only; cost ladder 0.10/0.12/0.20; optional FII/OI proxy if clean; no hourly unless n≥40
+- `2026-08-04 19:06:54 UTC` === Block 5 start ===
+- `2026-08-04 19:06:54 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:07:02 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 19:07:02 UTC` Reproducing #1 ST_m3.6_n1_e1…
+- `2026-08-04 19:07:05 UTC`   REPRO n=75 PF=3.90 tot=110.2% MDD=-14.8% Sharpe=1.10 WF=3/3 lastWF=5.8% drift_PF=-0.00
+- `2026-08-04 19:07:11 UTC` Cost ladder 0.08/0.10/0.12/0.15/0.20% RT on #1, kill40, regime_hl8, softvol22…
+- `2026-08-04 19:07:12 UTC`   LADDER ST_m3.6_n1_e1: rt0.08:PF=3.90/tot=110.2% | rt0.10:PF=3.88/tot=109.4% | rt0.12:PF=3.85/tot=108.5% | rt0.15:PF=3.82/tot=107.1% | rt0.20:PF=3.76/tot=104.9%
+- `2026-08-04 19:07:14 UTC`   LADDER B2_ST_kill_breadth40_m3.6: rt0.08:PF=3.94/tot=105.0% | rt0.10:PF=3.92/tot=104.2% | rt0.12:PF=3.90/tot=103.5% | rt0.15:PF=3.86/tot=102.4% | rt0.20:PF=3.81/tot=100.6%
+- `2026-08-04 19:07:16 UTC`   LADDER B4_ST_regime_hl8: rt0.08:PF=3.93/tot=110.7% | rt0.10:PF=3.91/tot=109.9% | rt0.12:PF=3.88/tot=109.0% | rt0.15:PF=3.85/tot=107.7% | rt0.20:PF=3.80/tot=105.5%
+- `2026-08-04 19:07:18 UTC`   LADDER B4_ST_softvol22_shi1.0_floor0.85: rt0.08:PF=3.90/tot=100.7% | rt0.10:PF=3.88/tot=99.9% | rt0.12:PF=3.85/tot=99.1% | rt0.15:PF=3.82/tot=97.9% | rt0.20:PF=3.76/tot=95.8%
+- `2026-08-04 19:07:18 UTC` Bootstrap CI (2000 resamples)…
+- `2026-08-04 19:07:18 UTC`   BOOT ST_m3.6_n1_e1: n=75 PF=3.90 CI=[2.15, 7.13]
+- `2026-08-04 19:07:18 UTC`   BOOT B2_ST_kill_breadth40_m3.6: n=65 PF=3.94 CI=[2.06, 7.52]
+- `2026-08-04 19:07:19 UTC`   BOOT B4_ST_regime_hl8: n=74 PF=3.93 CI=[2.21, 7.33]
+- `2026-08-04 19:07:19 UTC`   BOOT B4_ST_softvol22_shi1.0_floor0.85: n=75 PF=3.90 CI=[2.15, 7.13]
+- `2026-08-04 19:07:19 UTC` Strict promote check: regime_hl8 vs #1…
+- `2026-08-04 19:07:19 UTC`   regime_hl8: n=74 PF=3.93 tot=110.7% lastWF=7.5% → promote=False (margin_thin)
+- `2026-08-04 19:07:19 UTC`   KEEP #1 — margin_thin
+- `2026-08-04 19:07:19 UTC` Last-WF causal feature variants (≥8)…
+- `2026-08-04 19:07:21 UTC`   B5_ST_dd_gate_m6: n=77 PF=2.52 tot=65.7% MDD=-19.5% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:07:23 UTC`   B5_ST_dd_gate_m8: n=75 PF=3.56 tot=101.6% MDD=-14.2% WF=3/3 lastWF=6.9%
+- `2026-08-04 19:07:25 UTC`   B5_ST_vol_calm_115: n=66 PF=3.12 tot=81.3% MDD=-20.6% WF=3/3 lastWF=6.9%
+- `2026-08-04 19:07:27 UTC`   B5_ST_vol_calm_125: n=74 PF=3.84 tot=106.0% MDD=-15.0% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:07:29 UTC`   B5_ST_vol_cap22: n=73 PF=4.23 tot=110.4% MDD=-12.8% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:07:31 UTC`   B5_ST_days_high40: n=81 PF=2.73 tot=80.1% MDD=-13.9% WF=3/3 lastWF=3.9%
+- `2026-08-04 19:07:33 UTC`   B5_ST_days_high60: n=75 PF=3.90 tot=110.2% MDD=-14.8% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:07:36 UTC`   B5_ST_breadth_mom0: n=36 PF=3.08 tot=36.2% MDD=-11.8% WF=3/3 lastWF=2.0%
+- `2026-08-04 19:07:38 UTC`   B5_ST_breadth_mom_m05: n=47 PF=2.68 tot=48.4% MDD=-14.6% WF=3/3 lastWF=2.0%
+- `2026-08-04 19:07:40 UTC`   B5_ST_bank_rs_m02: n=73 PF=2.67 tot=75.3% MDD=-15.9% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:07:42 UTC`   B5_ST_atr_pct_15_90: n=71 PF=3.22 tot=87.3% MDD=-15.2% WF=3/3 lastWF=5.0%
+- `2026-08-04 19:07:44 UTC`   B5_ST_soft_rvol09: n=77 PF=2.77 tot=76.3% MDD=-12.7% WF=2/3 lastWF=-2.1%
+- `2026-08-04 19:07:46 UTC`   B5_ST_pullback_m01: n=75 PF=3.90 tot=110.2% MDD=-14.8% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:07:48 UTC`   B5_ST_nifty_mom_m03: n=75 PF=3.23 tot=91.2% MDD=-15.3% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:07:50 UTC`   B5_ST_combo_dd_vol_br: n=58 PF=2.70 tot=57.8% MDD=-17.6% WF=3/3 lastWF=7.4%
+- `2026-08-04 19:07:52 UTC`   B5_ST_regime_hl8_volcalm: n=67 PF=3.09 tot=81.0% MDD=-18.8% WF=3/3 lastWF=7.5%
+- `2026-08-04 19:07:55 UTC`   B5_ST_kill40_dd07: n=65 PF=4.01 tot=113.4% MDD=-15.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:07:55 UTC` Screened 17 B5 variants (target ≥8); total rows=20
+- `2026-08-04 19:07:55 UTC`   No B5 last-WF variant clearly better than current champion
+- `2026-08-04 19:07:55 UTC` Hourly ORB: SKIPPED (Block 5 — only if multi-name n≥40; not attempted)
+- `2026-08-04 19:07:55 UTC` FII/OI: SKIPPED — no clean free FII/OI series available locally
+- `2026-08-04 19:07:55 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/PAPER_TRADE_RULES.md
+- `2026-08-04 19:07:55 UTC`   Saved nifty_edge_r17.py: B5_ST_kill40_dd07 PF=4.01 tot=113.4% lastWF=9.2%
+- `2026-08-04 19:07:55 UTC`   Saved nifty_edge_r18.py: B4_ST_regime_hl8 PF=3.93 tot=110.7% lastWF=7.5%
+- `2026-08-04 19:07:55 UTC`   Saved nifty_edge_r19.py: B5_ST_dd_gate_m6 PF=2.52 tot=65.7% lastWF=9.2%
+- `2026-08-04 19:07:55 UTC`   Saved nifty_edge_r20.py: B2_ST_kill_breadth40_m3.6 PF=3.94 tot=105.0% lastWF=8.0%
+- `2026-08-04 19:07:55 UTC`   Kept strategies/nifty_edge_best.py unchanged (#1 still leads)
+- `2026-08-04 19:07:55 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block5_summary.json
+- `2026-08-04 19:07:55 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:07:55 UTC` --- Block 5 top 5 last-WF variants ---
+- `2026-08-04 19:07:55 UTC`   B5_ST_kill40_dd07: PF=4.01 tot=113.4% n=65 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:07:55 UTC`   B5_ST_dd_gate_m6: PF=2.52 tot=65.7% n=77 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:07:55 UTC`   B5_ST_regime_hl8_volcalm: PF=3.09 tot=81.0% n=67 WF=3/3 lastWF=7.5%
+- `2026-08-04 19:07:55 UTC`   B5_ST_combo_dd_vol_br: PF=2.70 tot=57.8% n=58 WF=3/3 lastWF=7.4%
+- `2026-08-04 19:07:55 UTC`   B5_ST_dd_gate_m8: PF=3.56 tot=101.6% n=75 WF=3/3 lastWF=6.9%
+- `2026-08-04 19:07:55 UTC` === Block 5 complete === champion=ST_m3.6_n1_e1 PF=3.90 tot=110.2% promoted=False reason=keep_#1:margin_thin n_b5=17
+- `2026-08-04 19:07:55 UTC` Next Block 6: freeze paper A/B live checklist; optional ensemble of #1+regime_hl8; document cost-ladder fragility; FINAL prep if near deadline
+- `2026-08-04 19:09:39 UTC` === Block 5 start ===
+- `2026-08-04 19:09:39 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:09:47 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 19:09:47 UTC` Reproducing #1 ST_m3.6_n1_e1…
+- `2026-08-04 19:09:49 UTC`   REPRO n=75 PF=3.90 tot=110.2% MDD=-14.8% Sharpe=1.10 WF=3/3 lastWF=5.8% drift_PF=-0.00
+- `2026-08-04 19:09:56 UTC` Cost ladder 0.08/0.10/0.12/0.15/0.20% RT on #1, kill40, regime_hl8, softvol22…
+- `2026-08-04 19:09:57 UTC`   LADDER ST_m3.6_n1_e1: rt0.08:PF=3.90/tot=110.2% | rt0.10:PF=3.88/tot=109.4% | rt0.12:PF=3.85/tot=108.5% | rt0.15:PF=3.82/tot=107.1% | rt0.20:PF=3.76/tot=104.9%
+- `2026-08-04 19:09:59 UTC`   LADDER B2_ST_kill_breadth40_m3.6: rt0.08:PF=3.94/tot=105.0% | rt0.10:PF=3.92/tot=104.2% | rt0.12:PF=3.90/tot=103.5% | rt0.15:PF=3.86/tot=102.4% | rt0.20:PF=3.81/tot=100.6%
+- `2026-08-04 19:10:01 UTC`   LADDER B4_ST_regime_hl8: rt0.08:PF=3.93/tot=110.7% | rt0.10:PF=3.91/tot=109.9% | rt0.12:PF=3.88/tot=109.0% | rt0.15:PF=3.85/tot=107.7% | rt0.20:PF=3.80/tot=105.5%
+- `2026-08-04 19:10:03 UTC`   LADDER B4_ST_softvol22_shi1.0_floor0.85: rt0.08:PF=3.90/tot=100.7% | rt0.10:PF=3.88/tot=99.9% | rt0.12:PF=3.85/tot=99.1% | rt0.15:PF=3.82/tot=97.9% | rt0.20:PF=3.76/tot=95.8%
+- `2026-08-04 19:10:03 UTC` Bootstrap CI (2000 resamples)…
+- `2026-08-04 19:10:03 UTC`   BOOT ST_m3.6_n1_e1: n=75 PF=3.90 CI=[2.15, 7.13]
+- `2026-08-04 19:10:03 UTC`   BOOT B2_ST_kill_breadth40_m3.6: n=65 PF=3.94 CI=[2.06, 7.52]
+- `2026-08-04 19:10:04 UTC`   BOOT B4_ST_regime_hl8: n=74 PF=3.93 CI=[2.21, 7.33]
+- `2026-08-04 19:10:04 UTC`   BOOT B4_ST_softvol22_shi1.0_floor0.85: n=75 PF=3.90 CI=[2.15, 7.13]
+- `2026-08-04 19:10:04 UTC` Strict promote check: regime_hl8 vs #1…
+- `2026-08-04 19:10:04 UTC`   regime_hl8: n=74 PF=3.93 tot=110.7% lastWF=7.5% → promote=False (margin_thin)
+- `2026-08-04 19:10:04 UTC`   KEEP #1 — margin_thin
+- `2026-08-04 19:10:04 UTC` Last-WF causal feature variants (≥8)…
+- `2026-08-04 19:10:06 UTC`   B5_ST_dd_gate_m6: n=77 PF=2.52 tot=65.7% MDD=-19.5% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:10:08 UTC`   B5_ST_dd_gate_m8: n=75 PF=3.56 tot=101.6% MDD=-14.2% WF=3/3 lastWF=6.9%
+- `2026-08-04 19:10:10 UTC`   B5_ST_vol_calm_115: n=66 PF=3.12 tot=81.3% MDD=-20.6% WF=3/3 lastWF=6.9%
+- `2026-08-04 19:10:12 UTC`   B5_ST_vol_calm_125: n=74 PF=3.84 tot=106.0% MDD=-15.0% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:10:14 UTC`   B5_ST_vol_cap22: n=73 PF=4.23 tot=110.4% MDD=-12.8% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:10:16 UTC`   B5_ST_days_high40: n=81 PF=2.73 tot=80.1% MDD=-13.9% WF=3/3 lastWF=3.9%
+- `2026-08-04 19:10:19 UTC`   B5_ST_days_high60: n=75 PF=3.90 tot=110.2% MDD=-14.8% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:10:21 UTC`   B5_ST_breadth_mom0: n=36 PF=3.08 tot=36.2% MDD=-11.8% WF=3/3 lastWF=2.0%
+- `2026-08-04 19:10:23 UTC`   B5_ST_breadth_mom_m05: n=47 PF=2.68 tot=48.4% MDD=-14.6% WF=3/3 lastWF=2.0%
+- `2026-08-04 19:10:25 UTC`   B5_ST_bank_rs_m02: n=73 PF=2.67 tot=75.3% MDD=-15.9% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:10:27 UTC`   B5_ST_atr_pct_15_90: n=71 PF=3.22 tot=87.3% MDD=-15.2% WF=3/3 lastWF=5.0%
+- `2026-08-04 19:10:30 UTC`   B5_ST_soft_rvol09: n=77 PF=2.77 tot=76.3% MDD=-12.7% WF=2/3 lastWF=-2.1%
+- `2026-08-04 19:10:32 UTC`   B5_ST_pullback_m01: n=75 PF=3.90 tot=110.2% MDD=-14.8% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:10:34 UTC`   B5_ST_nifty_mom_m03: n=75 PF=3.23 tot=91.2% MDD=-15.3% WF=3/3 lastWF=5.8%
+- `2026-08-04 19:10:36 UTC`   B5_ST_combo_dd_vol_br: n=58 PF=2.70 tot=57.8% MDD=-17.6% WF=3/3 lastWF=7.4%
+- `2026-08-04 19:10:38 UTC`   B5_ST_regime_hl8_volcalm: n=67 PF=3.09 tot=81.0% MDD=-18.8% WF=3/3 lastWF=7.5%
+- `2026-08-04 19:10:40 UTC`   B5_ST_kill40_dd07: n=65 PF=4.01 tot=113.4% MDD=-15.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:10:40 UTC` Screened 17 B5 variants (target ≥8); total rows=20
+- `2026-08-04 19:10:44 UTC`   BEAT via strict dual-clear+ladder+boot: B5_ST_kill40_dd07 tot=113.4% lastWF=9.2% CI=[2.10,7.71]
+- `2026-08-04 19:10:44 UTC` Hourly ORB: SKIPPED (Block 5 — only if multi-name n≥40; not attempted)
+- `2026-08-04 19:10:44 UTC` FII/OI: SKIPPED — no clean free FII/OI series available locally
+- `2026-08-04 19:10:44 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/PAPER_TRADE_RULES.md
+- `2026-08-04 19:10:44 UTC`   Saved nifty_edge_r17.py: ST_m3.6_n1_e1 PF=3.90 tot=110.2% lastWF=5.8%
+- `2026-08-04 19:10:44 UTC`   Saved nifty_edge_r18.py: B5_ST_dd_gate_m8 PF=3.56 tot=101.6% lastWF=6.9%
+- `2026-08-04 19:10:44 UTC`   Saved nifty_edge_r19.py: B5_ST_dd_gate_m6 PF=2.52 tot=65.7% lastWF=9.2%
+- `2026-08-04 19:10:44 UTC`   Saved nifty_edge_r20.py: B4_ST_regime_hl8 PF=3.93 tot=110.7% lastWF=7.5%
+- `2026-08-04 19:10:44 UTC`   Overwriting nifty_edge_best.py with new champion
+- `2026-08-04 19:10:44 UTC`   Wrote /Users/ryaneditraj/trading-ai/strategies/nifty_edge_best.py
+- `2026-08-04 19:10:44 UTC`   Wrote /Users/ryaneditraj/trading-ai/pinescript/nifty_edge_best.pine
+- `2026-08-04 19:10:44 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block5_summary.json
+- `2026-08-04 19:10:44 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:10:44 UTC` --- Block 5 top 5 last-WF variants ---
+- `2026-08-04 19:10:44 UTC`   B5_ST_kill40_dd07: PF=4.01 tot=113.4% n=65 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:10:44 UTC`   B5_ST_dd_gate_m6: PF=2.52 tot=65.7% n=77 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:10:44 UTC`   B5_ST_regime_hl8_volcalm: PF=3.09 tot=81.0% n=67 WF=3/3 lastWF=7.5%
+- `2026-08-04 19:10:44 UTC`   B5_ST_combo_dd_vol_br: PF=2.70 tot=57.8% n=58 WF=3/3 lastWF=7.4%
+- `2026-08-04 19:10:44 UTC`   B5_ST_dd_gate_m8: PF=3.56 tot=101.6% n=75 WF=3/3 lastWF=6.9%
+- `2026-08-04 19:10:44 UTC` === Block 5 complete === champion=B5_ST_kill40_dd07 PF=4.01 tot=113.4% promoted=True reason=dual_clear_ladder_boot:B5_ST_kill40_dd07 n_b5=17
+- `2026-08-04 19:10:44 UTC` Next Block 6: freeze paper A/B live checklist; optional ensemble of #1+regime_hl8; document cost-ladder fragility; FINAL prep if near deadline
+- `2026-08-04 19:13:59 UTC` === Block 6 start ===
+- `2026-08-04 19:13:59 UTC` Hours to deadline: 6.92
+- `2026-08-04 19:13:59 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:14:07 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 19:14:07 UTC` Reproducing champion B5_ST_kill40_dd07…
+- `2026-08-04 19:14:09 UTC`   REPRO n=65 PF=4.01 tot=113.4% MDD=-15.0% Sharpe=1.17 WF=3/3 lastWF=9.2% drift_ok=True ΔPF=-0.005 ΔTot=+0.04pp
+- `2026-08-04 19:14:13 UTC` Neighborhood freeze: ±dd, ±breadth, ±ST mult…
+- `2026-08-04 19:14:15 UTC`   dd=-0.05: n=68 PF=2.58 tot=64.6% lastWF=9.2%
+- `2026-08-04 19:14:17 UTC`   dd=-0.06: n=71 PF=2.51 tot=65.3% lastWF=9.2%
+- `2026-08-04 19:14:19 UTC`   dd=-0.07: n=65 PF=4.01 tot=113.4% lastWF=9.2%
+- `2026-08-04 19:14:21 UTC`   dd=-0.08: n=64 PF=4.10 tot=107.2% lastWF=9.2%
+- `2026-08-04 19:14:24 UTC`   dd=-0.09: n=64 PF=4.10 tot=107.2% lastWF=9.2%
+- `2026-08-04 19:14:26 UTC`   br=0.35: n=69 PF=3.38 tot=103.4% lastWF=9.2%
+- `2026-08-04 19:14:28 UTC`   br=0.38: n=65 PF=4.01 tot=113.4% lastWF=9.2%
+- `2026-08-04 19:14:30 UTC`   br=0.40: n=65 PF=4.01 tot=113.4% lastWF=9.2%
+- `2026-08-04 19:14:32 UTC`   br=0.42: n=64 PF=3.08 tot=78.2% lastWF=7.6%
+- `2026-08-04 19:14:34 UTC`   br=0.45: n=64 PF=3.08 tot=78.2% lastWF=7.6%
+- `2026-08-04 19:14:36 UTC`   mult=3.2: n=91 PF=2.26 tot=71.4% lastWF=1.9%
+- `2026-08-04 19:14:38 UTC`   mult=3.4: n=78 PF=2.62 tot=85.4% lastWF=2.7%
+- `2026-08-04 19:14:40 UTC`   mult=3.5: n=76 PF=2.43 tot=72.6% lastWF=-3.5%
+- `2026-08-04 19:14:42 UTC`   mult=3.6: n=65 PF=4.01 tot=113.4% lastWF=9.2%
+- `2026-08-04 19:14:44 UTC`   mult=3.7: n=63 PF=3.78 tot=109.0% lastWF=6.2%
+- `2026-08-04 19:14:46 UTC`   mult=3.8: n=61 PF=2.87 tot=73.2% lastWF=0.4%
+- `2026-08-04 19:14:46 UTC` Equal-risk ensembles: champ+prior ST / champ+regime_hl8…
+- `2026-08-04 19:14:50 UTC`   ENS champ+prior: n=78 PF=3.02 tot=49.0% lastWF=2.2%
+- `2026-08-04 19:14:54 UTC`   ENS champ+regime: n=77 PF=3.04 tot=48.9% lastWF=1.5%
+- `2026-08-04 19:14:58 UTC`   ENS prior+regime: n=91 PF=2.97 tot=49.0% lastWF=1.0%
+- `2026-08-04 19:14:58 UTC` Cost ladder fragility on champ / prior / regime…
+- `2026-08-04 19:15:00 UTC`   LADDER B5_ST_kill40_dd07: rt0.08:PF=4.01/tot=113.4% | rt0.10:PF=3.98/tot=112.7% | rt0.12:PF=3.96/tot=111.9% | rt0.15:PF=3.93/tot=110.8% | rt0.20:PF=3.88/tot=108.9%
+- `2026-08-04 19:15:01 UTC`   LADDER ST_m3.6_n1_e1: rt0.08:PF=3.90/tot=110.2% | rt0.10:PF=3.88/tot=109.4% | rt0.12:PF=3.85/tot=108.5% | rt0.15:PF=3.82/tot=107.1% | rt0.20:PF=3.76/tot=104.9%
+- `2026-08-04 19:15:03 UTC`   LADDER B4_ST_regime_hl8: rt0.08:PF=3.93/tot=110.7% | rt0.10:PF=3.91/tot=109.9% | rt0.12:PF=3.88/tot=109.0% | rt0.15:PF=3.85/tot=107.7% | rt0.20:PF=3.80/tot=105.5%
+- `2026-08-04 19:15:03 UTC`   Fragility: Champ tot decays ~linear with RT; remains above prior ST on every rung 0.08–0.20%. Slight MDD deepen under higher costs (~0.3pp). Not fragile vs prior.
+- `2026-08-04 19:15:03 UTC` Block 6 last-WF variants (≥8)…
+- `2026-08-04 19:15:05 UTC`   B6_ST_kill40_dd06: n=71 PF=2.51 tot=65.3% MDD=-18.1% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:07 UTC`   B6_ST_kill40_dd08: n=64 PF=4.10 tot=107.2% MDD=-13.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:10 UTC`   B6_ST_kill38_dd07: n=65 PF=4.01 tot=113.4% MDD=-15.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:12 UTC`   B6_ST_kill42_dd07: n=64 PF=3.08 tot=78.2% MDD=-17.8% WF=3/3 lastWF=7.6%
+- `2026-08-04 19:15:14 UTC`   B6_ST_kill40_dd07_m35: n=76 PF=2.43 tot=72.6% MDD=-14.1% WF=2/3 lastWF=-3.5%
+- `2026-08-04 19:15:16 UTC`   B6_ST_kill40_dd07_m37: n=63 PF=3.78 tot=109.0% MDD=-14.8% WF=3/3 lastWF=6.2%
+- `2026-08-04 19:15:18 UTC`   B6_ST_kill40_dd_volcalm125: n=67 PF=3.51 tot=100.0% MDD=-15.1% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:20 UTC`   B6_ST_kill40_dd_days60: n=64 PF=4.32 tot=118.3% MDD=-13.1% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:22 UTC`   B6_ST_kill40_dd_bankrs_m03: n=63 PF=3.29 tot=95.4% MDD=-13.3% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:24 UTC`   B6_ST_kill40_dd_atr10_92: n=60 PF=2.93 tot=69.4% MDD=-20.1% WF=3/3 lastWF=11.3%
+- `2026-08-04 19:15:26 UTC`   B6_ST_kill40_dd_nifty_mom_m04: n=64 PF=4.73 tot=124.3% MDD=-13.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:28 UTC`   B6_ST_kill40_dd_volcap24: n=66 PF=3.75 tot=105.7% MDD=-15.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:30 UTC`   B6_ST_kill40_dd_regime_hl8: n=65 PF=4.01 tot=113.4% MDD=-15.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:32 UTC`   B6_ST_kill40_dd_days40: n=69 PF=2.74 tot=73.6% MDD=-15.8% WF=3/3 lastWF=5.6%
+- `2026-08-04 19:15:32 UTC` Screened 14 B6_ST variants (target ≥8); total rows=20
+- `2026-08-04 19:15:32 UTC`   No promote — keep B5_ST_kill40_dd07
+- `2026-08-04 19:15:32 UTC`   Paper A/B unchanged (no flip warranted)
+- `2026-08-04 19:15:32 UTC` Saving runners r21+…
+- `2026-08-04 19:15:32 UTC`   Saved nifty_edge_r21.py: B6_ST_kill40_dd_nifty_mom_m04 PF=4.73 tot=124.3% lastWF=9.2%
+- `2026-08-04 19:15:32 UTC`   Saved nifty_edge_r22.py: B6_ST_kill40_dd_atr10_92 PF=2.93 tot=69.4% lastWF=11.3%
+- `2026-08-04 19:15:32 UTC`   Saved nifty_edge_r23.py: B6_ENS_champ_priorST PF=3.02 tot=49.0% lastWF=2.2%
+- `2026-08-04 19:15:32 UTC`   Saved nifty_edge_r24.py: B4_ST_regime_hl8 PF=3.93 tot=110.7% lastWF=7.5%
+- `2026-08-04 19:15:32 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_OUTLINE.md
+- `2026-08-04 19:15:32 UTC` FINAL outline only (6.9h left; full FINAL later)
+- `2026-08-04 19:15:32 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block6_summary.json
+- `2026-08-04 19:15:32 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:15:32 UTC` --- Block 6 top 5 variants ---
+- `2026-08-04 19:15:32 UTC`   B6_ST_kill40_dd_atr10_92: PF=2.93 tot=69.4% n=60 WF=3/3 lastWF=11.3%
+- `2026-08-04 19:15:32 UTC`   B6_ST_kill40_dd_nifty_mom_m04: PF=4.73 tot=124.3% n=64 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:32 UTC`   B6_ST_kill40_dd_days60: PF=4.32 tot=118.3% n=64 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:32 UTC`   B6_ST_kill40_dd08: PF=4.10 tot=107.2% n=64 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:32 UTC`   B6_ST_kill38_dd07: PF=4.01 tot=113.4% n=65 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:15:32 UTC` === Block 6 complete === champion=B5_ST_kill40_dd07 PF=4.01 tot=113.4% promoted=False reason=keep_champ:no_challenger n_b6=14 drift_ok=True hrs_left=6.92
+- `2026-08-04 19:15:32 UTC` Next Block 7: paper live checklist; stress any fragile neighborhood cells; FINAL_REPORT + lock when <1h to deadline
+- `2026-08-04 19:16:01 UTC` Block 6 post: r25 days60 saved; paper/outline/leaderboard near-miss notes
+- `2026-08-04 19:18:55 UTC` === Block 7 start ===
+- `2026-08-04 19:18:55 UTC` Hours to deadline: 6.84
+- `2026-08-04 19:18:55 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:19:03 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 19:19:03 UTC` Reproducing champion B5_ST_kill40_dd07…
+- `2026-08-04 19:19:05 UTC`   REPRO n=65 PF=4.01 tot=113.4% MDD=-15.0% Sharpe=1.17 WF=3/3 lastWF=9.2% drift_ok=True ΔPF=-0.005 ΔTot=+0.04pp
+- `2026-08-04 19:19:07 UTC` Writing paper A vs B live divergence checklist…
+- `2026-08-04 19:19:07 UTC`   Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/CHECKLIST.md
+- `2026-08-04 19:19:07 UTC`   Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/PAPER_TRADE_RULES.md with Block 7 pointer
+- `2026-08-04 19:19:07 UTC` Near-miss ladder + bootstrap: r21 nifty_mom / r25 days60…
+- `2026-08-04 19:19:09 UTC`   Champ boot CI_lo=2.099149253284851 CI_hi=7.708162134236861 median=None
+- `2026-08-04 19:19:13 UTC`   r21 B6_ST_kill40_dd_nifty_mom_m04: n=64 PF=4.73 tot=124.3% lastWF=9.2% dual=False ladder_ok=True boot_lo=2.4558660560247634 risk_adj=True → PROMOTE:robust_risk_adj_ladder_boot:robust_risk_adj
+- `2026-08-04 19:19:13 UTC`     LADDER B6_ST_kill40_dd_nifty_mom_m04: rt0.08:PF=4.73/tot=124.3% | rt0.10:PF=4.70/tot=123.5% | rt0.12:PF=4.68/tot=122.7% | rt0.15:PF=4.64/tot=121.6% | rt0.20:PF=4.57/tot=119.6%
+- `2026-08-04 19:19:18 UTC`   r25 B6_ST_kill40_dd_days60: n=64 PF=4.32 tot=118.3% lastWF=9.2% dual=False ladder_ok=True boot_lo=2.231077496883782 risk_adj=True → PROMOTE:robust_risk_adj_ladder_boot:robust_risk_adj
+- `2026-08-04 19:19:18 UTC`     LADDER B6_ST_kill40_dd_days60: rt0.08:PF=4.32/tot=118.3% | rt0.10:PF=4.29/tot=117.6% | rt0.12:PF=4.27/tot=116.8% | rt0.15:PF=4.24/tot=115.7% | rt0.20:PF=4.18/tot=113.8%
+- `2026-08-04 19:19:18 UTC` Fragile neighborhood stress: dd≤−0.06, mult 3.5, br≥0.42…
+- `2026-08-04 19:19:20 UTC`   dd=-0.050: n=68 PF=2.58 tot=64.6% lastWF=9.2% MDD=-17.4%
+- `2026-08-04 19:19:22 UTC`   dd=-0.055: n=69 PF=2.64 tot=67.3% lastWF=9.2% MDD=-17.5%
+- `2026-08-04 19:19:24 UTC`   dd=-0.060: n=71 PF=2.51 tot=65.3% lastWF=9.2% MDD=-18.1%
+- `2026-08-04 19:19:26 UTC`   dd=-0.065: n=67 PF=3.65 tot=106.3% lastWF=9.2% MDD=-15.0%
+- `2026-08-04 19:19:28 UTC`   dd=-0.070: n=65 PF=4.01 tot=113.4% lastWF=9.2% MDD=-15.0%
+- `2026-08-04 19:19:30 UTC`   mult=3.40: n=78 PF=2.62 tot=85.4% lastWF=2.7% WF=3/3
+- `2026-08-04 19:19:32 UTC`   mult=3.45: n=77 PF=2.58 tot=77.7% lastWF=-4.7% WF=2/3
+- `2026-08-04 19:19:34 UTC`   mult=3.50: n=76 PF=2.43 tot=72.6% lastWF=-3.5% WF=2/3
+- `2026-08-04 19:19:36 UTC`   mult=3.55: n=73 PF=2.84 tot=90.6% lastWF=4.6% WF=3/3
+- `2026-08-04 19:19:39 UTC`   mult=3.60: n=65 PF=4.01 tot=113.4% lastWF=9.2% WF=3/3
+- `2026-08-04 19:19:41 UTC`   br=0.40: n=65 PF=4.01 tot=113.4% lastWF=9.2%
+- `2026-08-04 19:19:43 UTC`   br=0.41: n=64 PF=3.08 tot=78.2% lastWF=7.6%
+- `2026-08-04 19:19:45 UTC`   br=0.42: n=64 PF=3.08 tot=78.2% lastWF=7.6%
+- `2026-08-04 19:19:47 UTC`   br=0.43: n=64 PF=3.08 tot=78.2% lastWF=7.6%
+- `2026-08-04 19:19:49 UTC`   br=0.45: n=64 PF=3.08 tot=78.2% lastWF=7.6%
+- `2026-08-04 19:19:51 UTC`   CROSS B7_frag_dd06_m35: n=80 PF=1.47 tot=24.4% lastWF=-3.5%
+- `2026-08-04 19:19:53 UTC`   CROSS B7_frag_dd06_br42: n=65 PF=2.49 tot=58.8% lastWF=7.6%
+- `2026-08-04 19:19:55 UTC`   CROSS B7_frag_m35_br42: n=75 PF=1.83 tot=39.0% lastWF=-2.8%
+- `2026-08-04 19:19:55 UTC`   FAILMODE: Tightening dd_floor to ≤−0.06 admits more entries in moderate drawdowns; tot collapses ~48pp and PF drops ~1.5 — gate wa…
+- `2026-08-04 19:19:55 UTC`   FAILMODE: ST mult=3.5 shortens trail; n↑ but lastWF turns negative (−3.5% class) and WF may drop. Local PF peak remains at 3.6 — 3…
+- `2026-08-04 19:19:55 UTC`   FAILMODE: Raising breadth_floor to ≥0.42 over-filters; tot softens ~35pp, lastWF slips ~1.6pp. 0.40 is the practical floor — 0.42+…
+- `2026-08-04 19:19:55 UTC` Block 7 variants (≥6)…
+- `2026-08-04 19:19:57 UTC`   B7_ST_kill40_dd_mom_m03: n=65 PF=4.26 tot=114.7% MDD=-13.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:19:59 UTC`   B7_ST_kill40_dd_mom_m05: n=64 PF=4.73 tot=124.3% MDD=-13.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:20:01 UTC`   B7_ST_kill40_dd_days55: n=66 PF=3.75 tot=106.0% MDD=-13.1% WF=3/3 lastWF=5.6%
+- `2026-08-04 19:20:03 UTC`   B7_ST_kill40_dd_mom_days60: n=63 PF=5.17 tot=129.4% MDD=-11.0% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:20:06 UTC`   B7_ST_kill40_dd_brmom_m05: n=42 PF=3.19 tot=59.4% MDD=-16.2% WF=3/3 lastWF=3.8%
+- `2026-08-04 19:20:08 UTC`   B7_ST_kill40_dd_soft_br30: n=82 PF=2.04 tot=47.6% MDD=-11.4% WF=2/3 lastWF=-0.7%
+- `2026-08-04 19:20:10 UTC`   B7_ST_kill40_dd_pullback_m08: n=53 PF=3.22 tot=65.3% MDD=-17.7% WF=3/3 lastWF=11.7%
+- `2026-08-04 19:20:12 UTC`   B7_ST_kill40_dd_ret5_m03: n=67 PF=2.77 tot=76.1% MDD=-20.4% WF=3/3 lastWF=12.7%
+- `2026-08-04 19:20:14 UTC`   B7_ST_kill40_dd_atr08_90: n=62 PF=2.15 tot=44.7% MDD=-23.0% WF=3/3 lastWF=11.3%
+- `2026-08-04 19:20:16 UTC`   B7_ST_kill40_dd07_m365: n=65 PF=3.16 tot=92.5% MDD=-16.9% WF=3/3 lastWF=6.2%
+- `2026-08-04 19:20:18 UTC`   B7_ST_kill40_dd_volcalm115: n=63 PF=3.53 tot=89.5% MDD=-18.9% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:20:20 UTC`   B7_ST_kill40_dd_bankrs_m02: n=64 PF=2.74 tot=75.0% MDD=-13.6% WF=3/3 lastWF=9.2%
+- `2026-08-04 19:20:20 UTC` Screened 12 B7 variants (target ≥6)
+- `2026-08-04 19:20:20 UTC`   PROMOTED B6_ST_kill40_dd_nifty_mom_m04 reason=robust_risk_adj_ladder_boot:robust_risk_adj:B6_ST_kill40_dd_nifty_mom_m04
+- `2026-08-04 19:20:20 UTC`   Wrote /Users/ryaneditraj/trading-ai/strategies/nifty_edge_best.py
+- `2026-08-04 19:20:20 UTC` Saving runners r26+…
+- `2026-08-04 19:20:20 UTC`   Saved nifty_edge_r26.py: B7_ST_kill40_dd_ret5_m03 PF=2.77 tot=76.1% lastWF=12.7%
+- `2026-08-04 19:20:20 UTC`   Saved nifty_edge_r27.py: B7_ST_kill40_dd_pullback_m08 PF=3.22 tot=65.3% lastWF=11.7%
+- `2026-08-04 19:20:20 UTC`   Saved nifty_edge_r28.py: B7_ST_kill40_dd_atr08_90 PF=2.15 tot=44.7% lastWF=11.3%
+- `2026-08-04 19:20:20 UTC`   Saved nifty_edge_r29.py: B7_ST_kill40_dd_mom_days60 PF=5.17 tot=129.4% lastWF=9.2%
+- `2026-08-04 19:20:20 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_OUTLINE.md
+- `2026-08-04 19:20:20 UTC` FINAL outline only (6.8h left; full FINAL later)
+- `2026-08-04 19:20:20 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:20:20 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block7_summary.json
+- `2026-08-04 19:20:20 UTC` --- Block 7 top 5 variants ---
+- `2026-08-04 19:20:20 UTC`   B7_ST_kill40_dd_ret5_m03: PF=2.77 tot=76.1% n=67 WF=3/3 lastWF=12.7%
+- `2026-08-04 19:20:20 UTC`   B7_ST_kill40_dd_pullback_m08: PF=3.22 tot=65.3% n=53 WF=3/3 lastWF=11.7%
+- `2026-08-04 19:20:20 UTC`   B7_ST_kill40_dd_atr08_90: PF=2.15 tot=44.7% n=62 WF=3/3 lastWF=11.3%
+- `2026-08-04 19:20:20 UTC`   B7_ST_kill40_dd_mom_days60: PF=5.17 tot=129.4% n=63 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:20:20 UTC`   B7_ST_kill40_dd_mom_m05: PF=4.73 tot=124.3% n=64 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:20:20 UTC` === Block 7 complete === champion=B6_ST_kill40_dd_nifty_mom_m04 PF=4.73 tot=124.3% promoted=True reason=robust_risk_adj_ladder_boot:robust_risk_adj:B6_ST_kill40_dd_nifty_mom_m04 n_b7=12 drift_ok=True hrs_left=6.84
+- `2026-08-04 19:20:20 UTC` Next Block 8: continue paper A/B log; optional locked-sleeve cost shock only; FINAL_REPORT + lock when <1h to deadline
+- `2026-08-04 19:21:34 UTC` Block 7 post: paper A/B flip synced (A=nifty_mom best.py; B=b5_prior.py); Pine notes updated; CHECKLIST/PAPER_TRADE_RULES/FINAL outline corrected for promote
+- `2026-08-04 19:24:23 UTC` === Block 8 start ===
+- `2026-08-04 19:24:23 UTC` Hours to deadline: 6.74
+- `2026-08-04 19:24:23 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:24:32 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 19:24:32 UTC` Reproducing champion B6_ST_kill40_dd_nifty_mom_m04…
+- `2026-08-04 19:24:34 UTC`   REPRO n=64 PF=4.73 tot=124.3% MDD=-13.0% Sharpe=1.24 WF=3/3 lastWF=9.2% drift_ok=True ΔPF=+0.000 ΔTot=-0.02pp
+- `2026-08-04 19:24:34 UTC` Expanding paper A/B mom-skip save-rate and weekly ΔEquity…
+- `2026-08-04 19:24:36 UTC`   MOM-SKIP n=2 save_rate=100% hit_rate=0% avg_ret=-0.09848018051199794
+- `2026-08-04 19:24:36 UTC`   WEEKLY ΔEquity mean=0.01688850901093742pp n_weeks=290 max_consec_B>2pp=0 flag3w=False
+- `2026-08-04 19:24:36 UTC`   Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/CHECKLIST.md
+- `2026-08-04 19:24:36 UTC` Probing r29 B7_ST_kill40_dd_mom_days60 vs champion A…
+- `2026-08-04 19:24:39 UTC`   Champ boot CI_lo=2.4558660560247634 CI_hi=9.373732324189996
+- `2026-08-04 19:24:43 UTC`   r29 n=63 PF=5.17 tot=129.4% lastWF=9.2% dual=False risk_adj=True ladder_ok=True boot_lo=2.52518358030888 → PROMOTE:robust_risk_adj_ladder_boot:robust_risk_adj:B7_ST_kill40_dd_mom_days60
+- `2026-08-04 19:24:43 UTC`   LADDER r29: rt0.08:PF=5.17/tot=129.4% | rt0.10:PF=5.14/tot=128.6% | rt0.12:PF=5.11/tot=127.9% | rt0.15:PF=5.07/tot=126.7% | rt0.20:PF=4.99/tot=124.8%
+- `2026-08-04 19:24:43 UTC` Locked-sleeve cost shock 0.08–0.20% on A and r29 only…
+- `2026-08-04 19:24:43 UTC`   LADDER A B6_ST_kill40_dd_nifty_mom_m04: rt0.08:PF=4.73/tot=124.3%/MDD=-13.0% | rt0.10:PF=4.70/tot=123.5%/MDD=-13.0% | rt0.12:PF=4.68/tot=122.7%/MDD=-13.1% | rt0.15:PF=4.64/tot=121.6%/MDD=-13.1% | rt0.20:PF=4.57/tot=119.6%/MDD=-13.3%
+- `2026-08-04 19:24:43 UTC`   LADDER r29 B7_ST_kill40_dd_mom_days60: rt0.08:PF=5.17/tot=129.4%/MDD=-11.0% | rt0.10:PF=5.14/tot=128.6%/MDD=-11.0% | rt0.12:PF=5.11/tot=127.9%/MDD=-11.1% | rt0.15:PF=5.07/tot=126.7%/MDD=-11.1% | rt0.20:PF=4.99/tot=124.8%/MDD=-11.2%
+- `2026-08-04 19:24:43 UTC`   Shock note: A ΔTot 0.08→0.20%=-4.6pp; r29 ΔTot=-4.7pp; r29 beats A every rung=True
+- `2026-08-04 19:24:43 UTC` Block 8 measured checks (≥5) — locked sleeves + light causal probes…
+- `2026-08-04 19:24:45 UTC`   CHECK B8_A_champ_repro: n=64 PF=4.73 tot=124.3% lastWF=9.2% (champ_repro)
+- `2026-08-04 19:24:47 UTC`   CHECK B8_B_demoted_b5: n=65 PF=4.01 tot=113.4% lastWF=9.2% (paper_B)
+- `2026-08-04 19:24:49 UTC`   CHECK B8_r29_mom_days60: n=63 PF=5.17 tot=129.4% lastWF=9.2% (watch_r29)
+- `2026-08-04 19:24:51 UTC`   CHECK B8_A_stress015: n=64 PF=4.64 tot=121.6% lastWF=9.2% (stress_shadow)
+- `2026-08-04 19:24:54 UTC`   CHECK B8_r29_stress015: n=63 PF=5.07 tot=126.7% lastWF=9.2% (stress_shadow)
+- `2026-08-04 19:24:56 UTC`   CHECK B8_days60_only: n=64 PF=4.32 tot=118.3% lastWF=9.2% (causal_probe)
+- `2026-08-04 19:24:58 UTC`   CHECK B8_volcalm125: n=67 PF=3.51 tot=100.0% lastWF=9.2% (causal_probe)
+- `2026-08-04 19:24:58 UTC`   PROMOTED B7_ST_kill40_dd_mom_days60 reason=robust_risk_adj_ladder_boot:robust_risk_adj:B7_ST_kill40_dd_mom_days60
+- `2026-08-04 19:24:58 UTC`   Wrote /Users/ryaneditraj/trading-ai/strategies/nifty_edge_best.py
+- `2026-08-04 19:24:58 UTC`   Paper A flipped to r29; prior nifty_mom remains as r21
+- `2026-08-04 19:24:58 UTC` Saving runners r30+…
+- `2026-08-04 19:24:58 UTC`   Saved nifty_edge_r30.py: B8_days60_only PF=4.32 tot=118.3%
+- `2026-08-04 19:24:58 UTC`   Saved nifty_edge_r31.py: B8_volcalm125 PF=3.51 tot=100.0%
+- `2026-08-04 19:24:58 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_OUTLINE.md
+- `2026-08-04 19:24:58 UTC` FINAL outline only (6.7h left; full FINAL later)
+- `2026-08-04 19:24:58 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:24:58 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block8_summary.json
+- `2026-08-04 19:24:58 UTC` --- Block 8 top checks ---
+- `2026-08-04 19:24:58 UTC`   B8_r29_mom_days60: PF=5.17 tot=129.4% n=63 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:24:58 UTC`   B8_r29_stress015: PF=5.07 tot=126.7% n=63 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:24:58 UTC`   B8_A_champ_repro: PF=4.73 tot=124.3% n=64 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:24:58 UTC`   B8_A_stress015: PF=4.64 tot=121.6% n=64 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:24:58 UTC`   B8_days60_only: PF=4.32 tot=118.3% n=64 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:24:58 UTC` === Block 8 complete === champion=B7_ST_kill40_dd_mom_days60 PF=5.17 tot=129.4% promoted=True reason=robust_risk_adj_ladder_boot:robust_risk_adj:B7_ST_kill40_dd_mom_days60 n_checks=7 drift_ok=True hrs_left=6.74
+- `2026-08-04 19:24:58 UTC` Next Block 9: continue paper A/B live log; optional re-check r29 only if lastWF clears; FINAL_REPORT + lock when <1h to deadline
+- `2026-08-04 19:25:55 UTC` Block 8 post: paper A/B flip synced (A=mom_days60 best.py; B=b6_prior.py nifty_mom); days60-skip save_rate=100% n=1; Pine/CHECKLIST/PAPER/FINAL outline corrected for promote
+- `2026-08-04 19:30:24 UTC` === Block 9 start ===
+- `2026-08-04 19:30:24 UTC` Hours to deadline: 6.64
+- `2026-08-04 19:30:24 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:30:32 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 19:30:32 UTC` Reproducing champion B7_ST_kill40_dd_mom_days60…
+- `2026-08-04 19:30:34 UTC`   REPRO n=63 PF=5.17 tot=129.4% MDD=-11.0% Sharpe=1.28 WF=3/3 lastWF=9.2% drift_ok=True
+- `2026-08-04 19:30:34 UTC`   PINE core_match=True — Pine matches Python ST 3.6 + EMA200 trail/entry/exit. Basket gates (breadth40, dd−7%, ret20≥−0.04, days60) are intentionally absent from single-symbol Pine — documented in pine header.
+- `2026-08-04 19:30:34 UTC` Expanding days60-skip / mom-skip save-rate notes (honest thin-n)…
+- `2026-08-04 19:30:37 UTC`   DAYS60-SKIP n=1 save_rate=1.0 thin=True — n=1 skips — rates provisional; do not treat save-rate as confirmatory until n≥20 live+hist combined.
+- `2026-08-04 19:30:37 UTC`   MOM-SKIP archive n=2 save_rate=1.0
+- `2026-08-04 19:30:37 UTC`   WEEKLY ΔEquity mean=0.007550769397030033pp flag3w=False
+- `2026-08-04 19:30:37 UTC` Ablation: remove each gate one-at-a-time…
+- `2026-08-04 19:30:39 UTC`   ABLATE B7_ST_kill40_dd_mom_days60 (−none (champ)): n=63 PF=5.17 tot=129.4% MDD=-11.0% lastWF=9.2% Δtot=+0.0pp ΔlastWF=+0.0pp
+- `2026-08-04 19:30:41 UTC`   ABLATE B6_ST_kill40_dd_nifty_mom_m04 (−days60): n=64 PF=4.73 tot=124.3% MDD=-13.0% lastWF=9.2% Δtot=-5.1pp ΔlastWF=+0.0pp
+- `2026-08-04 19:30:43 UTC`   ABLATE B6_ST_kill40_dd_days60 (−mom): n=64 PF=4.32 tot=118.3% MDD=-13.1% lastWF=9.2% Δtot=-11.1pp ΔlastWF=+0.0pp
+- `2026-08-04 19:30:45 UTC`   ABLATE B9_ablate_dd (−dd): n=64 PF=4.60 tot=114.4% MDD=-12.4% lastWF=8.0% Δtot=-15.0pp ΔlastWF=-1.2pp
+- `2026-08-04 19:30:47 UTC`   ABLATE B9_ablate_breadth (−breadth): n=70 PF=5.28 tot=134.4% MDD=-11.7% lastWF=9.2% Δtot=+5.0pp ΔlastWF=+0.0pp
+- `2026-08-04 19:30:49 UTC`   ABLATE B5_ST_kill40_dd07 (−mom+days60): n=65 PF=4.01 tot=113.4% MDD=-15.0% lastWF=9.2% Δtot=-16.0pp ΔlastWF=+0.0pp
+- `2026-08-04 19:30:51 UTC`   ABLATE B2_ST_kill_breadth40_m3.6 (−dd+mom+days60): n=65 PF=3.94 tot=105.0% MDD=-13.0% lastWF=8.0% Δtot=-24.5pp ΔlastWF=-1.2pp
+- `2026-08-04 19:30:53 UTC`   ABLATE ST_m3.6_n1_e1 (−all gates): n=75 PF=3.90 tot=110.2% MDD=-14.8% lastWF=5.8% Δtot=-19.2pp ΔlastWF=-3.3pp
+- `2026-08-04 19:30:53 UTC` Shuffle/placebo battery (40 shuffles/gate)…
+- `2026-08-04 19:31:07 UTC`   PLACEBO days60: real_tot=129.4% base=124.3% placebo_mean=82.4% p_ge=0.00 → PASS: real tot rare under shuffled calendars
+- `2026-08-04 19:31:22 UTC`   PLACEBO mom: real_tot=129.4% base=118.3% placebo_mean=101.5% p_ge=0.00 → PASS: real tot rare under shuffled calendars
+- `2026-08-04 19:31:36 UTC`   PLACEBO dd: real_tot=129.4% base=114.4% placebo_mean=90.5% p_ge=0.00 → PASS: real tot rare under shuffled calendars
+- `2026-08-04 19:31:51 UTC`   PLACEBO breadth: real_tot=129.4% base=134.4% placebo_mean=85.2% p_ge=0.00 → PASS: real tot rare under shuffled calendars
+- `2026-08-04 19:31:51 UTC` Complexity penalty: prefer simpler if within ~10% tot & lastWF≥champ…
+- `2026-08-04 19:31:51 UTC`   COMPLEXITY prefer_simpler=True → B9_ablate_breadth: `B9_ablate_breadth` within 10% tot of champ (134.4% vs 129.4%) with lastWF 9.2% ≥ 9.2% and fewer gates (3 vs 4).
+- `2026-08-04 19:31:51 UTC` Held-out last-30% OOS chunk (fresh vs historically optimized window)…
+- `2026-08-04 19:31:53 UTC`   HELD-OUT cut=2024-12-04 champ_late=12.7% b6_late=12.7% b5_late=12.7% st_late=11.0%
+- `2026-08-04 19:31:53 UTC`   DECISION: complexity_prefer_simpler_paperA:B9_ablate_breadth
+- `2026-08-04 19:31:53 UTC`   RECOMMEND: PAPER A → `B9_ablate_breadth` (simpler, complexity-eligible); RESEARCH A → keep `B7_ST_kill40_dd_mom_days60` files for monitoring only. Reason: `B9_ablate_breadth` within 10% tot of champ (134.4% vs 129.4%) with lastWF 9.2% ≥ 9.2% and fewer gates (3 vs 4).
+- `2026-08-04 19:31:53 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/CHECKLIST.md
+- `2026-08-04 19:31:53 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_DRAFT.md
+- `2026-08-04 19:31:53 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_OUTLINE.md
+- `2026-08-04 19:31:53 UTC` FINAL draft/outline only (6.6h left; full lock later)
+- `2026-08-04 19:31:53 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:31:53 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block9_summary.json
+- `2026-08-04 19:31:53 UTC` --- Block 9 ablation ranking (by lastWF, tot) ---
+- `2026-08-04 19:31:53 UTC`   B9_ablate_breadth: tot=134.4% lastWF=9.2% n_gates=3 (−breadth)
+- `2026-08-04 19:31:53 UTC`   B7_ST_kill40_dd_mom_days60: tot=129.4% lastWF=9.2% n_gates=4 (−none (champ))
+- `2026-08-04 19:31:53 UTC`   B6_ST_kill40_dd_nifty_mom_m04: tot=124.3% lastWF=9.2% n_gates=3 (−days60)
+- `2026-08-04 19:31:53 UTC`   B6_ST_kill40_dd_days60: tot=118.3% lastWF=9.2% n_gates=3 (−mom)
+- `2026-08-04 19:31:53 UTC`   B5_ST_kill40_dd07: tot=113.4% lastWF=9.2% n_gates=2 (−mom+days60)
+- `2026-08-04 19:31:53 UTC`   B9_ablate_dd: tot=114.4% lastWF=8.0% n_gates=3 (−dd)
+- `2026-08-04 19:31:53 UTC`   B2_ST_kill_breadth40_m3.6: tot=105.0% lastWF=8.0% n_gates=1 (−dd+mom+days60)
+- `2026-08-04 19:31:53 UTC`   ST_m3.6_n1_e1: tot=110.2% lastWF=5.8% n_gates=0 (−all gates)
+- `2026-08-04 19:31:53 UTC` === Block 9 complete === champion=B7_ST_kill40_dd_mom_days60 PF=5.17 tot=129.4% prefer_simpler=True drift_ok=True hrs_left=6.64
+- `2026-08-04 19:31:53 UTC` Next Block 10: live skip log; no stacking; FINAL lock when <1h — or FINAL now if deadline.
+- `2026-08-04 19:33:13 UTC` Block 9 post-fix: paper A → B6_ST_kill40_dd_nifty_mom_m04; research A keep B7_ST_kill40_dd_mom_days60; overfit MIXED (placebo PASS, held-out late identical, thin skips).
+- `2026-08-04 19:36:32 UTC` === Block 10 start ===
+- `2026-08-04 19:36:32 UTC` Hours to deadline: 6.54
+- `2026-08-04 19:36:32 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:36:40 UTC` Buy&hold ^NSEI OOS: tot=70.5% Sharpe=0.76
+- `2026-08-04 19:36:40 UTC` Repro RESEARCH A (B7) vs PAPER A (B6) side by side…
+- `2026-08-04 19:36:44 UTC`   RESEARCH A: n=63 PF=5.17 tot=129.4% MDD=-11.0% Sharpe=1.28 WF=3/3 lastWF=9.2% drift_ok=True
+- `2026-08-04 19:36:44 UTC`   PAPER A:    n=64 PF=4.73 tot=124.3% MDD=-13.0% Sharpe=1.24 WF=3/3 lastWF=9.2% drift_ok=True
+- `2026-08-04 19:36:46 UTC`   Tertiary B5: n=65 PF=4.01 tot=113.4% MDD=-15.0% Sharpe=1.17 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:36:46 UTC` Writing Paper A strategy + pine; annotating Research A labels…
+- `2026-08-04 19:36:46 UTC`   Wrote /Users/ryaneditraj/trading-ai/strategies/nifty_edge_paper.py
+- `2026-08-04 19:36:46 UTC`   Wrote /Users/ryaneditraj/trading-ai/pinescript/nifty_edge_paper.pine
+- `2026-08-04 19:36:46 UTC`   Annotated nifty_edge_best.py / nifty_edge_best.pine as RESEARCH A monitor
+- `2026-08-04 19:36:46 UTC` Paper A sensitivity — execution realism (next-open vs close entry)…
+- `2026-08-04 19:36:47 UTC`   EXEC next-open: n=64 PF=4.73 tot=124.3%
+- `2026-08-04 19:36:47 UTC`   EXEC close-entry: n=65 PF=4.57 tot=124.2% (Δtot=-0.0pp)
+- `2026-08-04 19:36:47 UTC` Paper A cost ladder refresh 0.08–0.20%…
+- `2026-08-04 19:36:49 UTC`   LADDER rt=0.08%: PF=4.73 tot=124.3% MDD=-13.0%
+- `2026-08-04 19:36:49 UTC`   LADDER rt=0.10%: PF=4.70 tot=123.5% MDD=-13.0%
+- `2026-08-04 19:36:49 UTC`   LADDER rt=0.12%: PF=4.68 tot=122.7% MDD=-13.1%
+- `2026-08-04 19:36:49 UTC`   LADDER rt=0.15%: PF=4.64 tot=121.6% MDD=-13.1%
+- `2026-08-04 19:36:49 UTC`   LADDER rt=0.20%: PF=4.57 tot=119.6% MDD=-13.3%
+- `2026-08-04 19:36:49 UTC` Paper A max-slots 4 vs 5…
+- `2026-08-04 19:36:51 UTC`   SLOTS=5: n=64 PF=4.73 tot=124.3% MDD=-13.0% Sharpe=1.24 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:36:53 UTC`   SLOTS=4: n=52 PF=4.69 tot=112.1% MDD=-12.1% Sharpe=1.11 WF=3/3 lastWF=4.7%
+- `2026-08-04 19:36:53 UTC` Paper A ST mult neighborhood…
+- `2026-08-04 19:36:55 UTC`   MULT=3.4: n=76 PF=2.83 tot=91.7% MDD=-13.1% Sharpe=1.03 WF=3/3 lastWF=2.7%
+- `2026-08-04 19:36:57 UTC`   MULT=3.5: n=75 PF=2.57 tot=76.7% MDD=-12.1% Sharpe=0.92 WF=2/3 lastWF=-3.5% ⚠ FRAGILE
+- `2026-08-04 19:36:59 UTC`   MULT=3.6: n=64 PF=4.73 tot=124.3% MDD=-13.0% Sharpe=1.24 WF=3/3 lastWF=9.2%
+- `2026-08-04 19:37:01 UTC`   MULT=3.7: n=62 PF=4.36 tot=117.8% MDD=-12.7% Sharpe=1.19 WF=3/3 lastWF=6.2%
+- `2026-08-04 19:37:03 UTC`   MULT=3.8: n=60 PF=3.25 tot=80.7% MDD=-13.4% Sharpe=0.97 WF=3/3 lastWF=0.4%
+- `2026-08-04 19:37:03 UTC` Paper A universe sensitivity (drop 1–2 names)…
+- `2026-08-04 19:37:05 UTC`   UNIV drop_WIPRO: n=61 PF=5.41 tot=131.1% MDD=-11.0% Sharpe=1.28 WF=3/3 lastWF=9.2% Δtot=+6.9pp
+- `2026-08-04 19:37:07 UTC`   UNIV drop_WIPRO_BAJFINANCE: n=62 PF=4.30 tot=117.0% MDD=-9.7% Sharpe=1.23 WF=3/3 lastWF=7.7% Δtot=-7.3pp
+- `2026-08-04 19:37:07 UTC` Updating PAPER_TRADE_RULES / CHECKLIST / FINAL draft / leaderboard…
+- `2026-08-04 19:37:07 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/PAPER_TRADE_RULES.md
+- `2026-08-04 19:37:07 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/CHECKLIST.md
+- `2026-08-04 19:37:07 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_DRAFT.md
+- `2026-08-04 19:37:07 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_OUTLINE.md
+- `2026-08-04 19:37:07 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:37:07 UTC` FINAL draft only (6.5h left; full lock later)
+- `2026-08-04 19:37:07 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block10_summary.json
+- `2026-08-04 19:37:07 UTC` --- Block 10 Paper vs Research ---
+- `2026-08-04 19:37:07 UTC`   PAPER A:    B6_ST_kill40_dd_nifty_mom_m04 tot=124.3% lastWF=9.2%
+- `2026-08-04 19:37:07 UTC`   RESEARCH A: B7_ST_kill40_dd_mom_days60 tot=129.4% lastWF=9.2% (monitor)
+- `2026-08-04 19:37:07 UTC` === Block 10 complete === paper=B6_ST_kill40_dd_nifty_mom_m04 research=B7_ST_kill40_dd_mom_days60 drift_p=True drift_r=True ladder_ok=True hrs_left=6.54
+- `2026-08-04 19:37:07 UTC` Next Block 11: paper shadow hygiene / live skip log; still no stacking; FINAL lock when <1h.
+- `2026-08-04 19:39:47 UTC` === Block 11 start ===
+- `2026-08-04 19:39:47 UTC` Hours to deadline: 6.49
+- `2026-08-04 19:39:47 UTC` Loading Nifty + Bank + 20 stocks…
+- `2026-08-04 19:39:55 UTC` Repro RESEARCH A (B7) vs PAPER A (B6)…
+- `2026-08-04 19:40:00 UTC`   RESEARCH A: n=63 PF=5.17 tot=129.4% MDD=-11.0% Sharpe=1.28 WF=3/3 lastWF=9.2% drift_ok=True
+- `2026-08-04 19:40:00 UTC`   PAPER A:    n=64 PF=4.73 tot=124.3% MDD=-13.0% Sharpe=1.24 WF=3/3 lastWF=9.2% drift_ok=True
+- `2026-08-04 19:40:00 UTC` Shadow paper book @ 0.08% and 0.15% RT (equity + weekly)…
+- `2026-08-04 19:40:00 UTC`   SHADOW 0.08%: n=64 PF=4.73 tot=124.3% weeks=290
+- `2026-08-04 19:40:00 UTC`   SHADOW 0.15%: n=64 PF=4.64 tot=121.6% weeks=290 Δtot=-2.7pp
+- `2026-08-04 19:40:00 UTC`   DAYS60 hist skips n=1 save_rate=1.0 thin=True
+- `2026-08-04 19:40:00 UTC` Benchmarks: ^NSEI BH + EW basket BH (same OOS)…
+- `2026-08-04 19:40:00 UTC`   ^NSEI BH: tot=70.5% MDD=-17.2% Sharpe=0.76
+- `2026-08-04 19:40:00 UTC`   EW basket: tot=99.5% MDD=-16.3% Sharpe=1.02
+- `2026-08-04 19:40:00 UTC` Pine conceptual compile check + universe freeze…
+- `2026-08-04 19:40:00 UTC`   Pine paper core_ok=True research core_ok=True
+- `2026-08-04 19:40:00 UTC`   Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/UNIVERSE_FREEZE.md
+- `2026-08-04 19:40:00 UTC` Writing SHADOW / DAYS60 log / CHECKLIST / FINAL draft / leaderboard…
+- `2026-08-04 19:40:00 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/SHADOW.md
+- `2026-08-04 19:40:00 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/DAYS60_SKIP_LOG.md
+- `2026-08-04 19:40:00 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/CHECKLIST.md
+- `2026-08-04 19:40:00 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_DRAFT.md
+- `2026-08-04 19:40:00 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_OUTLINE.md
+- `2026-08-04 19:40:00 UTC` Updated /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/leaderboard.md
+- `2026-08-04 19:40:00 UTC` Touched /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/PAPER_TRADE_RULES.md
+- `2026-08-04 19:40:00 UTC` FINAL draft only (6.5h left; full lock later)
+- `2026-08-04 19:40:00 UTC` Wrote /Users/ryaneditraj/trading-ai/research/nifty_edge_8h/results/block11_summary.json
+- `2026-08-04 19:40:00 UTC` --- Block 11 summary ---
+- `2026-08-04 19:40:00 UTC`   PAPER A: B6_ST_kill40_dd_nifty_mom_m04 tot=124.3% lastWF=9.2%
+- `2026-08-04 19:40:00 UTC`   RESEARCH A: B7_ST_kill40_dd_mom_days60 tot=129.4% (monitor)
+- `2026-08-04 19:40:00 UTC`   vs ^NSEI +53.8pp vs EW +24.8pp
+- `2026-08-04 19:40:00 UTC` === Block 11 complete === drift_p=True drift_r=True pine_ok=True days60_n=1 hrs_left=6.49
+- `2026-08-04 19:40:00 UTC` Next Block 12: maintain live skip + shadow weekly; still no stacking; FINAL lock when <1h.
+- `2026-08-05 01:35:44 UTC` === FINAL LOCK start ===
+- `2026-08-05 01:35:44 UTC` Hours to deadline: 0.556 (2026-08-05 07:05:44 IST)
+- `2026-08-05 01:35:44 UTC` FINAL repro Paper A: n=64 PF=4.73 tot=124.3% MDD=-13.0% Sharpe=1.24
+- `2026-08-05 01:35:44 UTC` FINAL repro Research A: n=63 PF=5.17 tot=129.4% MDD=-11.0% Sharpe=1.28
+- `2026-08-05 01:35:44 UTC` Block 11 leftovers present: SHADOW.md, DAYS60_SKIP_LOG.md, UNIVERSE_FREEZE.md, BH table — confirmed
+- `2026-08-05 01:35:44 UTC` Wrote research/nifty_edge_8h/FINAL_REPORT.md (LOCKED)
+- `2026-08-05 01:35:44 UTC` Aligned PAPER_TRADE_RULES.md / CHECKLIST.md / leaderboard.md / FINAL_REPORT_OUTLINE.md
+- `2026-08-05 01:35:44 UTC` block11_summary.json final_locked=true
+- `2026-08-05 01:35:44 UTC` === FINAL LOCK complete === PAPER A=B6_ST_kill40_dd_nifty_mom_m04 RESEARCH A=B7 monitor NO NEW GATES

@@ -1,0 +1,661 @@
+{
+  "video": "https://www.youtube.com/shorts/ln08lo2X5Lc",
+  "markets": {},
+  "baselines": {
+    "^NSEI|1d": {
+      "symbol": "^NSEI",
+      "tf": "1d",
+      "params": {
+        "body_atr": 1.4,
+        "max_age": 25,
+        "rr": 2.0,
+        "max_hold": 12,
+        "min_zone_atr": 0.2,
+        "require_fvg_fill": true,
+        "sides": "short"
+      },
+      "n_bars": 4558,
+      "IS": {
+        "split": "IS",
+        "n_trades": 10,
+        "win_rate": 0.6,
+        "profit_factor": 2.452359228248339,
+        "expectancy": 0.005601026204488746,
+        "total_return": 0.05628615637708245,
+        "max_dd": -0.019588317198970584,
+        "sharpe": 3.1706416123630037,
+        "sortino": 6.010244414965443,
+        "avg_hold": 3.2,
+        "avg_win": 0.015762546934072603,
+        "avg_loss": -0.009641254889887041
+      },
+      "OOS": {
+        "split": "OOS",
+        "n_trades": 2,
+        "win_rate": 0.0,
+        "profit_factor": 0.0,
+        "expectancy": -0.010126881483105421,
+        "total_return": -0.020224272617710093,
+        "max_dd": -0.0015791695043247955,
+        "sharpe": -8.410873780975418,
+        "sortino": -8.410873780975418,
+        "avg_hold": 2.5,
+        "avg_win": 0.0,
+        "avg_loss": -0.010126881483105421
+      }
+    },
+    "^NSEI|1h": {
+      "symbol": "^NSEI",
+      "tf": "1h",
+      "params": {
+        "body_atr": 1.4,
+        "max_age": 25,
+        "rr": 2.0,
+        "max_hold": 12,
+        "min_zone_atr": 0.2,
+        "require_fvg_fill": true,
+        "sides": "short"
+      },
+      "n_bars": 5058,
+      "IS": {
+        "split": "IS",
+        "n_trades": 12,
+        "win_rate": 0.08333333333333333,
+        "profit_factor": 0.07788270371144596,
+        "expectancy": -0.006510932204719488,
+        "total_return": -0.07574273282520105,
+        "max_dd": -0.07856220487507937,
+        "sharpe": -14.21916513384886,
+        "sortino": -15.678706116009474,
+        "avg_hold": 5.083333333333333,
+        "avg_win": 0.006599017359198933,
+        "avg_loss": -0.007702745801439345
+      },
+      "OOS": {
+        "split": "OOS",
+        "n_trades": 4,
+        "win_rate": 0.5,
+        "profit_factor": 2.191811407248206,
+        "expectancy": 0.0015607814903595418,
+        "total_return": 0.006222188283169228,
+        "max_dd": -0.003164601906544995,
+        "sharpe": 5.304104952223079,
+        "sortino": 33.43274987871979,
+        "avg_hold": 6.0,
+        "avg_win": 0.005740738264438272,
+        "avg_loss": -0.002619175283719188
+      }
+    },
+    "BTC-USD|1d": {
+      "symbol": "BTC-USD",
+      "tf": "1d",
+      "params": {
+        "body_atr": 1.4,
+        "max_age": 25,
+        "rr": 2.0,
+        "max_hold": 12,
+        "min_zone_atr": 0.2,
+        "require_fvg_fill": true,
+        "sides": "short"
+      },
+      "n_bars": 4236,
+      "IS": {
+        "split": "IS",
+        "n_trades": 11,
+        "win_rate": 0.36363636363636365,
+        "profit_factor": 0.9849241231281941,
+        "expectancy": -0.0003062503433651876,
+        "total_return": -0.0158803279485481,
+        "max_dd": -0.09709872792224561,
+        "sharpe": -0.049843792444773584,
+        "sortino": -0.09934076572115873,
+        "avg_hold": 3.727272727272727,
+        "avg_win": 0.05502112560478026,
+        "avg_loss": -0.03192189374230544
+      },
+      "OOS": {
+        "split": "OOS",
+        "n_trades": 4,
+        "win_rate": 0.5,
+        "profit_factor": 6.478408381389647,
+        "expectancy": 0.043373708708318054,
+        "total_return": 0.17506365363524123,
+        "max_dd": -0.0245866647542895,
+        "sharpe": 4.799428620670378,
+        "sortino": 30.856785385157433,
+        "avg_hold": 3.25,
+        "avg_win": 0.10258183708336271,
+        "avg_loss": -0.015834419666726607
+      }
+    },
+    "BTC-USD|1h": {
+      "symbol": "BTC-USD",
+      "tf": "1h",
+      "params": {
+        "body_atr": 1.4,
+        "max_age": 25,
+        "rr": 2.0,
+        "max_hold": 12,
+        "min_zone_atr": 0.2,
+        "require_fvg_fill": true,
+        "sides": "short"
+      },
+      "n_bars": 17476,
+      "IS": {
+        "split": "IS",
+        "n_trades": 72,
+        "win_rate": 0.4444444444444444,
+        "profit_factor": 1.0588291511419388,
+        "expectancy": 0.00023044136532889332,
+        "total_return": 0.01312063666847707,
+        "max_dd": -0.0787930831789545,
+        "sharpe": 0.8878194882857429,
+        "sortino": 1.84483374804612,
+        "avg_hold": 5.875,
+        "avg_win": 0.00933203299098401,
+        "avg_loss": -0.007050831935195201
+      },
+      "OOS": {
+        "split": "OOS",
+        "n_trades": 22,
+        "win_rate": 0.3181818181818182,
+        "profit_factor": 0.6959231191989941,
+        "expectancy": -0.001696672586255564,
+        "total_return": -0.037985275486195236,
+        "max_dd": -0.0902282988316957,
+        "sharpe": -5.885257489328951,
+        "sortino": -11.199117551931316,
+        "avg_hold": 5.590909090909091,
+        "avg_win": 0.012203953561383485,
+        "avg_loss": -0.008183631455153788
+      }
+    }
+  },
+  "winners": {
+    "^NSEI|1d": {
+      "params": {
+        "body_atr": 1.0,
+        "rr": 1.5,
+        "max_hold": 8,
+        "max_age": 15,
+        "require_fvg_fill": true,
+        "sides": "short",
+        "min_zone_atr": 0.2
+      },
+      "IS": {
+        "split": "IS",
+        "n_trades": 35,
+        "win_rate": 0.42857142857142855,
+        "profit_factor": 0.7248167395679553,
+        "expectancy": -0.0021941042063577357,
+        "total_return": -0.07839241898083749,
+        "max_dd": -0.1258459945772854,
+        "sharpe": -1.2574042675816488,
+        "sortino": -2.4690768827995613,
+        "avg_hold": 2.742857142857143,
+        "avg_win": 0.013484667372080114,
+        "avg_loss": -0.013953182890186122
+      },
+      "OOS": {
+        "split": "OOS",
+        "n_trades": 11,
+        "win_rate": 0.36363636363636365,
+        "profit_factor": 1.2628397758568628,
+        "expectancy": 0.0015515789388741178,
+        "total_return": 0.015787178440264116,
+        "max_dd": -0.05311827698962057,
+        "sharpe": 0.7201562405337187,
+        "sortino": 1.5226228395634325,
+        "avg_hold": 4.181818181818182,
+        "avg_win": 0.020500466037767562,
+        "avg_loss": -0.009276356546207851
+      },
+      "top5": [
+        {
+          "score": 0.041153817199549164,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 8,
+            "max_age": 15,
+            "require_fvg_fill": true,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 11,
+          "OOS_PF": 1.2628397758568628,
+          "OOS_E": 0.0015515789388741178,
+          "OOS_tot": 0.015787178440264116
+        },
+        {
+          "score": 0.029512407115329455,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 8,
+            "max_age": 30,
+            "require_fvg_fill": true,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 13,
+          "OOS_PF": 1.1810463021225768,
+          "OOS_E": 0.0009669479736235493,
+          "OOS_tot": 0.011221939088301491
+        },
+        {
+          "score": 0.02488062832191308,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 8,
+            "max_age": 15,
+            "require_fvg_fill": true,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 12,
+          "OOS_PF": 1.148893295130632,
+          "OOS_E": 0.000885600648036324,
+          "OOS_tot": 0.009245345925279036
+        },
+        {
+          "score": 0.0140000590474616,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 8,
+            "max_age": 30,
+            "require_fvg_fill": true,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 14,
+          "OOS_PF": 1.0807964368991714,
+          "OOS_E": 0.00043786879328048097,
+          "OOS_tot": 0.004709507447697936
+        },
+        {
+          "score": -100.00868451229171,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 15,
+            "max_age": 15,
+            "require_fvg_fill": true,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 11,
+          "OOS_PF": 0.9104566119859593,
+          "OOS_E": -0.0008684512291705082,
+          "OOS_tot": -0.011927936443232201
+        }
+      ]
+    },
+    "^NSEI|1h": {
+      "params": {
+        "body_atr": 1.0,
+        "rr": 1.5,
+        "max_hold": 8,
+        "max_age": 15,
+        "require_fvg_fill": false,
+        "sides": "short",
+        "min_zone_atr": 0.2
+      },
+      "IS": {
+        "split": "IS",
+        "n_trades": 26,
+        "win_rate": 0.34615384615384615,
+        "profit_factor": 0.4436818688458693,
+        "expectancy": -0.002133108211032588,
+        "total_return": -0.05463730371581943,
+        "max_dd": -0.05273836476516802,
+        "sharpe": -5.136206538932463,
+        "sortino": -6.252607383104811,
+        "avg_hold": 5.346153846153846,
+        "avg_win": 0.004914645455451363,
+        "avg_loss": -0.005864271916818209
+      },
+      "OOS": {
+        "split": "OOS",
+        "n_trades": 10,
+        "win_rate": 0.8,
+        "profit_factor": 6.092932668893403,
+        "expectancy": 0.003054704728579971,
+        "total_return": 0.030919529248515598,
+        "max_dd": -0.003164601906544995,
+        "sharpe": 17.3782564017999,
+        "sortino": 246.0784173105344,
+        "avg_hold": 4.6,
+        "avg_win": 0.004568122004701497,
+        "avg_loss": -0.002998964375906132
+      },
+      "top5": [
+        {
+          "score": 0.8785726446115941,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 8,
+            "max_age": 15,
+            "require_fvg_fill": false,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 10,
+          "OOS_PF": 6.092932668893403,
+          "OOS_E": 0.003054704728579971,
+          "OOS_tot": 0.030919529248515598
+        },
+        {
+          "score": 0.49301991701482706,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 2.5,
+            "max_hold": 8,
+            "max_age": 15,
+            "require_fvg_fill": false,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 10,
+          "OOS_PF": 4.162223033575718,
+          "OOS_E": 0.0028733427693181657,
+          "OOS_tot": 0.02900061035630097
+        },
+        {
+          "score": 0.4899888772892422,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 2.0,
+            "max_hold": 8,
+            "max_age": 15,
+            "require_fvg_fill": false,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 10,
+          "OOS_PF": 3.854592026944771,
+          "OOS_E": 0.002593814943755024,
+          "OOS_tot": 0.026153558765581675
+        },
+        {
+          "score": 0.44266857639294044,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 15,
+            "max_age": 15,
+            "require_fvg_fill": false,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 10,
+          "OOS_PF": 3.396115159101778,
+          "OOS_E": 0.002141154502814968,
+          "OOS_tot": 0.021546025729597407
+        },
+        {
+          "score": 0.38950226276897665,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 8,
+            "max_age": 15,
+            "require_fvg_fill": false,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 16,
+          "OOS_PF": 2.2936871764638265,
+          "OOS_E": 0.0018689145913429184,
+          "OOS_tot": 0.03015504401770519
+        }
+      ]
+    },
+    "BTC-USD|1d": {
+      "params": {
+        "body_atr": 1.0,
+        "rr": 1.5,
+        "max_hold": 8,
+        "max_age": 15,
+        "require_fvg_fill": true,
+        "sides": "both",
+        "min_zone_atr": 0.2
+      },
+      "IS": {
+        "split": "IS",
+        "n_trades": 48,
+        "win_rate": 0.5,
+        "profit_factor": 1.4060683517481591,
+        "expectancy": 0.01046711243236541,
+        "total_return": 0.40428349116745776,
+        "max_dd": -0.2653492996569098,
+        "sharpe": 0.9652940732531451,
+        "sortino": 1.995873820617842,
+        "avg_hold": 4.083333333333333,
+        "avg_win": 0.0724876758406741,
+        "avg_loss": -0.05155345097594328
+      },
+      "OOS": {
+        "split": "OOS",
+        "n_trades": 15,
+        "win_rate": 0.4666666666666667,
+        "profit_factor": 1.5173433817416873,
+        "expectancy": 0.008140891645693937,
+        "total_return": 0.11186305750429693,
+        "max_dd": -0.11703908304175914,
+        "sharpe": 1.671900899621535,
+        "sortino": 5.0200002210553025,
+        "avg_hold": 2.6,
+        "avg_win": 0.05116466919273461,
+        "avg_loss": -0.02950491370796665
+      },
+      "top5": [
+        {
+          "score": 0.11512458274812847,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 8,
+            "max_age": 15,
+            "require_fvg_fill": true,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 15,
+          "OOS_PF": 1.5173433817416873,
+          "OOS_E": 0.008140891645693937,
+          "OOS_tot": 0.11186305750429693
+        },
+        {
+          "score": 0.11512458274812847,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 15,
+            "max_age": 15,
+            "require_fvg_fill": true,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 15,
+          "OOS_PF": 1.5173433817416873,
+          "OOS_E": 0.008140891645693937,
+          "OOS_tot": 0.11186305750429693
+        },
+        {
+          "score": 0.07856890630953367,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 2.5,
+            "max_hold": 15,
+            "max_age": 15,
+            "require_fvg_fill": true,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 14,
+          "OOS_PF": 1.430261414781908,
+          "OOS_E": 0.008519298635854504,
+          "OOS_tot": 0.0954194932865553
+        },
+        {
+          "score": 0.05104299770423609,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 8,
+            "max_age": 30,
+            "require_fvg_fill": true,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 17,
+          "OOS_PF": 1.197774437464899,
+          "OOS_E": 0.003478679411243782,
+          "OOS_tot": 0.042918653126456485
+        },
+        {
+          "score": 0.05104299770423609,
+          "params": {
+            "body_atr": 1.0,
+            "rr": 1.5,
+            "max_hold": 15,
+            "max_age": 30,
+            "require_fvg_fill": true,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 17,
+          "OOS_PF": 1.197774437464899,
+          "OOS_E": 0.003478679411243782,
+          "OOS_tot": 0.042918653126456485
+        }
+      ]
+    },
+    "BTC-USD|1h": {
+      "params": {
+        "body_atr": 1.8,
+        "rr": 2.5,
+        "max_hold": 15,
+        "max_age": 30,
+        "require_fvg_fill": true,
+        "sides": "short",
+        "min_zone_atr": 0.2
+      },
+      "IS": {
+        "split": "IS",
+        "n_trades": 33,
+        "win_rate": 0.36363636363636365,
+        "profit_factor": 1.1367837594178067,
+        "expectancy": 0.0005547062938092035,
+        "total_return": 0.016601770740221067,
+        "max_dd": -0.046132260844432116,
+        "sharpe": 1.8896824299812973,
+        "sortino": 4.817506455251788,
+        "avg_hold": 6.545454545454546,
+        "avg_win": 0.012677660337864652,
+        "avg_loss": -0.006372696017079624
+      },
+      "OOS": {
+        "split": "OOS",
+        "n_trades": 11,
+        "win_rate": 0.36363636363636365,
+        "profit_factor": 1.6308631847145365,
+        "expectancy": 0.0026576860484017143,
+        "total_return": 0.028525744681974885,
+        "max_dd": -0.025418330481524753,
+        "sharpe": 6.342454179517922,
+        "sortino": 19.716854039923028,
+        "avg_hold": 7.090909090909091,
+        "avg_win": 0.018893773965871802,
+        "avg_loss": -0.006620078475866907
+      },
+      "top5": [
+        {
+          "score": 0.32593725640900695,
+          "params": {
+            "body_atr": 1.8,
+            "rr": 2.5,
+            "max_hold": 15,
+            "max_age": 30,
+            "require_fvg_fill": true,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 11,
+          "OOS_PF": 1.6308631847145365,
+          "OOS_E": 0.0026576860484017143,
+          "OOS_tot": 0.028525744681974885
+        },
+        {
+          "score": 0.29952853605710944,
+          "params": {
+            "body_atr": 1.8,
+            "rr": 1.5,
+            "max_hold": 15,
+            "max_age": 30,
+            "require_fvg_fill": true,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 11,
+          "OOS_PF": 1.5320767370177684,
+          "OOS_E": 0.0019899168966650356,
+          "OOS_tot": 0.02120516909014003
+        },
+        {
+          "score": 0.239195645099721,
+          "params": {
+            "body_atr": 1.8,
+            "rr": 2.0,
+            "max_hold": 15,
+            "max_age": 30,
+            "require_fvg_fill": true,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 11,
+          "OOS_PF": 1.4449379802448554,
+          "OOS_E": 0.0018744245838911483,
+          "OOS_tot": 0.019807457096960857
+        },
+        {
+          "score": 0.12484032334850677,
+          "params": {
+            "body_atr": 1.8,
+            "rr": 2.0,
+            "max_hold": 15,
+            "max_age": 15,
+            "require_fvg_fill": false,
+            "sides": "both",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 20,
+          "OOS_PF": 1.2197064139406018,
+          "OOS_E": 0.001105313690617721,
+          "OOS_tot": 0.02035968352192019
+        },
+        {
+          "score": 0.11357605248769753,
+          "params": {
+            "body_atr": 1.8,
+            "rr": 2.0,
+            "max_hold": 15,
+            "max_age": 15,
+            "require_fvg_fill": false,
+            "sides": "short",
+            "min_zone_atr": 0.2
+          },
+          "OOS_n": 12,
+          "OOS_PF": 1.1839337702054065,
+          "OOS_E": 0.0010430498324526807,
+          "OOS_tot": 0.01112209710172607
+        }
+      ]
+    }
+  },
+  "champion_tag": "^NSEI|1h"
+}

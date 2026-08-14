@@ -1,0 +1,45 @@
+//@version=5
+strategy("Nifty Edge RESEARCH A ST Proxy", overlay=true, initial_capital=100000,
+     commission_type=strategy.commission.percent, commission_value=0.04,
+     slippage=2, process_orders_on_close=false)
+
+// RESEARCH A = B7_ST_kill40_dd_mom_days60 (MONITOR-ONLY — Block 10)
+// SINGLE SYMBOL proxy. Research edge is a 5-slot basket.
+// OOS ~PF 5.17, tot 129.4%, lastWF 9.2%
+// Basket also requires breadth50>=0.4 (not in single-symbol Pine)
+// Basket also requires Nifty dd_from_prior55d_high>=-0.07 (not in Pine)
+// Basket also requires Nifty ret20>=-0.04 (not in single-symbol Pine)
+// Basket also requires Nifty days_since_high<=60 (not in single-symbol Pine)
+//
+// PAPER A (operational): pinescript/nifty_edge_paper.pine = B6 (no days60)
+// Do not paper-trade this file as primary without reading PAPER_TRADE_RULES.md
+
+atrLen = input.int(14, "ATR Length")
+mult = input.float(3.6, "ATR Mult", step=0.1)
+emaLen = input.int(200, "EMA Length")
+useEma = input.bool(true, "Require Close > EMA")
+
+atr = ta.atr(atrLen)
+hl2 = (high + low) / 2.0
+basicLB = hl2 - mult * atr
+var float finalLB = na
+if na(finalLB)
+    finalLB := basicLB
+else if close[1] > finalLB[1]
+    finalLB := math.max(basicLB, finalLB[1])
+else
+    finalLB := basicLB
+
+ema = ta.ema(close, emaLen)
+regime = not useEma or close > ema
+longCond = ta.crossover(close, finalLB) and regime
+exitCond = close < finalLB
+
+if longCond
+    strategy.entry("Long", strategy.long)
+if exitCond
+    strategy.close("Long")
+
+plot(finalLB, "ST Lower", color=color.new(color.teal, 0), linewidth=2)
+plot(ema, "EMA200", color=color.orange)
+bgcolor(longCond ? color.new(color.green, 85) : na)

@@ -1,0 +1,37 @@
+{
+  "name": "ON_mom_trend_0.008",
+  "role": "PAPER_OVERNIGHT",
+  "params": {
+    "thr": 0.008
+  },
+  "venue": "GIFT Nifty (preferred) / NSE open-gap proxy in backtest",
+  "OOS": {
+    "name": "ON_mom_trend_0.008",
+    "split": "OOS",
+    "n_trades": 66,
+    "win_rate": 0.5757575757575758,
+    "profit_factor": 1.7363219096554048,
+    "expectancy": 0.0013381056796746968,
+    "total_return": 0.08938236059408888,
+    "max_dd": -0.03757923289356602,
+    "sharpe": 2.3374713345507856
+  },
+  "OOS_stress_0.15": {
+    "name": "ON_mom_trend_0.008",
+    "split": "OOS",
+    "n_trades": 66,
+    "win_rate": 0.48484848484848486,
+    "profit_factor": 1.2973583467378098,
+    "expectancy": 0.0006381056796746967,
+    "total_return": 0.040241415701100625,
+    "max_dd": -0.04213072636678139,
+    "sharpe": 1.1146755875188104
+  },
+  "wf_pos": 3,
+  "last_wf_tot": 0.00486348119634461,
+  "rules": {
+    "entry": "India close: |day|>=0.8% with EMA200 alignment",
+    "exit": "Next open (gap)",
+    "side": "long if uptrend+up day; short if downtrend+down day"
+  }
+}

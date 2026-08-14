@@ -1,0 +1,16 @@
+[
+  {"utc": "2026-08-07T12:30:00Z", "name": "NFP (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-08-12T12:30:00Z", "name": "CPI (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-08-14T12:30:00Z", "name": "PPI (est.)", "hours_before": 4, "hours_after": 1},
+  {"utc": "2026-09-04T12:30:00Z", "name": "NFP (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-09-10T12:30:00Z", "name": "CPI (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-09-17T18:00:00Z", "name": "FOMC (est.)", "hours_before": 12, "hours_after": 4},
+  {"utc": "2026-10-03T12:30:00Z", "name": "NFP (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-10-14T12:30:00Z", "name": "CPI (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-10-29T18:00:00Z", "name": "FOMC (est.)", "hours_before": 12, "hours_after": 4},
+  {"utc": "2026-11-06T12:30:00Z", "name": "NFP (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-11-12T12:30:00Z", "name": "CPI (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-12-04T12:30:00Z", "name": "NFP (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-12-10T12:30:00Z", "name": "CPI (est.)", "hours_before": 6, "hours_after": 2},
+  {"utc": "2026-12-17T18:00:00Z", "name": "FOMC (est.)", "hours_before": 12, "hours_after": 4}
+]

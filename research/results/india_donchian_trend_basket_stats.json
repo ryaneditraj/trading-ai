@@ -1,0 +1,52 @@
+{
+  "params": {
+    "entry_n": 55,
+    "exit_n": 20,
+    "ema": 200,
+    "max_positions": 5,
+    "rt_cost": 0.0008
+  },
+  "universe": [
+    "RELIANCE.NS",
+    "TCS.NS",
+    "INFY.NS",
+    "HDFCBANK.NS",
+    "ICICIBANK.NS",
+    "SBIN.NS",
+    "BHARTIARTL.NS",
+    "ITC.NS",
+    "LT.NS",
+    "AXISBANK.NS",
+    "KOTAKBANK.NS",
+    "HINDUNILVR.NS",
+    "BAJFINANCE.NS",
+    "ASIANPAINT.NS",
+    "MARUTI.NS",
+    "SUNPHARMA.NS",
+    "TITAN.NS",
+    "ULTRACEMCO.NS",
+    "WIPRO.NS",
+    "NESTLEIND.NS"
+  ],
+  "IS": {
+    "n_trades": 208,
+    "win_rate": 0.4423076923076923,
+    "profit_factor": 2.3163583291865417,
+    "expectancy": 0.05029205065407524,
+    "total_return": 4.460879692005895,
+    "max_dd": -0.22905323882894313,
+    "sharpe": 0.8821086298761234,
+    "avg_hold_days": 88.77403846153847
+  },
+  "OOS": {
+    "n_trades": 124,
+    "win_rate": 0.3870967741935484,
+    "profit_factor": 1.168492211482485,
+    "expectancy": 0.0061614320866126,
+    "total_return": 0.09069493629814773,
+    "max_dd": -0.2061314291393308,
+    "sharpe": 0.18754313428412603,
+    "avg_hold_days": 64.5241935483871
+  },
+  "oos_start": "2021-01-15"
+}

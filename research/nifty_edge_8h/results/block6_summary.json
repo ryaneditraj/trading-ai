@@ -1,0 +1,3163 @@
+{
+  "repro": {
+    "name": "B5_ST_kill40_dd07",
+    "params": {
+      "mult": 3.6,
+      "use_nifty": true,
+      "use_ema200": true,
+      "breadth_floor": 0.4,
+      "dd_floor": -0.07
+    },
+    "IS": {
+      "n_trades": 135,
+      "win_rate": 0.4074074074074074,
+      "profit_factor": 2.0195356345899196,
+      "expectancy": 0.041578118815219944,
+      "total_return": 1.3422819070456953,
+      "max_dd": -0.2851986679545302,
+      "sharpe": 0.6281010636118575,
+      "avg_hold_days": 85.88888888888889
+    },
+    "OOS": {
+      "n_trades": 65,
+      "win_rate": 0.5692307692307692,
+      "profit_factor": 4.005008639948001,
+      "expectancy": 0.06646805287343747,
+      "total_return": 1.1344366318533434,
+      "max_dd": -0.1504460259445729,
+      "sharpe": 1.1657105047097958,
+      "avg_hold_days": 94.18461538461538
+    },
+    "OOS_stress": {
+      "n_trades": 65,
+      "win_rate": 0.5538461538461539,
+      "profit_factor": 3.9325209630505604,
+      "expectancy": 0.0657680528734375,
+      "total_return": 1.1079094080263685,
+      "max_dd": -0.15212862747819778,
+      "sharpe": 1.1467348879438726,
+      "avg_hold_days": 94.18461538461538
+    },
+    "wf": [
+      {
+        "period": "2021-01-15\u21922022-11-21",
+        "n_trades": 25,
+        "win_rate": 0.6,
+        "profit_factor": 3.7082612849692467,
+        "expectancy": 0.0738771491193257,
+        "total_return": 0.3582859200764146,
+        "max_dd": -0.1504460259445729,
+        "sharpe": 1.1486241210520953,
+        "avg_hold_days": 82.6
+      },
+      {
+        "period": "2022-11-21\u21922024-09-27",
+        "n_trades": 32,
+        "win_rate": 0.5,
+        "profit_factor": 3.607891637454912,
+        "expectancy": 0.05905629928292863,
+        "total_return": 0.3999108671445992,
+        "max_dd": -0.09146294573592428,
+        "sharpe": 1.4654413294126176,
+        "avg_hold_days": 88.71875
+      },
+      {
+        "period": "2024-09-27\u21922026-08-04",
+        "n_trades": 16,
+        "win_rate": 0.5625,
+        "profit_factor": 2.2524690951759676,
+        "expectancy": 0.03179272695929369,
+        "total_return": 0.09158299379657464,
+        "max_dd": -0.07735908942501957,
+        "sharpe": 0.6676578166151678,
+        "avg_hold_days": 85.9375
+      }
+    ],
+    "wf_pos": 3,
+    "wf_n": 3,
+    "symbol": "BASKET20",
+    "last_wf_tot": 0.09158299379657464
+  },
+  "drift_ok": true,
+  "neighborhood": [
+    {
+      "name": "B6_hood_dd05",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.05
+      },
+      "IS": {
+        "n_trades": 126,
+        "win_rate": 0.3888888888888889,
+        "profit_factor": 1.5241629227232345,
+        "expectancy": 0.02207528932950372,
+        "total_return": 0.452262011646831,
+        "max_dd": -0.26050030109722855,
+        "sharpe": 0.33740304980474317,
+        "avg_hold_days": 80.92857142857143
+      },
+      "OOS": {
+        "n_trades": 68,
+        "win_rate": 0.4852941176470588,
+        "profit_factor": 2.5836639878373373,
+        "expectancy": 0.04026691369696473,
+        "total_return": 0.6463293525522231,
+        "max_dd": -0.17385090845320428,
+        "sharpe": 0.9087943282993256,
+        "avg_hold_days": 82.22058823529412
+      },
+      "OOS_stress": {
+        "n_trades": 68,
+        "win_rate": 0.47058823529411764,
+        "profit_factor": 2.534020909878411,
+        "expectancy": 0.03956691369696473,
+        "total_return": 0.6249574457169489,
+        "max_dd": -0.17657082308861782,
+        "sharpe": 0.8856988483269799,
+        "avg_hold_days": 82.22058823529412
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 24,
+          "win_rate": 0.4583333333333333,
+          "profit_factor": 1.5374003120076516,
+          "expectancy": 0.019716875292839473,
+          "total_return": 0.07864233868509807,
+          "max_dd": -0.14393306422634045,
+          "sharpe": 0.4343537748462947,
+          "avg_hold_days": 67.83333333333333
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.8175373596869426,
+          "expectancy": 0.06380377434581247,
+          "total_return": 0.4399971167896257,
+          "max_dd": -0.09146348694488937,
+          "sharpe": 1.6102039635928684,
+          "avg_hold_days": 85.5
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "dd_floor",
+      "axis_val": "-0.05"
+    },
+    {
+      "name": "B6_hood_dd06",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.06
+      },
+      "IS": {
+        "n_trades": 132,
+        "win_rate": 0.4015151515151515,
+        "profit_factor": 1.685469277487105,
+        "expectancy": 0.028434714546221984,
+        "total_return": 0.7151482633337047,
+        "max_dd": -0.2752351152929948,
+        "sharpe": 0.4395515912770311,
+        "avg_hold_days": 83.6969696969697
+      },
+      "OOS": {
+        "n_trades": 71,
+        "win_rate": 0.49295774647887325,
+        "profit_factor": 2.509612017844404,
+        "expectancy": 0.03954120332788382,
+        "total_return": 0.6529956569737208,
+        "max_dd": -0.18070980854376906,
+        "sharpe": 0.8979370077376987,
+        "avg_hold_days": 83.07042253521126
+      },
+      "OOS_stress": {
+        "n_trades": 71,
+        "win_rate": 0.4788732394366197,
+        "profit_factor": 2.4627335256131575,
+        "expectancy": 0.038841203327883815,
+        "total_return": 0.6303080474524385,
+        "max_dd": -0.1842898077087315,
+        "sharpe": 0.874046674398904,
+        "avg_hold_days": 83.07042253521126
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 27,
+          "win_rate": 0.48148148148148145,
+          "profit_factor": 1.5364464725807425,
+          "expectancy": 0.020091863404233194,
+          "total_return": 0.08273723429943236,
+          "max_dd": -0.1540743262156289,
+          "sharpe": 0.4332301413479116,
+          "avg_hold_days": 71.66666666666667
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.8175373596869426,
+          "expectancy": 0.06380377434581247,
+          "total_return": 0.4399971167896257,
+          "max_dd": -0.09146348694488937,
+          "sharpe": 1.6102039635928684,
+          "avg_hold_days": 85.5
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "dd_floor",
+      "axis_val": "-0.06"
+    },
+    {
+      "name": "B6_hood_dd07",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 135,
+        "win_rate": 0.4074074074074074,
+        "profit_factor": 2.0195356345899196,
+        "expectancy": 0.041578118815219944,
+        "total_return": 1.3422819070456953,
+        "max_dd": -0.2851986679545302,
+        "sharpe": 0.6281010636118575,
+        "avg_hold_days": 85.88888888888889
+      },
+      "OOS": {
+        "n_trades": 65,
+        "win_rate": 0.5692307692307692,
+        "profit_factor": 4.005008639948001,
+        "expectancy": 0.06646805287343747,
+        "total_return": 1.1344366318533434,
+        "max_dd": -0.1504460259445729,
+        "sharpe": 1.1657105047097958,
+        "avg_hold_days": 94.18461538461538
+      },
+      "OOS_stress": {
+        "n_trades": 65,
+        "win_rate": 0.5538461538461539,
+        "profit_factor": 3.9325209630505604,
+        "expectancy": 0.0657680528734375,
+        "total_return": 1.1079094080263685,
+        "max_dd": -0.15212862747819778,
+        "sharpe": 1.1467348879438726,
+        "avg_hold_days": 94.18461538461538
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.6,
+          "profit_factor": 3.7082612849692467,
+          "expectancy": 0.0738771491193257,
+          "total_return": 0.3582859200764146,
+          "max_dd": -0.1504460259445729,
+          "sharpe": 1.1486241210520953,
+          "avg_hold_days": 82.6
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "dd_floor",
+      "axis_val": "-0.07"
+    },
+    {
+      "name": "B6_hood_dd08",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.08
+      },
+      "IS": {
+        "n_trades": 136,
+        "win_rate": 0.4117647058823529,
+        "profit_factor": 2.034335767407408,
+        "expectancy": 0.0417928535534432,
+        "total_return": 1.3702784093695524,
+        "max_dd": -0.2833985731069828,
+        "sharpe": 0.6378441012715735,
+        "avg_hold_days": 85.48529411764706
+      },
+      "OOS": {
+        "n_trades": 64,
+        "win_rate": 0.5625,
+        "profit_factor": 4.103494117464227,
+        "expectancy": 0.06334772394152625,
+        "total_return": 1.0722562402483038,
+        "max_dd": -0.13042796685945346,
+        "sharpe": 1.135453154754009,
+        "avg_hold_days": 97.015625
+      },
+      "OOS_stress": {
+        "n_trades": 64,
+        "win_rate": 0.546875,
+        "profit_factor": 4.0228668892735024,
+        "expectancy": 0.06264772394152626,
+        "total_return": 1.0468602724057305,
+        "max_dd": -0.13165541390765034,
+        "sharpe": 1.1165672513139633,
+        "avg_hold_days": 97.015625
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 24,
+          "win_rate": 0.5833333333333334,
+          "profit_factor": 3.871123322724238,
+          "expectancy": 0.06586498431114107,
+          "total_return": 0.3187163450599726,
+          "max_dd": -0.13042796685945346,
+          "sharpe": 1.0674887501345023,
+          "avg_hold_days": 89.66666666666667
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "dd_floor",
+      "axis_val": "-0.08"
+    },
+    {
+      "name": "B6_hood_dd09",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.09
+      },
+      "IS": {
+        "n_trades": 137,
+        "win_rate": 0.41605839416058393,
+        "profit_factor": 2.025238602675926,
+        "expectancy": 0.04134078593773285,
+        "total_return": 1.3025638367146168,
+        "max_dd": -0.28609644894218667,
+        "sharpe": 0.6175758843268488,
+        "avg_hold_days": 85.77372262773723
+      },
+      "OOS": {
+        "n_trades": 64,
+        "win_rate": 0.5625,
+        "profit_factor": 4.103494117464227,
+        "expectancy": 0.06334772394152625,
+        "total_return": 1.0722562402483038,
+        "max_dd": -0.13042796685945346,
+        "sharpe": 1.135453154754009,
+        "avg_hold_days": 97.015625
+      },
+      "OOS_stress": {
+        "n_trades": 64,
+        "win_rate": 0.546875,
+        "profit_factor": 4.0228668892735024,
+        "expectancy": 0.06264772394152626,
+        "total_return": 1.0468602724057305,
+        "max_dd": -0.13165541390765034,
+        "sharpe": 1.1165672513139633,
+        "avg_hold_days": 97.015625
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 24,
+          "win_rate": 0.5833333333333334,
+          "profit_factor": 3.871123322724238,
+          "expectancy": 0.06586498431114107,
+          "total_return": 0.3187163450599726,
+          "max_dd": -0.13042796685945346,
+          "sharpe": 1.0674887501345023,
+          "avg_hold_days": 89.66666666666667
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "dd_floor",
+      "axis_val": "-0.09"
+    },
+    {
+      "name": "B6_hood_br35",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.35,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 138,
+        "win_rate": 0.39855072463768115,
+        "profit_factor": 2.042769661999519,
+        "expectancy": 0.04124323995256076,
+        "total_return": 1.3859412185411237,
+        "max_dd": -0.2890323071605375,
+        "sharpe": 0.6365891516407111,
+        "avg_hold_days": 84.85507246376811
+      },
+      "OOS": {
+        "n_trades": 69,
+        "win_rate": 0.5362318840579711,
+        "profit_factor": 3.3799194047686227,
+        "expectancy": 0.058761227628968626,
+        "total_return": 1.0344339825116955,
+        "max_dd": -0.17387087673143342,
+        "sharpe": 1.0807965413285028,
+        "avg_hold_days": 90.17391304347827
+      },
+      "OOS_stress": {
+        "n_trades": 69,
+        "win_rate": 0.5217391304347826,
+        "profit_factor": 3.3204814545859547,
+        "expectancy": 0.058061227628968634,
+        "total_return": 1.0076640611378411,
+        "max_dd": -0.17586697500171322,
+        "sharpe": 1.0610489301517347,
+        "avg_hold_days": 90.17391304347827
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 27,
+          "win_rate": 0.5555555555555556,
+          "profit_factor": 3.1026699560033735,
+          "expectancy": 0.06347484762414067,
+          "total_return": 0.32083374402243314,
+          "max_dd": -0.17387087673143342,
+          "sharpe": 1.0286974684928925,
+          "avg_hold_days": 78.37037037037037
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "breadth_floor",
+      "axis_val": "0.35"
+    },
+    {
+      "name": "B6_hood_br38",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.38,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 135,
+        "win_rate": 0.4074074074074074,
+        "profit_factor": 2.0195356345899196,
+        "expectancy": 0.041578118815219944,
+        "total_return": 1.3422819070456953,
+        "max_dd": -0.2851986679545302,
+        "sharpe": 0.6281010636118575,
+        "avg_hold_days": 85.88888888888889
+      },
+      "OOS": {
+        "n_trades": 65,
+        "win_rate": 0.5692307692307692,
+        "profit_factor": 4.005008639948001,
+        "expectancy": 0.06646805287343747,
+        "total_return": 1.1344366318533434,
+        "max_dd": -0.1504460259445729,
+        "sharpe": 1.1657105047097958,
+        "avg_hold_days": 94.18461538461538
+      },
+      "OOS_stress": {
+        "n_trades": 65,
+        "win_rate": 0.5538461538461539,
+        "profit_factor": 3.9325209630505604,
+        "expectancy": 0.0657680528734375,
+        "total_return": 1.1079094080263685,
+        "max_dd": -0.15212862747819778,
+        "sharpe": 1.1467348879438726,
+        "avg_hold_days": 94.18461538461538
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.6,
+          "profit_factor": 3.7082612849692467,
+          "expectancy": 0.0738771491193257,
+          "total_return": 0.3582859200764146,
+          "max_dd": -0.1504460259445729,
+          "sharpe": 1.1486241210520953,
+          "avg_hold_days": 82.6
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "breadth_floor",
+      "axis_val": "0.38"
+    },
+    {
+      "name": "B6_hood_br40",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 135,
+        "win_rate": 0.4074074074074074,
+        "profit_factor": 2.0195356345899196,
+        "expectancy": 0.041578118815219944,
+        "total_return": 1.3422819070456953,
+        "max_dd": -0.2851986679545302,
+        "sharpe": 0.6281010636118575,
+        "avg_hold_days": 85.88888888888889
+      },
+      "OOS": {
+        "n_trades": 65,
+        "win_rate": 0.5692307692307692,
+        "profit_factor": 4.005008639948001,
+        "expectancy": 0.06646805287343747,
+        "total_return": 1.1344366318533434,
+        "max_dd": -0.1504460259445729,
+        "sharpe": 1.1657105047097958,
+        "avg_hold_days": 94.18461538461538
+      },
+      "OOS_stress": {
+        "n_trades": 65,
+        "win_rate": 0.5538461538461539,
+        "profit_factor": 3.9325209630505604,
+        "expectancy": 0.0657680528734375,
+        "total_return": 1.1079094080263685,
+        "max_dd": -0.15212862747819778,
+        "sharpe": 1.1467348879438726,
+        "avg_hold_days": 94.18461538461538
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.6,
+          "profit_factor": 3.7082612849692467,
+          "expectancy": 0.0738771491193257,
+          "total_return": 0.3582859200764146,
+          "max_dd": -0.1504460259445729,
+          "sharpe": 1.1486241210520953,
+          "avg_hold_days": 82.6
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "breadth_floor",
+      "axis_val": "0.40"
+    },
+    {
+      "name": "B6_hood_br42",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.42,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 128,
+        "win_rate": 0.40625,
+        "profit_factor": 2.017579541272469,
+        "expectancy": 0.041063794910614584,
+        "total_return": 1.2530441916610302,
+        "max_dd": -0.27284351184208144,
+        "sharpe": 0.6197964184538515,
+        "avg_hold_days": 86.84375
+      },
+      "OOS": {
+        "n_trades": 64,
+        "win_rate": 0.515625,
+        "profit_factor": 3.0823186834490217,
+        "expectancy": 0.050139937218863805,
+        "total_return": 0.7818891381564164,
+        "max_dd": -0.17844031099989877,
+        "sharpe": 0.9809161558060995,
+        "avg_hold_days": 86.046875
+      },
+      "OOS_stress": {
+        "n_trades": 64,
+        "win_rate": 0.5,
+        "profit_factor": 3.0241884578083726,
+        "expectancy": 0.0494399372188638,
+        "total_return": 0.7598292341169968,
+        "max_dd": -0.18095178110987797,
+        "sharpe": 0.9602461789284266,
+        "avg_hold_days": 86.046875
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.56,
+          "profit_factor": 3.0172822910109125,
+          "expectancy": 0.05302849013867836,
+          "total_return": 0.25261804790654274,
+          "max_dd": -0.13307136364371464,
+          "sharpe": 0.9066940775830966,
+          "avg_hold_days": 78.76
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 29,
+          "win_rate": 0.41379310344827586,
+          "profit_factor": 3.2573597099127043,
+          "expectancy": 0.05613051260465123,
+          "total_return": 0.34445609470260985,
+          "max_dd": -0.07019153108860043,
+          "sharpe": 1.4684736989040175,
+          "avg_hold_days": 80.6896551724138
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 15,
+          "win_rate": 0.6,
+          "profit_factor": 2.0798645671841784,
+          "expectancy": 0.027953721505287372,
+          "total_return": 0.07566985276768823,
+          "max_dd": -0.06917286272304446,
+          "sharpe": 0.6473050206588168,
+          "avg_hold_days": 79.0
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.07566985276768823,
+      "axis": "breadth_floor",
+      "axis_val": "0.42"
+    },
+    {
+      "name": "B6_hood_br45",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.45,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 128,
+        "win_rate": 0.40625,
+        "profit_factor": 2.017579541272469,
+        "expectancy": 0.041063794910614584,
+        "total_return": 1.2530441916610302,
+        "max_dd": -0.27284351184208144,
+        "sharpe": 0.6197964184538515,
+        "avg_hold_days": 86.84375
+      },
+      "OOS": {
+        "n_trades": 64,
+        "win_rate": 0.515625,
+        "profit_factor": 3.0823186834490217,
+        "expectancy": 0.050139937218863805,
+        "total_return": 0.7818891381564164,
+        "max_dd": -0.17844031099989877,
+        "sharpe": 0.9809161558060995,
+        "avg_hold_days": 86.046875
+      },
+      "OOS_stress": {
+        "n_trades": 64,
+        "win_rate": 0.5,
+        "profit_factor": 3.0241884578083726,
+        "expectancy": 0.0494399372188638,
+        "total_return": 0.7598292341169968,
+        "max_dd": -0.18095178110987797,
+        "sharpe": 0.9602461789284266,
+        "avg_hold_days": 86.046875
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.56,
+          "profit_factor": 3.0172822910109125,
+          "expectancy": 0.05302849013867836,
+          "total_return": 0.25261804790654274,
+          "max_dd": -0.13307136364371464,
+          "sharpe": 0.9066940775830966,
+          "avg_hold_days": 78.76
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 29,
+          "win_rate": 0.41379310344827586,
+          "profit_factor": 3.2573597099127043,
+          "expectancy": 0.05613051260465123,
+          "total_return": 0.34445609470260985,
+          "max_dd": -0.07019153108860043,
+          "sharpe": 1.4684736989040175,
+          "avg_hold_days": 80.6896551724138
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 15,
+          "win_rate": 0.6,
+          "profit_factor": 2.0798645671841784,
+          "expectancy": 0.027953721505287372,
+          "total_return": 0.07566985276768823,
+          "max_dd": -0.06917286272304446,
+          "sharpe": 0.6473050206588168,
+          "avg_hold_days": 79.0
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.07566985276768823,
+      "axis": "breadth_floor",
+      "axis_val": "0.45"
+    },
+    {
+      "name": "B6_hood_m3.2",
+      "params": {
+        "mult": 3.2,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 169,
+        "win_rate": 0.41420118343195267,
+        "profit_factor": 2.428587734581604,
+        "expectancy": 0.048357805169190485,
+        "total_return": 2.558851957925601,
+        "max_dd": -0.2125599890643065,
+        "sharpe": 0.9199980524887748,
+        "avg_hold_days": 70.63905325443787
+      },
+      "OOS": {
+        "n_trades": 91,
+        "win_rate": 0.4835164835164835,
+        "profit_factor": 2.264724987109151,
+        "expectancy": 0.032905937538429755,
+        "total_return": 0.7141093322202219,
+        "max_dd": -0.25071710610702735,
+        "sharpe": 0.8551476633612577,
+        "avg_hold_days": 67.20879120879121
+      },
+      "OOS_stress": {
+        "n_trades": 91,
+        "win_rate": 0.4835164835164835,
+        "profit_factor": 2.220856307214721,
+        "expectancy": 0.03220593753842976,
+        "total_return": 0.6830918506460091,
+        "max_dd": -0.25501297945901313,
+        "sharpe": 0.8272972054591589,
+        "avg_hold_days": 67.20879120879121
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 36,
+          "win_rate": 0.4166666666666667,
+          "profit_factor": 1.615666965060143,
+          "expectancy": 0.02161112018819196,
+          "total_return": 0.13488197898420462,
+          "max_dd": -0.21488444710919086,
+          "sharpe": 0.5135818933057777,
+          "avg_hold_days": 54.111111111111114
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 39,
+          "win_rate": 0.5128205128205128,
+          "profit_factor": 3.5941788599245292,
+          "expectancy": 0.0481961106984457,
+          "total_return": 0.42259964584458287,
+          "max_dd": -0.08113487361757543,
+          "sharpe": 1.6379341184226976,
+          "avg_hold_days": 70.6923076923077
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 22,
+          "win_rate": 0.3181818181818182,
+          "profit_factor": 1.1786939927047986,
+          "expectancy": 0.005523442334924181,
+          "total_return": 0.01936920827433819,
+          "max_dd": -0.09029724962307106,
+          "sharpe": 0.17685864006525545,
+          "avg_hold_days": 59.45454545454545
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.01936920827433819,
+      "axis": "st_mult",
+      "axis_val": "3.2"
+    },
+    {
+      "name": "B6_hood_m3.4",
+      "params": {
+        "mult": 3.4,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 155,
+        "win_rate": 0.4,
+        "profit_factor": 2.2337361221502445,
+        "expectancy": 0.0472139907005396,
+        "total_return": 2.0349013807516436,
+        "max_dd": -0.252888394393986,
+        "sharpe": 0.7729209993107468,
+        "avg_hold_days": 77.09032258064516
+      },
+      "OOS": {
+        "n_trades": 78,
+        "win_rate": 0.47435897435897434,
+        "profit_factor": 2.6217996000227877,
+        "expectancy": 0.045390456952645986,
+        "total_return": 0.8537085920151335,
+        "max_dd": -0.15992324968044924,
+        "sharpe": 0.9732216516886406,
+        "avg_hold_days": 78.67948717948718
+      },
+      "OOS_stress": {
+        "n_trades": 78,
+        "win_rate": 0.46153846153846156,
+        "profit_factor": 2.5757668529522295,
+        "expectancy": 0.044690456952645986,
+        "total_return": 0.8259231132965283,
+        "max_dd": -0.16200116904859985,
+        "sharpe": 0.9499477115753281,
+        "avg_hold_days": 78.67948717948718
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 30,
+          "win_rate": 0.5333333333333333,
+          "profit_factor": 2.8075155430487184,
+          "expectancy": 0.054098267423602055,
+          "total_return": 0.3057281321314673,
+          "max_dd": -0.15992324968044924,
+          "sharpe": 1.0135350441919504,
+          "avg_hold_days": 67.43333333333334
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 39,
+          "win_rate": 0.41025641025641024,
+          "profit_factor": 2.5485667338575904,
+          "expectancy": 0.03962950328900899,
+          "total_return": 0.3276377504153394,
+          "max_dd": -0.08261991179594275,
+          "sharpe": 1.3039644551738134,
+          "avg_hold_days": 67.58974358974359
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 18,
+          "win_rate": 0.3888888888888889,
+          "profit_factor": 1.3271860600275975,
+          "expectancy": 0.011633312993950953,
+          "total_return": 0.02665468577555652,
+          "max_dd": -0.09360124269802328,
+          "sharpe": 0.23481321597825594,
+          "avg_hold_days": 74.33333333333333
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.02665468577555652,
+      "axis": "st_mult",
+      "axis_val": "3.4"
+    },
+    {
+      "name": "B6_hood_m3.5",
+      "params": {
+        "mult": 3.5,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 147,
+        "win_rate": 0.3877551020408163,
+        "profit_factor": 1.9502212079451344,
+        "expectancy": 0.03929592276846174,
+        "total_return": 1.3011138101115463,
+        "max_dd": -0.2898337521015273,
+        "sharpe": 0.6035563314424386,
+        "avg_hold_days": 79.0
+      },
+      "OOS": {
+        "n_trades": 76,
+        "win_rate": 0.4342105263157895,
+        "profit_factor": 2.4284253211953675,
+        "expectancy": 0.04006772720962384,
+        "total_return": 0.7255444553130141,
+        "max_dd": -0.14136869355975412,
+        "sharpe": 0.877846372331635,
+        "avg_hold_days": 78.25
+      },
+      "OOS_stress": {
+        "n_trades": 76,
+        "win_rate": 0.42105263157894735,
+        "profit_factor": 2.3836590334064116,
+        "expectancy": 0.03936772720962384,
+        "total_return": 0.7006745971387383,
+        "max_dd": -0.14322881092609974,
+        "sharpe": 0.8554458368405039,
+        "avg_hold_days": 78.25
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 27,
+          "win_rate": 0.5555555555555556,
+          "profit_factor": 3.0050420661439965,
+          "expectancy": 0.05960510667105789,
+          "total_return": 0.3040603509142281,
+          "max_dd": -0.14136869355975412,
+          "sharpe": 1.033893159749845,
+          "avg_hold_days": 73.5925925925926
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 37,
+          "win_rate": 0.3783783783783784,
+          "profit_factor": 2.6139270117588205,
+          "expectancy": 0.04532315222505138,
+          "total_return": 0.3620862697154603,
+          "max_dd": -0.09107199770447227,
+          "sharpe": 1.3492025723769985,
+          "avg_hold_days": 74.24324324324324
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 20,
+          "win_rate": 0.4,
+          "profit_factor": 0.7670327341790957,
+          "expectancy": -0.007885710844831926,
+          "total_return": -0.03525217572236494,
+          "max_dd": -0.09200243219319715,
+          "sharpe": -0.25156178831498066,
+          "avg_hold_days": 65.35
+        }
+      ],
+      "wf_pos": 2,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": -0.03525217572236494,
+      "axis": "st_mult",
+      "axis_val": "3.5"
+    },
+    {
+      "name": "B6_hood_m3.6",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 135,
+        "win_rate": 0.4074074074074074,
+        "profit_factor": 2.0195356345899196,
+        "expectancy": 0.041578118815219944,
+        "total_return": 1.3422819070456953,
+        "max_dd": -0.2851986679545302,
+        "sharpe": 0.6281010636118575,
+        "avg_hold_days": 85.88888888888889
+      },
+      "OOS": {
+        "n_trades": 65,
+        "win_rate": 0.5692307692307692,
+        "profit_factor": 4.005008639948001,
+        "expectancy": 0.06646805287343747,
+        "total_return": 1.1344366318533434,
+        "max_dd": -0.1504460259445729,
+        "sharpe": 1.1657105047097958,
+        "avg_hold_days": 94.18461538461538
+      },
+      "OOS_stress": {
+        "n_trades": 65,
+        "win_rate": 0.5538461538461539,
+        "profit_factor": 3.9325209630505604,
+        "expectancy": 0.0657680528734375,
+        "total_return": 1.1079094080263685,
+        "max_dd": -0.15212862747819778,
+        "sharpe": 1.1467348879438726,
+        "avg_hold_days": 94.18461538461538
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.6,
+          "profit_factor": 3.7082612849692467,
+          "expectancy": 0.0738771491193257,
+          "total_return": 0.3582859200764146,
+          "max_dd": -0.1504460259445729,
+          "sharpe": 1.1486241210520953,
+          "avg_hold_days": 82.6
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464,
+      "axis": "st_mult",
+      "axis_val": "3.6"
+    },
+    {
+      "name": "B6_hood_m3.7",
+      "params": {
+        "mult": 3.7,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 132,
+        "win_rate": 0.44696969696969696,
+        "profit_factor": 2.1308131644759962,
+        "expectancy": 0.041221441308299286,
+        "total_return": 1.3154294416214318,
+        "max_dd": -0.24199660125775957,
+        "sharpe": 0.6394630309363044,
+        "avg_hold_days": 85.53787878787878
+      },
+      "OOS": {
+        "n_trades": 63,
+        "win_rate": 0.5396825396825397,
+        "profit_factor": 3.7844138161742666,
+        "expectancy": 0.06790603820509393,
+        "total_return": 1.090018488750407,
+        "max_dd": -0.147751106224412,
+        "sharpe": 1.1257278922631042,
+        "avg_hold_days": 93.6984126984127
+      },
+      "OOS_stress": {
+        "n_trades": 63,
+        "win_rate": 0.5396825396825397,
+        "profit_factor": 3.719776367655412,
+        "expectancy": 0.06720603820509394,
+        "total_return": 1.0644842849157268,
+        "max_dd": -0.14911289798175453,
+        "sharpe": 1.1072808346587861,
+        "avg_hold_days": 93.6984126984127
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.56,
+          "profit_factor": 3.378289488734004,
+          "expectancy": 0.07266003211440482,
+          "total_return": 0.33938543114066033,
+          "max_dd": -0.147751106224412,
+          "sharpe": 1.1073775471345002,
+          "avg_hold_days": 83.72
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 26,
+          "win_rate": 0.5769230769230769,
+          "profit_factor": 6.09252808598251,
+          "expectancy": 0.10109149526308561,
+          "total_return": 0.5966718961962771,
+          "max_dd": -0.09662575903860182,
+          "sharpe": 1.9484804664361264,
+          "avg_hold_days": 105.07692307692308
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5,
+          "profit_factor": 1.7507495482738835,
+          "expectancy": 0.022839519865534987,
+          "total_return": 0.06157288105458747,
+          "max_dd": -0.08100058449455394,
+          "sharpe": 0.47536848957955036,
+          "avg_hold_days": 85.5625
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.06157288105458747,
+      "axis": "st_mult",
+      "axis_val": "3.7"
+    },
+    {
+      "name": "B6_hood_m3.8",
+      "params": {
+        "mult": 3.8,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 125,
+        "win_rate": 0.432,
+        "profit_factor": 1.9271619472068728,
+        "expectancy": 0.035443096920463824,
+        "total_return": 0.9955086493579866,
+        "max_dd": -0.2584807233580507,
+        "sharpe": 0.561529855325837,
+        "avg_hold_days": 89.56
+      },
+      "OOS": {
+        "n_trades": 61,
+        "win_rate": 0.4918032786885246,
+        "profit_factor": 2.8675753962021733,
+        "expectancy": 0.05332553809440579,
+        "total_return": 0.73166400034454,
+        "max_dd": -0.1541886706569643,
+        "sharpe": 0.9045099487686595,
+        "avg_hold_days": 94.37704918032787
+      },
+      "OOS_stress": {
+        "n_trades": 61,
+        "win_rate": 0.4918032786885246,
+        "profit_factor": 2.8203803102096234,
+        "expectancy": 0.052625538094405795,
+        "total_return": 0.7109172203463074,
+        "max_dd": -0.15599529713950555,
+        "sharpe": 0.8851715384317633,
+        "avg_hold_days": 94.37704918032787
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 24,
+          "win_rate": 0.5,
+          "profit_factor": 2.908990368613031,
+          "expectancy": 0.06843647824286216,
+          "total_return": 0.2986480124480253,
+          "max_dd": -0.1541886706569643,
+          "sharpe": 1.0056680566435598,
+          "avg_hold_days": 84.75
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 25,
+          "win_rate": 0.56,
+          "profit_factor": 5.643075945400049,
+          "expectancy": 0.09355719412716881,
+          "total_return": 0.5273002259631097,
+          "max_dd": -0.05360487738212327,
+          "sharpe": 2.106169795259828,
+          "avg_hold_days": 101.84
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 18,
+          "win_rate": 0.5,
+          "profit_factor": 1.0786588422783505,
+          "expectancy": 0.002485124981823921,
+          "total_return": 0.0037347236617955026,
+          "max_dd": -0.07769203236590438,
+          "sharpe": 0.0651263160467514,
+          "avg_hold_days": 78.61111111111111
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.0037347236617955026,
+      "axis": "st_mult",
+      "axis_val": "3.8"
+    }
+  ],
+  "ensembles": [
+    {
+      "name": "B6_ENS_champ_priorST",
+      "params": {
+        "blend": "equal_risk",
+        "a": "kill40_dd07",
+        "b": "ST_m3.6"
+      },
+      "IS": {
+        "n_trades": 155,
+        "win_rate": 0.47096774193548385,
+        "profit_factor": 2.641179822328863,
+        "expectancy": 0.06263662835049472,
+        "total_return": 0.7437585878032835,
+        "max_dd": -0.11648945678115508,
+        "sharpe": 0.5572202239544276,
+        "avg_hold_days": 95.63870967741936
+      },
+      "OOS": {
+        "n_trades": 78,
+        "win_rate": 0.6282051282051282,
+        "profit_factor": 3.024266864917935,
+        "expectancy": 0.04599039766191368,
+        "total_return": 0.48976447891187247,
+        "max_dd": -0.1089525440324931,
+        "sharpe": 0.7507746292090268,
+        "avg_hold_days": 92.65384615384616
+      },
+      "OOS_stress": {
+        "n_trades": 78,
+        "win_rate": 0.6025641025641025,
+        "profit_factor": 2.9699493303596327,
+        "expectancy": 0.0452903976619137,
+        "total_return": 0.4787702861727192,
+        "max_dd": -0.11082300403297152,
+        "sharpe": 0.7374515437745802,
+        "avg_hold_days": 92.65384615384616
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 29,
+          "win_rate": 0.6206896551724138,
+          "profit_factor": 3.012180237740374,
+          "expectancy": 0.05653500540469431,
+          "total_return": 0.19938036777435642,
+          "max_dd": -0.0988980893144692,
+          "sharpe": 0.7174439563909928,
+          "avg_hold_days": 83.72413793103448
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 31,
+          "win_rate": 0.5806451612903226,
+          "profit_factor": 4.507556768355303,
+          "expectancy": 0.0750365771783262,
+          "total_return": 0.26125652909918173,
+          "max_dd": -0.07256837913818548,
+          "sharpe": 1.5692301605835464,
+          "avg_hold_days": 96.16129032258064
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 21,
+          "win_rate": 0.5714285714285714,
+          "profit_factor": 1.5326455395197582,
+          "expectancy": 0.012677116985373847,
+          "total_return": 0.022021206127848192,
+          "max_dd": -0.054712514551526925,
+          "sharpe": 0.2416446160637045,
+          "avg_hold_days": 81.61904761904762
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.022021206127848192,
+      "promote_note": "no:tot\u2264champ,lastWF\u2264champ,margin_thin"
+    },
+    {
+      "name": "B6_ENS_champ_regime_hl8",
+      "params": {
+        "blend": "equal_risk",
+        "a": "kill40_dd07",
+        "b": "regime_hl8"
+      },
+      "IS": {
+        "n_trades": 149,
+        "win_rate": 0.4563758389261745,
+        "profit_factor": 2.6563715579376024,
+        "expectancy": 0.06594804070177177,
+        "total_return": 0.8321827739980261,
+        "max_dd": -0.11993691257169625,
+        "sharpe": 0.572763443367971,
+        "avg_hold_days": 96.46308724832215
+      },
+      "OOS": {
+        "n_trades": 77,
+        "win_rate": 0.6363636363636364,
+        "profit_factor": 3.043505221399549,
+        "expectancy": 0.04673315351038048,
+        "total_return": 0.488635456218915,
+        "max_dd": -0.1089525440324931,
+        "sharpe": 0.7503273881811461,
+        "avg_hold_days": 92.44155844155844
+      },
+      "OOS_stress": {
+        "n_trades": 77,
+        "win_rate": 0.6103896103896104,
+        "profit_factor": 2.989792365114867,
+        "expectancy": 0.046033153510380495,
+        "total_return": 0.4777822211082383,
+        "max_dd": -0.11082300403297152,
+        "sharpe": 0.7371403409061998,
+        "avg_hold_days": 92.44155844155844
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 29,
+          "win_rate": 0.6206896551724138,
+          "profit_factor": 3.012180237740374,
+          "expectancy": 0.05653500540469431,
+          "total_return": 0.19938036777435642,
+          "max_dd": -0.0988980893144692,
+          "sharpe": 0.7174439563909928,
+          "avg_hold_days": 83.72413793103448
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 31,
+          "win_rate": 0.5806451612903226,
+          "profit_factor": 4.507556768355303,
+          "expectancy": 0.0750365771783262,
+          "total_return": 0.26125652909918173,
+          "max_dd": -0.07256837913818548,
+          "sharpe": 1.5692301605835464,
+          "avg_hold_days": 96.16129032258064
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 20,
+          "win_rate": 0.6,
+          "profit_factor": 1.5677831655577625,
+          "expectancy": 0.013871062968144008,
+          "total_return": 0.01516768014183767,
+          "max_dd": -0.0547436241512248,
+          "sharpe": 0.1790003346518161,
+          "avg_hold_days": 80.25
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.01516768014183767,
+      "promote_note": "no:tot\u2264champ,lastWF\u2264champ,margin_thin"
+    },
+    {
+      "name": "B6_ENS_priorST_regime_hl8",
+      "params": {
+        "blend": "equal_risk",
+        "a": "ST_m3.6",
+        "b": "regime_hl8"
+      },
+      "IS": {
+        "n_trades": 160,
+        "win_rate": 0.45625,
+        "profit_factor": 2.4546788585704786,
+        "expectancy": 0.05866371421280703,
+        "total_return": 0.8133430544888518,
+        "max_dd": -0.1392937161215193,
+        "sharpe": 0.5634273848438407,
+        "avg_hold_days": 94.55625
+      },
+      "OOS": {
+        "n_trades": 91,
+        "win_rate": 0.6153846153846154,
+        "profit_factor": 2.9697510570924126,
+        "expectancy": 0.04117107291779658,
+        "total_return": 0.4896074015892682,
+        "max_dd": -0.10552671724056406,
+        "sharpe": 0.7337330256615476,
+        "avg_hold_days": 86.45054945054945
+      },
+      "OOS_stress": {
+        "n_trades": 91,
+        "win_rate": 0.5934065934065934,
+        "profit_factor": 2.9107979198738954,
+        "expectancy": 0.040471072917796586,
+        "total_return": 0.4771645231808579,
+        "max_dd": -0.10709791326313611,
+        "sharpe": 0.7190427476944357,
+        "avg_hold_days": 86.45054945054945
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 30,
+          "win_rate": 0.6666666666666666,
+          "profit_factor": 4.0008941991974645,
+          "expectancy": 0.06570337546105712,
+          "total_return": 0.20525387453510824,
+          "max_dd": -0.09466296773042404,
+          "sharpe": 0.7311675041446111,
+          "avg_hold_days": 89.53333333333333
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 38,
+          "win_rate": 0.631578947368421,
+          "profit_factor": 4.769853845555873,
+          "expectancy": 0.07281586328081634,
+          "total_return": 0.3196244145383069,
+          "max_dd": -0.08012189315161744,
+          "sharpe": 1.5239632823144913,
+          "avg_hold_days": 89.73684210526316
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 23,
+          "win_rate": 0.5217391304347826,
+          "profit_factor": 1.2537586044615276,
+          "expectancy": 0.006740967581615837,
+          "total_return": 0.009808828571509887,
+          "max_dd": -0.06400859839529838,
+          "sharpe": 0.12209070499422366,
+          "avg_hold_days": 77.95652173913044
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.009808828571509887,
+      "promote_note": "no:tot\u2264champ,lastWF\u2264champ,margin_thin"
+    }
+  ],
+  "cost_ladder": [
+    {
+      "name": "B5_ST_kill40_dd07",
+      "ladder": [
+        {
+          "rt_pct": 0.08,
+          "n": 65,
+          "pf": 4.005008639948001,
+          "tot": 1.1344366318533434,
+          "mdd": -0.1504460259445729,
+          "exp": 0.06646805287343747,
+          "sharpe": 1.165710504709796
+        },
+        {
+          "rt_pct": 0.1,
+          "n": 65,
+          "pf": 3.9843426621017612,
+          "tot": 1.1268233071590603,
+          "mdd": -0.1509270206677018,
+          "exp": 0.0662680528734375,
+          "sharpe": 1.160287738938456
+        },
+        {
+          "rt_pct": 0.12,
+          "n": 65,
+          "pf": 3.9635844170689283,
+          "tot": 1.1192373262216506,
+          "mdd": -0.15140781421996097,
+          "exp": 0.06606805287343749,
+          "sharpe": 1.1548658888525765
+        },
+        {
+          "rt_pct": 0.15,
+          "n": 65,
+          "pf": 3.9325209630505604,
+          "tot": 1.1079094080263685,
+          "mdd": -0.15212862747819778,
+          "exp": 0.0657680528734375,
+          "sharpe": 1.1467348879438755
+        },
+        {
+          "rt_pct": 0.2,
+          "n": 65,
+          "pf": 3.881564371790517,
+          "tot": 1.0891648666337828,
+          "mdd": -0.15332897786511201,
+          "exp": 0.06526805287343748,
+          "sharpe": 1.1331881686596095
+        }
+      ]
+    },
+    {
+      "name": "ST_m3.6_n1_e1",
+      "ladder": [
+        {
+          "rt_pct": 0.08,
+          "n": 75,
+          "pf": 3.8988526325340707,
+          "tot": 1.1024806198736434,
+          "mdd": -0.14831206549929332,
+          "exp": 0.05525835164896983,
+          "sharpe": 1.1039850976782355
+        },
+        {
+          "rt_pct": 0.1,
+          "n": 75,
+          "pf": 3.8762894249281357,
+          "tot": 1.0935330256036155,
+          "mdd": -0.14880756371409898,
+          "exp": 0.055058351648969835,
+          "sharpe": 1.0977720427062683
+        },
+        {
+          "rt_pct": 0.12,
+          "n": 75,
+          "pf": 3.8536701379708576,
+          "tot": 1.0846228418294372,
+          "mdd": -0.14930284995686038,
+          "exp": 0.05485835164896984,
+          "sharpe": 1.0915601325292668
+        },
+        {
+          "rt_pct": 0.15,
+          "n": 75,
+          "pf": 3.819875314776062,
+          "tot": 1.0713273747209864,
+          "mdd": -0.15004538200580675,
+          "exp": 0.05455835164896983,
+          "sharpe": 1.0822444863804512
+        },
+        {
+          "rt_pct": 0.2,
+          "n": 75,
+          "pf": 3.7645030626006104,
+          "tot": 1.0493531462804886,
+          "mdd": -0.1512818764177638,
+          "exp": 0.054058351648969834,
+          "sharpe": 1.0667246028983448
+        }
+      ]
+    },
+    {
+      "name": "B4_ST_regime_hl8",
+      "ladder": [
+        {
+          "rt_pct": 0.08,
+          "n": 74,
+          "pf": 3.929642506378309,
+          "tot": 1.1073413429382652,
+          "mdd": -0.14831206549929332,
+          "exp": 0.056156461842469814,
+          "sharpe": 1.1178074439641084
+        },
+        {
+          "rt_pct": 0.1,
+          "n": 74,
+          "pf": 3.907320777313014,
+          "tot": 1.09850354421474,
+          "mdd": -0.14880756371409898,
+          "exp": 0.05595646184246983,
+          "sharpe": 1.1116174026592784
+        },
+        {
+          "rt_pct": 0.12,
+          "n": 74,
+          "pf": 3.8849315506053848,
+          "tot": 1.089702182650219,
+          "mdd": -0.14930284995686038,
+          "exp": 0.05575646184246984,
+          "sharpe": 1.1054284242983954
+        },
+        {
+          "rt_pct": 0.15,
+          "n": 74,
+          "pf": 3.8514650589883703,
+          "tot": 1.0765681369562907,
+          "mdd": -0.15004538200580675,
+          "exp": 0.055456461842469815,
+          "sharpe": 1.0961470231574273
+        },
+        {
+          "rt_pct": 0.2,
+          "n": 74,
+          "pf": 3.796608131284302,
+          "tot": 1.0548581620061843,
+          "mdd": -0.1512818764177638,
+          "exp": 0.05495646184246983,
+          "sharpe": 1.0806838103304777
+        }
+      ]
+    }
+  ],
+  "fragility": {
+    "champ_dtot_pp": -4.527176521956067,
+    "prior_dtot_pp": -5.312747359315484,
+    "regime_dtot_pp": -5.248318093208093,
+    "champ_beats_prior_all": true,
+    "note": "Champ tot decays ~linear with RT; remains above prior ST on every rung 0.08\u20130.20%. Slight MDD deepen under higher costs (~0.3pp). Not fragile vs prior."
+  },
+  "promote_ok": false,
+  "promote_reason": "keep_champ:no_challenger",
+  "champion": "B5_ST_kill40_dd07",
+  "new_variants": [
+    {
+      "name": "B6_ENS_champ_priorST",
+      "params": {
+        "blend": "equal_risk",
+        "a": "kill40_dd07",
+        "b": "ST_m3.6"
+      },
+      "IS": {
+        "n_trades": 155,
+        "win_rate": 0.47096774193548385,
+        "profit_factor": 2.641179822328863,
+        "expectancy": 0.06263662835049472,
+        "total_return": 0.7437585878032835,
+        "max_dd": -0.11648945678115508,
+        "sharpe": 0.5572202239544276,
+        "avg_hold_days": 95.63870967741936
+      },
+      "OOS": {
+        "n_trades": 78,
+        "win_rate": 0.6282051282051282,
+        "profit_factor": 3.024266864917935,
+        "expectancy": 0.04599039766191368,
+        "total_return": 0.48976447891187247,
+        "max_dd": -0.1089525440324931,
+        "sharpe": 0.7507746292090268,
+        "avg_hold_days": 92.65384615384616
+      },
+      "OOS_stress": {
+        "n_trades": 78,
+        "win_rate": 0.6025641025641025,
+        "profit_factor": 2.9699493303596327,
+        "expectancy": 0.0452903976619137,
+        "total_return": 0.4787702861727192,
+        "max_dd": -0.11082300403297152,
+        "sharpe": 0.7374515437745802,
+        "avg_hold_days": 92.65384615384616
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 29,
+          "win_rate": 0.6206896551724138,
+          "profit_factor": 3.012180237740374,
+          "expectancy": 0.05653500540469431,
+          "total_return": 0.19938036777435642,
+          "max_dd": -0.0988980893144692,
+          "sharpe": 0.7174439563909928,
+          "avg_hold_days": 83.72413793103448
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 31,
+          "win_rate": 0.5806451612903226,
+          "profit_factor": 4.507556768355303,
+          "expectancy": 0.0750365771783262,
+          "total_return": 0.26125652909918173,
+          "max_dd": -0.07256837913818548,
+          "sharpe": 1.5692301605835464,
+          "avg_hold_days": 96.16129032258064
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 21,
+          "win_rate": 0.5714285714285714,
+          "profit_factor": 1.5326455395197582,
+          "expectancy": 0.012677116985373847,
+          "total_return": 0.022021206127848192,
+          "max_dd": -0.054712514551526925,
+          "sharpe": 0.2416446160637045,
+          "avg_hold_days": 81.61904761904762
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.022021206127848192,
+      "promote_note": "no:tot\u2264champ,lastWF\u2264champ,margin_thin"
+    },
+    {
+      "name": "B6_ENS_champ_regime_hl8",
+      "params": {
+        "blend": "equal_risk",
+        "a": "kill40_dd07",
+        "b": "regime_hl8"
+      },
+      "IS": {
+        "n_trades": 149,
+        "win_rate": 0.4563758389261745,
+        "profit_factor": 2.6563715579376024,
+        "expectancy": 0.06594804070177177,
+        "total_return": 0.8321827739980261,
+        "max_dd": -0.11993691257169625,
+        "sharpe": 0.572763443367971,
+        "avg_hold_days": 96.46308724832215
+      },
+      "OOS": {
+        "n_trades": 77,
+        "win_rate": 0.6363636363636364,
+        "profit_factor": 3.043505221399549,
+        "expectancy": 0.04673315351038048,
+        "total_return": 0.488635456218915,
+        "max_dd": -0.1089525440324931,
+        "sharpe": 0.7503273881811461,
+        "avg_hold_days": 92.44155844155844
+      },
+      "OOS_stress": {
+        "n_trades": 77,
+        "win_rate": 0.6103896103896104,
+        "profit_factor": 2.989792365114867,
+        "expectancy": 0.046033153510380495,
+        "total_return": 0.4777822211082383,
+        "max_dd": -0.11082300403297152,
+        "sharpe": 0.7371403409061998,
+        "avg_hold_days": 92.44155844155844
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 29,
+          "win_rate": 0.6206896551724138,
+          "profit_factor": 3.012180237740374,
+          "expectancy": 0.05653500540469431,
+          "total_return": 0.19938036777435642,
+          "max_dd": -0.0988980893144692,
+          "sharpe": 0.7174439563909928,
+          "avg_hold_days": 83.72413793103448
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 31,
+          "win_rate": 0.5806451612903226,
+          "profit_factor": 4.507556768355303,
+          "expectancy": 0.0750365771783262,
+          "total_return": 0.26125652909918173,
+          "max_dd": -0.07256837913818548,
+          "sharpe": 1.5692301605835464,
+          "avg_hold_days": 96.16129032258064
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 20,
+          "win_rate": 0.6,
+          "profit_factor": 1.5677831655577625,
+          "expectancy": 0.013871062968144008,
+          "total_return": 0.01516768014183767,
+          "max_dd": -0.0547436241512248,
+          "sharpe": 0.1790003346518161,
+          "avg_hold_days": 80.25
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.01516768014183767,
+      "promote_note": "no:tot\u2264champ,lastWF\u2264champ,margin_thin"
+    },
+    {
+      "name": "B6_ENS_priorST_regime_hl8",
+      "params": {
+        "blend": "equal_risk",
+        "a": "ST_m3.6",
+        "b": "regime_hl8"
+      },
+      "IS": {
+        "n_trades": 160,
+        "win_rate": 0.45625,
+        "profit_factor": 2.4546788585704786,
+        "expectancy": 0.05866371421280703,
+        "total_return": 0.8133430544888518,
+        "max_dd": -0.1392937161215193,
+        "sharpe": 0.5634273848438407,
+        "avg_hold_days": 94.55625
+      },
+      "OOS": {
+        "n_trades": 91,
+        "win_rate": 0.6153846153846154,
+        "profit_factor": 2.9697510570924126,
+        "expectancy": 0.04117107291779658,
+        "total_return": 0.4896074015892682,
+        "max_dd": -0.10552671724056406,
+        "sharpe": 0.7337330256615476,
+        "avg_hold_days": 86.45054945054945
+      },
+      "OOS_stress": {
+        "n_trades": 91,
+        "win_rate": 0.5934065934065934,
+        "profit_factor": 2.9107979198738954,
+        "expectancy": 0.040471072917796586,
+        "total_return": 0.4771645231808579,
+        "max_dd": -0.10709791326313611,
+        "sharpe": 0.7190427476944357,
+        "avg_hold_days": 86.45054945054945
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 30,
+          "win_rate": 0.6666666666666666,
+          "profit_factor": 4.0008941991974645,
+          "expectancy": 0.06570337546105712,
+          "total_return": 0.20525387453510824,
+          "max_dd": -0.09466296773042404,
+          "sharpe": 0.7311675041446111,
+          "avg_hold_days": 89.53333333333333
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 38,
+          "win_rate": 0.631578947368421,
+          "profit_factor": 4.769853845555873,
+          "expectancy": 0.07281586328081634,
+          "total_return": 0.3196244145383069,
+          "max_dd": -0.08012189315161744,
+          "sharpe": 1.5239632823144913,
+          "avg_hold_days": 89.73684210526316
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 23,
+          "win_rate": 0.5217391304347826,
+          "profit_factor": 1.2537586044615276,
+          "expectancy": 0.006740967581615837,
+          "total_return": 0.009808828571509887,
+          "max_dd": -0.06400859839529838,
+          "sharpe": 0.12209070499422366,
+          "avg_hold_days": 77.95652173913044
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.009808828571509887,
+      "promote_note": "no:tot\u2264champ,lastWF\u2264champ,margin_thin"
+    },
+    {
+      "name": "B6_ST_kill40_dd06",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.06
+      },
+      "IS": {
+        "n_trades": 132,
+        "win_rate": 0.4015151515151515,
+        "profit_factor": 1.685469277487105,
+        "expectancy": 0.028434714546221984,
+        "total_return": 0.7151482633337047,
+        "max_dd": -0.2752351152929948,
+        "sharpe": 0.4395515912770311,
+        "avg_hold_days": 83.6969696969697
+      },
+      "OOS": {
+        "n_trades": 71,
+        "win_rate": 0.49295774647887325,
+        "profit_factor": 2.509612017844404,
+        "expectancy": 0.03954120332788382,
+        "total_return": 0.6529956569737208,
+        "max_dd": -0.18070980854376906,
+        "sharpe": 0.8979370077376987,
+        "avg_hold_days": 83.07042253521126
+      },
+      "OOS_stress": {
+        "n_trades": 71,
+        "win_rate": 0.4788732394366197,
+        "profit_factor": 2.4627335256131575,
+        "expectancy": 0.038841203327883815,
+        "total_return": 0.6303080474524385,
+        "max_dd": -0.1842898077087315,
+        "sharpe": 0.874046674398904,
+        "avg_hold_days": 83.07042253521126
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 27,
+          "win_rate": 0.48148148148148145,
+          "profit_factor": 1.5364464725807425,
+          "expectancy": 0.020091863404233194,
+          "total_return": 0.08273723429943236,
+          "max_dd": -0.1540743262156289,
+          "sharpe": 0.4332301413479116,
+          "avg_hold_days": 71.66666666666667
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.8175373596869426,
+          "expectancy": 0.06380377434581247,
+          "total_return": 0.4399971167896257,
+          "max_dd": -0.09146348694488937,
+          "sharpe": 1.6102039635928684,
+          "avg_hold_days": 85.5
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill40_dd08",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.08
+      },
+      "IS": {
+        "n_trades": 136,
+        "win_rate": 0.4117647058823529,
+        "profit_factor": 2.034335767407408,
+        "expectancy": 0.0417928535534432,
+        "total_return": 1.3702784093695524,
+        "max_dd": -0.2833985731069828,
+        "sharpe": 0.6378441012715735,
+        "avg_hold_days": 85.48529411764706
+      },
+      "OOS": {
+        "n_trades": 64,
+        "win_rate": 0.5625,
+        "profit_factor": 4.103494117464227,
+        "expectancy": 0.06334772394152625,
+        "total_return": 1.0722562402483038,
+        "max_dd": -0.13042796685945346,
+        "sharpe": 1.135453154754009,
+        "avg_hold_days": 97.015625
+      },
+      "OOS_stress": {
+        "n_trades": 64,
+        "win_rate": 0.546875,
+        "profit_factor": 4.0228668892735024,
+        "expectancy": 0.06264772394152626,
+        "total_return": 1.0468602724057305,
+        "max_dd": -0.13165541390765034,
+        "sharpe": 1.1165672513139633,
+        "avg_hold_days": 97.015625
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 24,
+          "win_rate": 0.5833333333333334,
+          "profit_factor": 3.871123322724238,
+          "expectancy": 0.06586498431114107,
+          "total_return": 0.3187163450599726,
+          "max_dd": -0.13042796685945346,
+          "sharpe": 1.0674887501345023,
+          "avg_hold_days": 89.66666666666667
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill38_dd07",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.38,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 135,
+        "win_rate": 0.4074074074074074,
+        "profit_factor": 2.0195356345899196,
+        "expectancy": 0.041578118815219944,
+        "total_return": 1.3422819070456953,
+        "max_dd": -0.2851986679545302,
+        "sharpe": 0.6281010636118575,
+        "avg_hold_days": 85.88888888888889
+      },
+      "OOS": {
+        "n_trades": 65,
+        "win_rate": 0.5692307692307692,
+        "profit_factor": 4.005008639948001,
+        "expectancy": 0.06646805287343747,
+        "total_return": 1.1344366318533434,
+        "max_dd": -0.1504460259445729,
+        "sharpe": 1.1657105047097958,
+        "avg_hold_days": 94.18461538461538
+      },
+      "OOS_stress": {
+        "n_trades": 65,
+        "win_rate": 0.5538461538461539,
+        "profit_factor": 3.9325209630505604,
+        "expectancy": 0.0657680528734375,
+        "total_return": 1.1079094080263685,
+        "max_dd": -0.15212862747819778,
+        "sharpe": 1.1467348879438726,
+        "avg_hold_days": 94.18461538461538
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.6,
+          "profit_factor": 3.7082612849692467,
+          "expectancy": 0.0738771491193257,
+          "total_return": 0.3582859200764146,
+          "max_dd": -0.1504460259445729,
+          "sharpe": 1.1486241210520953,
+          "avg_hold_days": 82.6
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill42_dd07",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.42,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 128,
+        "win_rate": 0.40625,
+        "profit_factor": 2.017579541272469,
+        "expectancy": 0.041063794910614584,
+        "total_return": 1.2530441916610302,
+        "max_dd": -0.27284351184208144,
+        "sharpe": 0.6197964184538515,
+        "avg_hold_days": 86.84375
+      },
+      "OOS": {
+        "n_trades": 64,
+        "win_rate": 0.515625,
+        "profit_factor": 3.0823186834490217,
+        "expectancy": 0.050139937218863805,
+        "total_return": 0.7818891381564164,
+        "max_dd": -0.17844031099989877,
+        "sharpe": 0.9809161558060995,
+        "avg_hold_days": 86.046875
+      },
+      "OOS_stress": {
+        "n_trades": 64,
+        "win_rate": 0.5,
+        "profit_factor": 3.0241884578083726,
+        "expectancy": 0.0494399372188638,
+        "total_return": 0.7598292341169968,
+        "max_dd": -0.18095178110987797,
+        "sharpe": 0.9602461789284266,
+        "avg_hold_days": 86.046875
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.56,
+          "profit_factor": 3.0172822910109125,
+          "expectancy": 0.05302849013867836,
+          "total_return": 0.25261804790654274,
+          "max_dd": -0.13307136364371464,
+          "sharpe": 0.9066940775830966,
+          "avg_hold_days": 78.76
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 29,
+          "win_rate": 0.41379310344827586,
+          "profit_factor": 3.2573597099127043,
+          "expectancy": 0.05613051260465123,
+          "total_return": 0.34445609470260985,
+          "max_dd": -0.07019153108860043,
+          "sharpe": 1.4684736989040175,
+          "avg_hold_days": 80.6896551724138
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 15,
+          "win_rate": 0.6,
+          "profit_factor": 2.0798645671841784,
+          "expectancy": 0.027953721505287372,
+          "total_return": 0.07566985276768823,
+          "max_dd": -0.06917286272304446,
+          "sharpe": 0.6473050206588168,
+          "avg_hold_days": 79.0
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.07566985276768823
+    },
+    {
+      "name": "B6_ST_kill40_dd07_m35",
+      "params": {
+        "mult": 3.5,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 147,
+        "win_rate": 0.3877551020408163,
+        "profit_factor": 1.9502212079451344,
+        "expectancy": 0.03929592276846174,
+        "total_return": 1.3011138101115463,
+        "max_dd": -0.2898337521015273,
+        "sharpe": 0.6035563314424386,
+        "avg_hold_days": 79.0
+      },
+      "OOS": {
+        "n_trades": 76,
+        "win_rate": 0.4342105263157895,
+        "profit_factor": 2.4284253211953675,
+        "expectancy": 0.04006772720962384,
+        "total_return": 0.7255444553130141,
+        "max_dd": -0.14136869355975412,
+        "sharpe": 0.877846372331635,
+        "avg_hold_days": 78.25
+      },
+      "OOS_stress": {
+        "n_trades": 76,
+        "win_rate": 0.42105263157894735,
+        "profit_factor": 2.3836590334064116,
+        "expectancy": 0.03936772720962384,
+        "total_return": 0.7006745971387383,
+        "max_dd": -0.14322881092609974,
+        "sharpe": 0.8554458368405039,
+        "avg_hold_days": 78.25
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 27,
+          "win_rate": 0.5555555555555556,
+          "profit_factor": 3.0050420661439965,
+          "expectancy": 0.05960510667105789,
+          "total_return": 0.3040603509142281,
+          "max_dd": -0.14136869355975412,
+          "sharpe": 1.033893159749845,
+          "avg_hold_days": 73.5925925925926
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 37,
+          "win_rate": 0.3783783783783784,
+          "profit_factor": 2.6139270117588205,
+          "expectancy": 0.04532315222505138,
+          "total_return": 0.3620862697154603,
+          "max_dd": -0.09107199770447227,
+          "sharpe": 1.3492025723769985,
+          "avg_hold_days": 74.24324324324324
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 20,
+          "win_rate": 0.4,
+          "profit_factor": 0.7670327341790957,
+          "expectancy": -0.007885710844831926,
+          "total_return": -0.03525217572236494,
+          "max_dd": -0.09200243219319715,
+          "sharpe": -0.25156178831498066,
+          "avg_hold_days": 65.35
+        }
+      ],
+      "wf_pos": 2,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": -0.03525217572236494
+    },
+    {
+      "name": "B6_ST_kill40_dd07_m37",
+      "params": {
+        "mult": 3.7,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07
+      },
+      "IS": {
+        "n_trades": 132,
+        "win_rate": 0.44696969696969696,
+        "profit_factor": 2.1308131644759962,
+        "expectancy": 0.041221441308299286,
+        "total_return": 1.3154294416214318,
+        "max_dd": -0.24199660125775957,
+        "sharpe": 0.6394630309363044,
+        "avg_hold_days": 85.53787878787878
+      },
+      "OOS": {
+        "n_trades": 63,
+        "win_rate": 0.5396825396825397,
+        "profit_factor": 3.7844138161742666,
+        "expectancy": 0.06790603820509393,
+        "total_return": 1.090018488750407,
+        "max_dd": -0.147751106224412,
+        "sharpe": 1.1257278922631042,
+        "avg_hold_days": 93.6984126984127
+      },
+      "OOS_stress": {
+        "n_trades": 63,
+        "win_rate": 0.5396825396825397,
+        "profit_factor": 3.719776367655412,
+        "expectancy": 0.06720603820509394,
+        "total_return": 1.0644842849157268,
+        "max_dd": -0.14911289798175453,
+        "sharpe": 1.1072808346587861,
+        "avg_hold_days": 93.6984126984127
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.56,
+          "profit_factor": 3.378289488734004,
+          "expectancy": 0.07266003211440482,
+          "total_return": 0.33938543114066033,
+          "max_dd": -0.147751106224412,
+          "sharpe": 1.1073775471345002,
+          "avg_hold_days": 83.72
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 26,
+          "win_rate": 0.5769230769230769,
+          "profit_factor": 6.09252808598251,
+          "expectancy": 0.10109149526308561,
+          "total_return": 0.5966718961962771,
+          "max_dd": -0.09662575903860182,
+          "sharpe": 1.9484804664361264,
+          "avg_hold_days": 105.07692307692308
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5,
+          "profit_factor": 1.7507495482738835,
+          "expectancy": 0.022839519865534987,
+          "total_return": 0.06157288105458747,
+          "max_dd": -0.08100058449455394,
+          "sharpe": 0.47536848957955036,
+          "avg_hold_days": 85.5625
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.06157288105458747
+    },
+    {
+      "name": "B6_ST_kill40_dd_volcalm125",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07,
+        "max_vol_ratio": 1.25
+      },
+      "IS": {
+        "n_trades": 133,
+        "win_rate": 0.40601503759398494,
+        "profit_factor": 1.8937192326379833,
+        "expectancy": 0.03549387320531725,
+        "total_return": 1.0694566218632078,
+        "max_dd": -0.30341141389623305,
+        "sharpe": 0.5562307529794933,
+        "avg_hold_days": 83.28571428571429
+      },
+      "OOS": {
+        "n_trades": 67,
+        "win_rate": 0.5373134328358209,
+        "profit_factor": 3.5133159229137134,
+        "expectancy": 0.05977100998144331,
+        "total_return": 0.9998474678750084,
+        "max_dd": -0.15091645058326586,
+        "sharpe": 1.0628078675728256,
+        "avg_hold_days": 91.29850746268657
+      },
+      "OOS_stress": {
+        "n_trades": 67,
+        "win_rate": 0.5223880597014925,
+        "profit_factor": 3.449866427070326,
+        "expectancy": 0.05907100998144332,
+        "total_return": 0.9739764926697176,
+        "max_dd": -0.15252863952210238,
+        "sharpe": 1.043237378788788,
+        "avg_hold_days": 91.29850746268657
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.52,
+          "profit_factor": 3.1835697796562137,
+          "expectancy": 0.06680672573056641,
+          "total_return": 0.30992010712434714,
+          "max_dd": -0.15091645058326586,
+          "sharpe": 1.030495930459393,
+          "avg_hold_days": 79.36
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 31,
+          "win_rate": 0.5161290322580645,
+          "profit_factor": 3.1834843784469165,
+          "expectancy": 0.050275431550601296,
+          "total_return": 0.3209152170208587,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.222023012496495,
+          "avg_hold_days": 87.35483870967742
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill40_dd_days60",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07,
+        "max_days_since_high": 60
+      },
+      "IS": {
+        "n_trades": 130,
+        "win_rate": 0.4076923076923077,
+        "profit_factor": 2.0171189261496156,
+        "expectancy": 0.040391315817643735,
+        "total_return": 1.2049351505918615,
+        "max_dd": -0.2979506865487145,
+        "sharpe": 0.6038658434176088,
+        "avg_hold_days": 85.37692307692308
+      },
+      "OOS": {
+        "n_trades": 64,
+        "win_rate": 0.578125,
+        "profit_factor": 4.316399018760747,
+        "expectancy": 0.06912724748692248,
+        "total_return": 1.1833870624291576,
+        "max_dd": -0.130962649297641,
+        "sharpe": 1.2034036666042107,
+        "avg_hold_days": 95.546875
+      },
+      "OOS_stress": {
+        "n_trades": 64,
+        "win_rate": 0.5625,
+        "profit_factor": 4.235943853966665,
+        "expectancy": 0.0684272474869225,
+        "total_return": 1.156767902226214,
+        "max_dd": -0.13247611377014445,
+        "sharpe": 1.1847240102905432,
+        "avg_hold_days": 95.546875
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 24,
+          "win_rate": 0.625,
+          "profit_factor": 4.373420937287719,
+          "expectancy": 0.08127704709886437,
+          "total_return": 0.3894363790034028,
+          "max_dd": -0.130962649297641,
+          "sharpe": 1.237085850822422,
+          "avg_hold_days": 85.75
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill40_dd_bankrs_m03",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07,
+        "min_bank_rs": -0.03
+      },
+      "IS": {
+        "n_trades": 130,
+        "win_rate": 0.3923076923076923,
+        "profit_factor": 1.9357560042609199,
+        "expectancy": 0.03964985747962533,
+        "total_return": 1.1525632468736586,
+        "max_dd": -0.3280739638921232,
+        "sharpe": 0.5890933103222213,
+        "avg_hold_days": 84.71538461538462
+      },
+      "OOS": {
+        "n_trades": 63,
+        "win_rate": 0.5079365079365079,
+        "profit_factor": 3.286191794103448,
+        "expectancy": 0.059337617811283924,
+        "total_return": 0.953924228593654,
+        "max_dd": -0.13325779796377213,
+        "sharpe": 1.091801414684934,
+        "avg_hold_days": 88.22222222222223
+      },
+      "OOS_stress": {
+        "n_trades": 63,
+        "win_rate": 0.49206349206349204,
+        "profit_factor": 3.2290631206631497,
+        "expectancy": 0.05863761781128393,
+        "total_return": 0.9303635846751179,
+        "max_dd": -0.1345341019767513,
+        "sharpe": 1.0723052997852847,
+        "avg_hold_days": 88.22222222222223
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.56,
+          "profit_factor": 3.3609950229477032,
+          "expectancy": 0.07055936296849233,
+          "total_return": 0.34131641029710247,
+          "max_dd": -0.13325779796377213,
+          "sharpe": 1.1586843431087595,
+          "avg_hold_days": 79.2
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 29,
+          "win_rate": 0.41379310344827586,
+          "profit_factor": 3.0676538325159526,
+          "expectancy": 0.056103274615024415,
+          "total_return": 0.3564962233519846,
+          "max_dd": -0.09005891824629142,
+          "sharpe": 1.4264665343240357,
+          "avg_hold_days": 83.3103448275862
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill40_dd_atr10_92",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07,
+        "atr_pct_lo": 0.1,
+        "atr_pct_hi": 0.92
+      },
+      "IS": {
+        "n_trades": 116,
+        "win_rate": 0.43103448275862066,
+        "profit_factor": 1.8508570643853652,
+        "expectancy": 0.03241080030110745,
+        "total_return": 0.7750921855494075,
+        "max_dd": -0.21646480124463563,
+        "sharpe": 0.485109461586273,
+        "avg_hold_days": 82.90517241379311
+      },
+      "OOS": {
+        "n_trades": 60,
+        "win_rate": 0.5666666666666667,
+        "profit_factor": 2.9300833954232424,
+        "expectancy": 0.05221751989527846,
+        "total_return": 0.6937024859050389,
+        "max_dd": -0.20110442461538858,
+        "sharpe": 0.9115298607050847,
+        "avg_hold_days": 92.56666666666666
+      },
+      "OOS_stress": {
+        "n_trades": 60,
+        "win_rate": 0.55,
+        "profit_factor": 2.8826112241239463,
+        "expectancy": 0.05151751989527845,
+        "total_return": 0.6733461692480662,
+        "max_dd": -0.20381971541994492,
+        "sharpe": 0.8910433987171796,
+        "avg_hold_days": 92.56666666666666
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 23,
+          "win_rate": 0.5217391304347826,
+          "profit_factor": 2.797359846820748,
+          "expectancy": 0.060853544488749155,
+          "total_return": 0.24696145356967203,
+          "max_dd": -0.18191122001226467,
+          "sharpe": 1.023713404207262,
+          "avg_hold_days": 80.3913043478261
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 27,
+          "win_rate": 0.5925925925925926,
+          "profit_factor": 3.2330928807047234,
+          "expectancy": 0.05134370526397443,
+          "total_return": 0.2829998604410706,
+          "max_dd": -0.09572652565882545,
+          "sharpe": 1.163927572913212,
+          "avg_hold_days": 84.07407407407408
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 14,
+          "win_rate": 0.6428571428571429,
+          "profit_factor": 3.0574663400640922,
+          "expectancy": 0.042529186577783526,
+          "total_return": 0.11270100392294724,
+          "max_dd": -0.07665440477898777,
+          "sharpe": 0.8273626620838415,
+          "avg_hold_days": 95.07142857142857
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.11270100392294724
+    },
+    {
+      "name": "B6_ST_kill40_dd_nifty_mom_m04",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07,
+        "min_nifty_ret20": -0.04
+      },
+      "IS": {
+        "n_trades": 132,
+        "win_rate": 0.4015151515151515,
+        "profit_factor": 2.021058213539616,
+        "expectancy": 0.041853331807176354,
+        "total_return": 1.2928899896662251,
+        "max_dd": -0.28660294900449035,
+        "sharpe": 0.6210942593315464,
+        "avg_hold_days": 85.92424242424242
+      },
+      "OOS": {
+        "n_trades": 64,
+        "win_rate": 0.59375,
+        "profit_factor": 4.730253555193263,
+        "expectancy": 0.07110205270342758,
+        "total_return": 1.2427642081901453,
+        "max_dd": -0.12988933622022303,
+        "sharpe": 1.242741398646993,
+        "avg_hold_days": 94.796875
+      },
+      "OOS_stress": {
+        "n_trades": 64,
+        "win_rate": 0.578125,
+        "profit_factor": 4.63799091273214,
+        "expectancy": 0.0704020527034276,
+        "total_return": 1.2155779392278498,
+        "max_dd": -0.1314200994808623,
+        "sharpe": 1.224129373201285,
+        "avg_hold_days": 94.796875
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 24,
+          "win_rate": 0.625,
+          "profit_factor": 5.050043208516815,
+          "expectancy": 0.08450515895807804,
+          "total_return": 0.40891231449380516,
+          "max_dd": -0.12988933622022303,
+          "sharpe": 1.2867510105058264,
+          "avg_hold_days": 84.70833333333333
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill40_dd_volcap24",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07,
+        "vol_cap": 0.24
+      },
+      "IS": {
+        "n_trades": 131,
+        "win_rate": 0.40458015267175573,
+        "profit_factor": 2.1015371577446316,
+        "expectancy": 0.043974940699481664,
+        "total_return": 1.3965239163970224,
+        "max_dd": -0.28511763957948855,
+        "sharpe": 0.6560450118632358,
+        "avg_hold_days": 85.7557251908397
+      },
+      "OOS": {
+        "n_trades": 66,
+        "win_rate": 0.5606060606060606,
+        "profit_factor": 3.751613241511227,
+        "expectancy": 0.06267450783187979,
+        "total_return": 1.0567208390835647,
+        "max_dd": -0.1504460259445729,
+        "sharpe": 1.1006947713010315,
+        "avg_hold_days": 93.63636363636364
+      },
+      "OOS_stress": {
+        "n_trades": 66,
+        "win_rate": 0.5454545454545454,
+        "profit_factor": 3.6838834086152854,
+        "expectancy": 0.061974507831879785,
+        "total_return": 1.030652379170843,
+        "max_dd": -0.15212862747819778,
+        "sharpe": 1.0815651329908178,
+        "avg_hold_days": 93.63636363636364
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.6,
+          "profit_factor": 3.7082612849692467,
+          "expectancy": 0.0738771491193257,
+          "total_return": 0.3582859200764146,
+          "max_dd": -0.1504460259445729,
+          "sharpe": 1.1486241210520953,
+          "avg_hold_days": 82.6
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 31,
+          "win_rate": 0.5161290322580645,
+          "profit_factor": 3.1834843784469165,
+          "expectancy": 0.050275431550601296,
+          "total_return": 0.3209152170208587,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.222023012496495,
+          "avg_hold_days": 87.35483870967742
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill40_dd_regime_hl8",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07,
+        "hl_days": 8
+      },
+      "IS": {
+        "n_trades": 134,
+        "win_rate": 0.40298507462686567,
+        "profit_factor": 2.018902110775625,
+        "expectancy": 0.04186237447232064,
+        "total_return": 1.3409664557572665,
+        "max_dd": -0.2851986679545302,
+        "sharpe": 0.6301498990661786,
+        "avg_hold_days": 86.32835820895522
+      },
+      "OOS": {
+        "n_trades": 65,
+        "win_rate": 0.5692307692307692,
+        "profit_factor": 4.005008639948001,
+        "expectancy": 0.06646805287343747,
+        "total_return": 1.1344366318533434,
+        "max_dd": -0.1504460259445729,
+        "sharpe": 1.1657105047097958,
+        "avg_hold_days": 94.18461538461538
+      },
+      "OOS_stress": {
+        "n_trades": 65,
+        "win_rate": 0.5538461538461539,
+        "profit_factor": 3.9325209630505604,
+        "expectancy": 0.0657680528734375,
+        "total_return": 1.1079094080263685,
+        "max_dd": -0.15212862747819778,
+        "sharpe": 1.1467348879438726,
+        "avg_hold_days": 94.18461538461538
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 25,
+          "win_rate": 0.6,
+          "profit_factor": 3.7082612849692467,
+          "expectancy": 0.0738771491193257,
+          "total_return": 0.3582859200764146,
+          "max_dd": -0.1504460259445729,
+          "sharpe": 1.1486241210520953,
+          "avg_hold_days": 82.6
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 32,
+          "win_rate": 0.5,
+          "profit_factor": 3.607891637454912,
+          "expectancy": 0.05905629928292863,
+          "total_return": 0.3999108671445992,
+          "max_dd": -0.09146294573592428,
+          "sharpe": 1.4654413294126176,
+          "avg_hold_days": 88.71875
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 16,
+          "win_rate": 0.5625,
+          "profit_factor": 2.2524690951759676,
+          "expectancy": 0.03179272695929369,
+          "total_return": 0.09158299379657464,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.6676578166151678,
+          "avg_hold_days": 85.9375
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.09158299379657464
+    },
+    {
+      "name": "B6_ST_kill40_dd_days40",
+      "params": {
+        "mult": 3.6,
+        "use_nifty": true,
+        "use_ema200": true,
+        "breadth_floor": 0.4,
+        "dd_floor": -0.07,
+        "max_days_since_high": 40
+      },
+      "IS": {
+        "n_trades": 127,
+        "win_rate": 0.4015748031496063,
+        "profit_factor": 2.0340990505166228,
+        "expectancy": 0.04129707470600406,
+        "total_return": 1.2030516701627691,
+        "max_dd": -0.2948654167496896,
+        "sharpe": 0.6100884937661748,
+        "avg_hold_days": 87.07874015748031
+      },
+      "OOS": {
+        "n_trades": 69,
+        "win_rate": 0.4927536231884058,
+        "profit_factor": 2.7445107167631924,
+        "expectancy": 0.043902229751401046,
+        "total_return": 0.7363626736196593,
+        "max_dd": -0.1582440554328023,
+        "sharpe": 0.8881407356924005,
+        "avg_hold_days": 82.76811594202898
+      },
+      "OOS_stress": {
+        "n_trades": 69,
+        "win_rate": 0.4782608695652174,
+        "profit_factor": 2.6924042905323082,
+        "expectancy": 0.043202229751401026,
+        "total_return": 0.7133889157251114,
+        "max_dd": -0.15999695491476829,
+        "sharpe": 0.8675958093408775,
+        "avg_hold_days": 82.76811594202898
+      },
+      "wf": [
+        {
+          "period": "2021-01-15\u21922022-11-21",
+          "n_trades": 26,
+          "win_rate": 0.5384615384615384,
+          "profit_factor": 2.437925077944196,
+          "expectancy": 0.04278435856360688,
+          "total_return": 0.21693856969542025,
+          "max_dd": -0.1582440554328023,
+          "sharpe": 0.7888369614943334,
+          "avg_hold_days": 73.8076923076923
+        },
+        {
+          "period": "2022-11-21\u21922024-09-27",
+          "n_trades": 33,
+          "win_rate": 0.42424242424242425,
+          "profit_factor": 3.24071377603453,
+          "expectancy": 0.05623732507872745,
+          "total_return": 0.3965954850620199,
+          "max_dd": -0.09146349719035174,
+          "sharpe": 1.4893025235545454,
+          "avg_hold_days": 79.42424242424242
+        },
+        {
+          "period": "2024-09-27\u21922026-08-04",
+          "n_trades": 17,
+          "win_rate": 0.5294117647058824,
+          "profit_factor": 1.737233582368511,
+          "expectancy": 0.01939790548299185,
+          "total_return": 0.056282729569005596,
+          "max_dd": -0.07735908942501957,
+          "sharpe": 0.43044053324332876,
+          "avg_hold_days": 80.88235294117646
+        }
+      ],
+      "wf_pos": 3,
+      "wf_n": 3,
+      "symbol": "BASKET20",
+      "last_wf_tot": 0.056282729569005596
+    }
+  ],
+  "runners_up": [
+    "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r21.py",
+    "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r22.py",
+    "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r23.py",
+    "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r24.py",
+    "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r25.py"
+  ],
+  "bh_oos": {
+    "n_trades": 1,
+    "win_rate": 1.0,
+    "profit_factor": 999.0,
+    "expectancy": 0.704815973468124,
+    "total_return": 0.704815973468124,
+    "max_dd": -0.172297560846701,
+    "sharpe": 0.7626244201430572,
+    "avg_hold": 1369.0,
+    "split": "OOS"
+  },
+  "n_b6_variants": 14,
+  "hours_to_deadline": 6.918293882475959,
+  "paper_rules": "/Users/ryaneditraj/trading-ai/research/nifty_edge_8h/PAPER_TRADE_RULES.md",
+  "final_outline": "/Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_OUTLINE.md",
+  "block6_near_misses": [
+    {
+      "name": "B6_ST_kill40_dd_nifty_mom_m04",
+      "file": "strategies/nifty_edge_r21.py",
+      "note": "tot_up_same_lastWF"
+    },
+    {
+      "name": "B6_ST_kill40_dd_days60",
+      "file": "strategies/nifty_edge_r25.py",
+      "note": "tot_up_same_lastWF"
+    }
+  ]
+}

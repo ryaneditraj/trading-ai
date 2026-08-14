@@ -1,0 +1,386 @@
+{
+  "block": 7,
+  "hours_left": 6.836016344428063,
+  "drift_ok": true,
+  "champion": "B6_ST_kill40_dd_nifty_mom_m04",
+  "promote_ok": true,
+  "promote_reason": "robust_risk_adj_ladder_boot:robust_risk_adj:B6_ST_kill40_dd_nifty_mom_m04",
+  "repro": {
+    "n": 65,
+    "pf": 4.005008639948001,
+    "tot": 1.1344366318533434,
+    "mdd": -0.1504460259445729,
+    "sharpe": 1.1657105047097958,
+    "last_wf": 0.09158299379657464
+  },
+  "near_miss_stress": [
+    {
+      "name": "B6_ST_kill40_dd_nifty_mom_m04",
+      "dual_clear": false,
+      "ladder_ok": true,
+      "risk_adj_ok": true,
+      "decision": "PROMOTE:robust_risk_adj_ladder_boot:robust_risk_adj",
+      "boot_ci_lo": 2.4558660560247634,
+      "tot": 1.2427642081901453,
+      "last_wf": 0.09158299379657464,
+      "pf": 4.730253555193263
+    },
+    {
+      "name": "B6_ST_kill40_dd_days60",
+      "dual_clear": false,
+      "ladder_ok": true,
+      "risk_adj_ok": true,
+      "decision": "PROMOTE:robust_risk_adj_ladder_boot:robust_risk_adj",
+      "boot_ci_lo": 2.231077496883782,
+      "tot": 1.1833870624291576,
+      "last_wf": 0.09158299379657464,
+      "pf": 4.316399018760747
+    }
+  ],
+  "fragile_failure_modes": {
+    "dd_le_m06": "Tightening dd_floor to \u2264\u22120.06 admits more entries in moderate drawdowns; tot collapses ~48pp and PF drops ~1.5 \u2014 gate was filtering costly mid-DD entries. lastWF can stay flat (same late chunk) while full-OOS tot guts \u2192 vanity trap.",
+    "mult_35": "ST mult=3.5 shortens trail; n\u2191 but lastWF turns negative (\u22123.5% class) and WF may drop. Local PF peak remains at 3.6 \u2014 3.5 is a fragile neighbor, not a conservative twin.",
+    "br_ge_42": "Raising breadth_floor to \u22650.42 over-filters; tot softens ~35pp, lastWF slips ~1.6pp. 0.40 is the practical floor \u2014 0.42+ is not a free robustness knob."
+  },
+  "fragile_cells": [
+    {
+      "name": "B7_frag_dd050",
+      "axis": "dd_floor",
+      "axis_val": "-0.050",
+      "n": 68,
+      "pf": 2.5836639878373373,
+      "tot": 0.6463293525522231,
+      "mdd": -0.17385090845320428,
+      "last_wf": 0.09158299379657464,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -48.8pp vs champ",
+        "MDD worse -2.3pp"
+      ]
+    },
+    {
+      "name": "B7_frag_dd055",
+      "axis": "dd_floor",
+      "axis_val": "-0.055",
+      "n": 69,
+      "pf": 2.6381166071683446,
+      "tot": 0.6733476936789802,
+      "mdd": -0.17463949982828497,
+      "last_wf": 0.09158299379657464,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -46.1pp vs champ",
+        "MDD worse -2.4pp"
+      ]
+    },
+    {
+      "name": "B7_frag_dd060",
+      "axis": "dd_floor",
+      "axis_val": "-0.060",
+      "n": 71,
+      "pf": 2.509612017844404,
+      "tot": 0.6529956569737208,
+      "mdd": -0.18070980854376906,
+      "last_wf": 0.09158299379657464,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -48.1pp vs champ",
+        "MDD worse -3.0pp"
+      ]
+    },
+    {
+      "name": "B7_frag_dd065",
+      "axis": "dd_floor",
+      "axis_val": "-0.065",
+      "n": 67,
+      "pf": 3.6500190712998015,
+      "tot": 1.063289686243745,
+      "mdd": -0.1504460259445729,
+      "last_wf": 0.09158299379657464,
+      "wf_pos": 3,
+      "failure_notes": [
+        "mild degradation"
+      ]
+    },
+    {
+      "name": "B7_frag_dd070",
+      "axis": "dd_floor",
+      "axis_val": "-0.070",
+      "n": 65,
+      "pf": 4.005008639948001,
+      "tot": 1.1344366318533434,
+      "mdd": -0.1504460259445729,
+      "last_wf": 0.09158299379657464,
+      "wf_pos": 3,
+      "failure_notes": [
+        "mild degradation"
+      ]
+    },
+    {
+      "name": "B7_frag_m3.4",
+      "axis": "st_mult",
+      "axis_val": "3.40",
+      "n": 78,
+      "pf": 2.6217996000227877,
+      "tot": 0.8537085920151335,
+      "mdd": -0.15992324968044924,
+      "last_wf": 0.02665468577555652,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -28.1pp vs champ"
+      ]
+    },
+    {
+      "name": "B7_frag_m3.45",
+      "axis": "st_mult",
+      "axis_val": "3.45",
+      "n": 77,
+      "pf": 2.57835053332847,
+      "tot": 0.7767769274875522,
+      "mdd": -0.141498564603164,
+      "last_wf": -0.04659674388406643,
+      "wf_pos": 2,
+      "failure_notes": [
+        "tot gut -35.8pp vs champ",
+        "lastWF negative (-4.7%)",
+        "WF 2/3"
+      ]
+    },
+    {
+      "name": "B7_frag_m3.5",
+      "axis": "st_mult",
+      "axis_val": "3.50",
+      "n": 76,
+      "pf": 2.4284253211953675,
+      "tot": 0.7255444553130141,
+      "mdd": -0.14136869355975412,
+      "last_wf": -0.03525217572236494,
+      "wf_pos": 2,
+      "failure_notes": [
+        "tot gut -40.9pp vs champ",
+        "lastWF negative (-3.5%)",
+        "PF soft (2.43)",
+        "WF 2/3"
+      ]
+    },
+    {
+      "name": "B7_frag_m3.55",
+      "axis": "st_mult",
+      "axis_val": "3.55",
+      "n": 73,
+      "pf": 2.842988224023721,
+      "tot": 0.9057171123685979,
+      "mdd": -0.1521012954865142,
+      "last_wf": 0.04635555398925084,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -22.9pp vs champ"
+      ]
+    },
+    {
+      "name": "B7_frag_m3.6",
+      "axis": "st_mult",
+      "axis_val": "3.60",
+      "n": 65,
+      "pf": 4.005008639948001,
+      "tot": 1.1344366318533434,
+      "mdd": -0.1504460259445729,
+      "last_wf": 0.09158299379657464,
+      "wf_pos": 3,
+      "failure_notes": [
+        "mild degradation"
+      ]
+    },
+    {
+      "name": "B7_frag_br40",
+      "axis": "breadth_floor",
+      "axis_val": "0.40",
+      "n": 65,
+      "pf": 4.005008639948001,
+      "tot": 1.1344366318533434,
+      "mdd": -0.1504460259445729,
+      "last_wf": 0.09158299379657464,
+      "wf_pos": 3,
+      "failure_notes": [
+        "mild degradation"
+      ]
+    },
+    {
+      "name": "B7_frag_br41",
+      "axis": "breadth_floor",
+      "axis_val": "0.41",
+      "n": 64,
+      "pf": 3.0823186834490217,
+      "tot": 0.7818891381564164,
+      "mdd": -0.17844031099989877,
+      "last_wf": 0.07566985276768823,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -35.3pp vs champ",
+        "MDD worse -2.8pp"
+      ]
+    },
+    {
+      "name": "B7_frag_br42",
+      "axis": "breadth_floor",
+      "axis_val": "0.42",
+      "n": 64,
+      "pf": 3.0823186834490217,
+      "tot": 0.7818891381564164,
+      "mdd": -0.17844031099989877,
+      "last_wf": 0.07566985276768823,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -35.3pp vs champ",
+        "MDD worse -2.8pp"
+      ]
+    },
+    {
+      "name": "B7_frag_br43",
+      "axis": "breadth_floor",
+      "axis_val": "0.43",
+      "n": 64,
+      "pf": 3.0823186834490217,
+      "tot": 0.7818891381564164,
+      "mdd": -0.17844031099989877,
+      "last_wf": 0.07566985276768823,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -35.3pp vs champ",
+        "MDD worse -2.8pp"
+      ]
+    },
+    {
+      "name": "B7_frag_br45",
+      "axis": "breadth_floor",
+      "axis_val": "0.45",
+      "n": 64,
+      "pf": 3.0823186834490217,
+      "tot": 0.7818891381564164,
+      "mdd": -0.17844031099989877,
+      "last_wf": 0.07566985276768823,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -35.3pp vs champ",
+        "MDD worse -2.8pp"
+      ]
+    },
+    {
+      "name": "B7_frag_dd06_m35",
+      "axis": "cross",
+      "axis_val": "dd06_m35",
+      "n": 80,
+      "pf": 1.4688953448402553,
+      "tot": 0.24388294200096872,
+      "mdd": -0.1960411632845489,
+      "last_wf": -0.03525217572236494,
+      "wf_pos": 1,
+      "failure_notes": [
+        "tot gut -89.1pp vs champ",
+        "lastWF negative (-3.5%)",
+        "PF soft (1.47)",
+        "MDD worse -4.6pp",
+        "WF 1/3"
+      ]
+    },
+    {
+      "name": "B7_frag_dd06_br42",
+      "axis": "cross",
+      "axis_val": "dd06_br42",
+      "n": 65,
+      "pf": 2.4881085557711304,
+      "tot": 0.5876283681417442,
+      "mdd": -0.17773860376960549,
+      "last_wf": 0.07566985276768823,
+      "wf_pos": 3,
+      "failure_notes": [
+        "tot gut -54.7pp vs champ",
+        "PF soft (2.49)",
+        "MDD worse -2.7pp"
+      ]
+    },
+    {
+      "name": "B7_frag_m35_br42",
+      "axis": "cross",
+      "axis_val": "m35_br42",
+      "n": 75,
+      "pf": 1.8283386695510602,
+      "tot": 0.39016814102270914,
+      "mdd": -0.17870846816901909,
+      "last_wf": -0.028065706874085272,
+      "wf_pos": 2,
+      "failure_notes": [
+        "tot gut -74.4pp vs champ",
+        "lastWF negative (-2.8%)",
+        "PF soft (1.83)",
+        "MDD worse -2.8pp",
+        "WF 2/3"
+      ]
+    }
+  ],
+  "n_variants": 12,
+  "variants_top": [
+    {
+      "name": "B7_ST_kill40_dd_ret5_m03",
+      "pf": 2.7730684138377204,
+      "tot": 0.7614022850967912,
+      "last_wf": 0.12683733542534426,
+      "mdd": -0.20358830260314653
+    },
+    {
+      "name": "B7_ST_kill40_dd_pullback_m08",
+      "pf": 3.2185212650208093,
+      "tot": 0.6530062503492258,
+      "last_wf": 0.11688061969482688,
+      "mdd": -0.17679592722484727
+    },
+    {
+      "name": "B7_ST_kill40_dd_atr08_90",
+      "pf": 2.1547845589432293,
+      "tot": 0.4467992660349418,
+      "last_wf": 0.11270100392294724,
+      "mdd": -0.2303182639573087
+    },
+    {
+      "name": "B7_ST_kill40_dd_mom_days60",
+      "pf": 5.169810401766627,
+      "tot": 1.294172905593984,
+      "last_wf": 0.09158299379657464,
+      "mdd": -0.10994463777231767
+    },
+    {
+      "name": "B7_ST_kill40_dd_mom_m05",
+      "pf": 4.730253555193263,
+      "tot": 1.2427642081901453,
+      "last_wf": 0.09158299379657464,
+      "mdd": -0.12988933622022303
+    }
+  ],
+  "saved_runners": [
+    {
+      "r": 26,
+      "name": "B7_ST_kill40_dd_ret5_m03",
+      "path": "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r26.py"
+    },
+    {
+      "r": 27,
+      "name": "B7_ST_kill40_dd_pullback_m08",
+      "path": "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r27.py"
+    },
+    {
+      "r": 28,
+      "name": "B7_ST_kill40_dd_atr08_90",
+      "path": "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r28.py"
+    },
+    {
+      "r": 29,
+      "name": "B7_ST_kill40_dd_mom_days60",
+      "path": "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r29.py"
+    }
+  ],
+  "checklist": "/Users/ryaneditraj/trading-ai/research/nifty_edge_8h/CHECKLIST.md",
+  "final_outline": "/Users/ryaneditraj/trading-ai/research/nifty_edge_8h/FINAL_REPORT_OUTLINE.md",
+  "final_report_written": false,
+  "paper_a": "B6_ST_kill40_dd_nifty_mom_m04",
+  "paper_b": "ST_m3.6_n1_e1"
+}

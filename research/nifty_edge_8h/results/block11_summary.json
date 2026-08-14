@@ -1,0 +1,332 @@
+{
+  "block": 11,
+  "hours_left": 6.4880868650145,
+  "paper_a": {
+    "name": "B6_ST_kill40_dd_nifty_mom_m04",
+    "n": 64,
+    "pf": 4.730253555193263,
+    "tot": 1.2427642081901453,
+    "mdd": -0.12988933622022303,
+    "sharpe": 1.242741398646993,
+    "last_wf": 0.09158299379657464,
+    "drift_ok": true,
+    "files": [
+      "strategies/nifty_edge_paper.py",
+      "pinescript/nifty_edge_paper.pine"
+    ]
+  },
+  "research_a": {
+    "name": "B7_ST_kill40_dd_mom_days60",
+    "n": 63,
+    "pf": 5.169810401766627,
+    "tot": 1.294172905593984,
+    "mdd": -0.10994463777231767,
+    "sharpe": 1.2809109681458544,
+    "last_wf": 0.09158299379657464,
+    "drift_ok": true,
+    "role": "monitor_only",
+    "files": [
+      "strategies/nifty_edge_best.py",
+      "pinescript/nifty_edge_best.pine",
+      "strategies/nifty_edge_r29.py"
+    ]
+  },
+  "shadow": {
+    "rt_0_08": {
+      "n": 64,
+      "pf": 4.730253555193263,
+      "tot": 1.2427642081901449,
+      "mdd": -0.12988933622022292,
+      "sharpe": 1.2427413986469924,
+      "weekly": {
+        "label": "paper_0.08",
+        "n_weeks": 290,
+        "start_eq": 1.0,
+        "end_eq": 2.242764208190145,
+        "tot_from_weekly": 1.2427642081901449,
+        "mean_week_pp": 0.2927286323039515,
+        "median_week_pp": 0.0,
+        "worst_week_pp": -6.169332443475383,
+        "best_week_pp": 8.696356866392252
+      },
+      "weekly_tail": [
+        {
+          "week": "2026-05-22",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-05-29",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-06-05",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-06-12",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-06-19",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-06-26",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-03",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-10",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-17",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-24",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-31",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-08-07",
+          "equity": 2.242764208190145,
+          "week_ret": 0.0
+        }
+      ]
+    },
+    "rt_0_15": {
+      "n": 64,
+      "pf": 4.63799091273214,
+      "tot": 1.2155779392278494,
+      "mdd": -0.13142009948086264,
+      "sharpe": 1.2241293732012852,
+      "weekly": {
+        "label": "paper_0.15",
+        "n_weeks": 290,
+        "start_eq": 1.0,
+        "end_eq": 2.2155779392278494,
+        "tot_from_weekly": 1.2155779392278494,
+        "mean_week_pp": 0.28857286343243416,
+        "median_week_pp": 0.0,
+        "worst_week_pp": -6.2077802047584285,
+        "best_week_pp": 8.695723468142113
+      },
+      "weekly_tail": [
+        {
+          "week": "2026-05-22",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-05-29",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-06-05",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-06-12",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-06-19",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-06-26",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-03",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-10",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-17",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-24",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-07-31",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        },
+        {
+          "week": "2026-08-07",
+          "equity": 2.2155779392278494,
+          "week_ret": 0.0
+        }
+      ]
+    },
+    "weekly_delta_08_minus_15": {
+      "n_weeks": 290,
+      "mean_delta_pp": 0.004155768871517389,
+      "median_delta_pp": 3.155829156886725e-05,
+      "weeks_a_ahead": 147,
+      "weeks_b_ahead": 74,
+      "max_consec_b_beats_gt2pp": 0,
+      "flag_3w_b_lead": false,
+      "trailing_4w_delta_pp": 0.0
+    },
+    "assumptions_doc": "research/nifty_edge_8h/SHADOW.md"
+  },
+  "days60_skip": {
+    "n_skips": 1,
+    "n_winners_skipped": 0,
+    "n_losers_skipped": 1,
+    "save_rate": 1.0,
+    "hit_rate_overfilter": 0.0,
+    "avg_skip_ret": -0.10372040238960253,
+    "max_days": 60,
+    "justify_gate": true,
+    "overfilter_flag": false,
+    "thin_sample": true,
+    "honesty": "n=1 skips \u2014 rates provisional; do not treat save-rate as confirmatory until n\u226520 live+hist combined."
+  },
+  "days60_skip_sample": [
+    {
+      "symbol": "WIPRO.NS",
+      "entry": "2022-01-17",
+      "exit": "2022-01-24",
+      "sig_dt": "2022-01-14",
+      "days_since_high": 62.0,
+      "ret": -0.10372040238960253,
+      "winner": false,
+      "loser": true
+    }
+  ],
+  "days60_log": "research/nifty_edge_8h/DAYS60_SKIP_LOG.md",
+  "benchmarks": {
+    "nsei_bh": {
+      "tot": 0.704815973468124,
+      "mdd": -0.172297560846701,
+      "sharpe": 0.7626244201430572
+    },
+    "ew_basket_bh": {
+      "tot": 0.9946721859125988,
+      "mdd": -0.16311038459327565,
+      "sharpe": 1.0190818386407479,
+      "n_names": 20
+    },
+    "paper_excess_vs_nsei_pp": 53.79482347220213,
+    "paper_excess_vs_ew_pp": 24.809202227754657
+  },
+  "pine": {
+    "paper": {
+      "exists": true,
+      "version5": true,
+      "mult_3_6": true,
+      "ema200": true,
+      "crossover_entry": true,
+      "exit_below": true,
+      "next_open": true,
+      "basket_disclaimer": true,
+      "role_labeled": true,
+      "no_days60_gate": true,
+      "core_ok": true
+    },
+    "research": {
+      "exists": true,
+      "version5": true,
+      "mult_3_6": true,
+      "ema200": true,
+      "crossover_entry": true,
+      "exit_below": true,
+      "next_open": true,
+      "basket_disclaimer": true,
+      "role_labeled": true,
+      "days60_documented": true,
+      "core_ok": true
+    },
+    "block9_helper": {
+      "pine_exists": true,
+      "mult_3_6": true,
+      "ema200": true,
+      "use_ema_gate": true,
+      "st_crossover_entry": true,
+      "st_exit_below": true,
+      "next_open_fill": true,
+      "breadth_not_in_pine": true,
+      "dd_not_in_pine": false,
+      "mom_not_in_pine": false,
+      "days60_not_in_pine": true,
+      "basket_disclaimer": true,
+      "core_st_ema_match": true,
+      "note": "Pine matches Python ST 3.6 + EMA200 trail/entry/exit. Basket gates (breadth40, dd\u22127%, ret20\u2265\u22120.04, days60) are intentionally absent from single-symbol Pine \u2014 documented in pine header."
+    },
+    "both_core_ok": true
+  },
+  "universe_freeze": {
+    "n": 20,
+    "tickers": [
+      "RELIANCE.NS",
+      "TCS.NS",
+      "INFY.NS",
+      "HDFCBANK.NS",
+      "ICICIBANK.NS",
+      "SBIN.NS",
+      "BHARTIARTL.NS",
+      "ITC.NS",
+      "LT.NS",
+      "AXISBANK.NS",
+      "KOTAKBANK.NS",
+      "HINDUNILVR.NS",
+      "BAJFINANCE.NS",
+      "ASIANPAINT.NS",
+      "MARUTI.NS",
+      "SUNPHARMA.NS",
+      "TITAN.NS",
+      "ULTRACEMCO.NS",
+      "WIPRO.NS",
+      "NESTLEIND.NS"
+    ],
+    "doc": "research/nifty_edge_8h/UNIVERSE_FREEZE.md"
+  },
+  "recommendation": "FINAL LOCK: PAPER A = B6 (nifty_edge_paper.py); RESEARCH A = B7 monitor. Shadow 0.08/0.15 hygiene done. Days60 live log until n\u226520. No new gates.",
+  "no_new_gates": true,
+  "final_locked": true,
+  "final_report": "research/nifty_edge_8h/FINAL_REPORT.md",
+  "final_repro": {
+    "locked_at_ist": "2026-08-05 ~07:05 IST",
+    "hours_left_at_lock": "<1h",
+    "paper_a_pf": 4.730253555193263,
+    "paper_a_tot": 1.2427642081901449,
+    "research_a_pf": 5.169810401766627,
+    "research_a_tot": 1.2941729055939835,
+    "match_block11": true
+  }
+}

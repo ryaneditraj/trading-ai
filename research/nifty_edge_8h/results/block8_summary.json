@@ -1,0 +1,356 @@
+{
+  "block": 8,
+  "hours_left": 6.744748000833724,
+  "drift_ok": true,
+  "champion": "B7_ST_kill40_dd_mom_days60",
+  "promote_ok": true,
+  "promote_reason": "robust_risk_adj_ladder_boot:robust_risk_adj:B7_ST_kill40_dd_mom_days60",
+  "repro": {
+    "n": 64,
+    "pf": 4.730253555193263,
+    "tot": 1.2427642081901453,
+    "mdd": -0.12988933622022303,
+    "sharpe": 1.242741398646993,
+    "last_wf": 0.09158299379657464,
+    "drift_ok": true
+  },
+  "mom_skip": {
+    "n_skips": 2,
+    "n_winners_skipped": 0,
+    "n_losers_skipped": 2,
+    "save_rate": 1.0,
+    "hit_rate_overfilter": 0.0,
+    "avg_skip_ret": -0.09848018051199794,
+    "mom_floor": -0.04,
+    "justify_gate": true,
+    "overfilter_flag": false
+  },
+  "mom_skip_sample": [
+    {
+      "symbol": "ICICIBANK.NS",
+      "entry": "2022-02-16",
+      "exit": "2022-03-04",
+      "sig_dt": "2022-02-15",
+      "nifty_ret20": -0.05219822980074029,
+      "ret": -0.11379465861384594,
+      "winner": false,
+      "loser": true
+    },
+    {
+      "symbol": "ASIANPAINT.NS",
+      "entry": "2022-10-12",
+      "exit": "2022-12-16",
+      "sig_dt": "2022-10-11",
+      "nifty_ret20": -0.053121111534701004,
+      "ret": -0.08316570241014995,
+      "winner": false,
+      "loser": true
+    }
+  ],
+  "weekly_delta": {
+    "n_weeks": 290,
+    "mean_delta_pp": 0.01688850901093742,
+    "median_delta_pp": 0.0,
+    "weeks_a_ahead": 79,
+    "weeks_b_ahead": 67,
+    "max_consec_b_beats_gt2pp": 0,
+    "flag_3w_b_lead": false,
+    "trailing_4w_delta_pp": 0.0
+  },
+  "weekly_sample": [
+    {
+      "week": "2026-05-22",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-05-29",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-06-05",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-06-12",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-06-19",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-06-26",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-07-03",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-07-10",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-07-17",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-07-24",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-07-31",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    },
+    {
+      "week": "2026-08-07",
+      "a_ret": 0.0,
+      "b_ret": 0.0,
+      "delta_a_minus_b": 0.0
+    }
+  ],
+  "r29": {
+    "name": "B7_ST_kill40_dd_mom_days60",
+    "dual_clear": false,
+    "risk_adj_ok": true,
+    "ladder_ok": true,
+    "decision": "PROMOTE:robust_risk_adj_ladder_boot:robust_risk_adj:B7_ST_kill40_dd_mom_days60",
+    "boot_ci_lo": 2.52518358030888,
+    "tot": 1.294172905593984,
+    "last_wf": 0.09158299379657464,
+    "pf": 5.169810401766627,
+    "mdd": -0.10994463777231767,
+    "sharpe": 1.2809109681458544
+  },
+  "cost_shock": {
+    "A": {
+      "name": "B6_ST_kill40_dd_nifty_mom_m04",
+      "ladder": [
+        {
+          "rt_pct": 0.08,
+          "n": 64,
+          "pf": 4.730253555193263,
+          "tot": 1.2427642081901449,
+          "mdd": -0.12988933622022292,
+          "exp": 0.07110205270342758,
+          "sharpe": 1.2427413986469924
+        },
+        {
+          "rt_pct": 0.1,
+          "n": 64,
+          "pf": 4.703972146912854,
+          "tot": 1.234962406498651,
+          "mdd": -0.13032688888265254,
+          "exp": 0.0709020527034276,
+          "sharpe": 1.2374227007306384
+        },
+        {
+          "rt_pct": 0.12,
+          "n": 64,
+          "pf": 4.677544603117419,
+          "tot": 1.2271880908676378,
+          "mdd": -0.1307642881450466,
+          "exp": 0.07070205270342761,
+          "sharpe": 1.232104771453082
+        },
+        {
+          "rt_pct": 0.15,
+          "n": 64,
+          "pf": 4.63799091273214,
+          "tot": 1.2155779392278494,
+          "mdd": -0.13142009948086264,
+          "exp": 0.0704020527034276,
+          "sharpe": 1.2241293732012852
+        },
+        {
+          "rt_pct": 0.2,
+          "n": 64,
+          "pf": 4.573205402101242,
+          "tot": 1.1963637317121485,
+          "mdd": -0.13251235180945875,
+          "exp": 0.0699020527034276,
+          "sharpe": 1.210841238082715
+        }
+      ]
+    },
+    "r29": {
+      "name": "B7_ST_kill40_dd_mom_days60",
+      "ladder": [
+        {
+          "rt_pct": 0.08,
+          "n": 63,
+          "pf": 5.169810401766627,
+          "tot": 1.2941729055939835,
+          "mdd": -0.10994463777231755,
+          "exp": 0.07387701230807882,
+          "sharpe": 1.280910968145855
+        },
+        {
+          "rt_pct": 0.1,
+          "n": 63,
+          "pf": 5.139976562851821,
+          "tot": 1.286348411082805,
+          "mdd": -0.11033146240717884,
+          "exp": 0.07367701230807888,
+          "sharpe": 1.2756795676784016
+        },
+        {
+          "rt_pct": 0.12,
+          "n": 63,
+          "pf": 5.109957977851136,
+          "tot": 1.2785510088607106,
+          "mdd": -0.1107181668642605,
+          "exp": 0.07347701230807885,
+          "sharpe": 1.2704487500758395
+        },
+        {
+          "rt_pct": 0.15,
+          "n": 63,
+          "pf": 5.06502578008666,
+          "tot": 1.2669054953076024,
+          "mdd": -0.11129799826099784,
+          "exp": 0.07317701230807891,
+          "sharpe": 1.2626036694372305
+        },
+        {
+          "rt_pct": 0.2,
+          "n": 63,
+          "pf": 4.991496684174721,
+          "tot": 1.2476304229895554,
+          "mdd": -0.11226378332117826,
+          "exp": 0.07267701230807884,
+          "sharpe": 1.2495317913480317
+        }
+      ]
+    },
+    "a_dtot_08_to_20_pp": -4.640047647799639,
+    "r29_dtot_08_to_20_pp": -4.654248260442806
+  },
+  "checks": [
+    {
+      "name": "B8_A_champ_repro",
+      "n": 64,
+      "pf": 4.730253555193263,
+      "tot": 1.2427642081901453,
+      "mdd": -0.12988933622022303,
+      "last_wf": 0.09158299379657464,
+      "note": "champ_repro"
+    },
+    {
+      "name": "B8_B_demoted_b5",
+      "n": 65,
+      "pf": 4.005008639948001,
+      "tot": 1.1344366318533434,
+      "mdd": -0.1504460259445729,
+      "last_wf": 0.09158299379657464,
+      "note": "paper_B"
+    },
+    {
+      "name": "B8_r29_mom_days60",
+      "n": 63,
+      "pf": 5.169810401766627,
+      "tot": 1.294172905593984,
+      "mdd": -0.10994463777231767,
+      "last_wf": 0.09158299379657464,
+      "note": "watch_r29"
+    },
+    {
+      "name": "B8_A_stress015",
+      "n": 64,
+      "pf": 4.63799091273214,
+      "tot": 1.2155779392278494,
+      "mdd": -0.13142009948086264,
+      "last_wf": 0.09158299379657464,
+      "note": "stress_shadow"
+    },
+    {
+      "name": "B8_r29_stress015",
+      "n": 63,
+      "pf": 5.06502578008666,
+      "tot": 1.2669054953076024,
+      "mdd": -0.11129799826099784,
+      "last_wf": 0.09158299379657464,
+      "note": "stress_shadow"
+    },
+    {
+      "name": "B8_days60_only",
+      "n": 64,
+      "pf": 4.316399018760747,
+      "tot": 1.1833870624291576,
+      "mdd": -0.130962649297641,
+      "last_wf": 0.09158299379657464,
+      "note": "causal_probe"
+    },
+    {
+      "name": "B8_volcalm125",
+      "n": 67,
+      "pf": 3.5133159229137134,
+      "tot": 0.9998474678750084,
+      "mdd": -0.15091645058326586,
+      "last_wf": 0.09158299379657464,
+      "note": "causal_probe"
+    }
+  ],
+  "saved_runners": [
+    "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r30.py",
+    "/Users/ryaneditraj/trading-ai/strategies/nifty_edge_r31.py"
+  ],
+  "buy_hold_oos": {
+    "tot": 0.704815973468124,
+    "sharpe": 0.7626244201430572
+  },
+  "post_promote": {
+    "paper_A": "B7_ST_kill40_dd_mom_days60",
+    "paper_B": "B6_ST_kill40_dd_nifty_mom_m04",
+    "days60_skip": {
+      "n_skips": 1,
+      "save_rate": 1.0,
+      "hit_rate_overfilter": 0.0,
+      "avg_skip_ret": -0.10372040238960253,
+      "skips": [
+        {
+          "symbol": "WIPRO.NS",
+          "entry": "2022-01-17",
+          "exit": "2022-01-24",
+          "sig_dt": "2022-01-14",
+          "days_since_high": 62.0,
+          "ret": -0.10372040238960253,
+          "winner": false,
+          "loser": true
+        }
+      ]
+    },
+    "weekly_delta_AB": {
+      "n_weeks": 290,
+      "mean_delta_pp": 0.007550769397030033,
+      "median_delta_pp": 0.0,
+      "weeks_a_ahead": 55,
+      "weeks_b_ahead": 43,
+      "max_consec_b_beats_gt2pp": 0,
+      "flag_3w_b_lead": false,
+      "trailing_4w_delta_pp": 0.0
+    }
+  }
+}

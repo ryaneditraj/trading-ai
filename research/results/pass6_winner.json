@@ -1,0 +1,43 @@
+{
+  "params": {
+    "n": 20,
+    "exit_n": 10
+  },
+  "rt": 0.0005,
+  "oos_n": 429,
+  "oos_exp": 0.007019613488472315,
+  "oos_pf": 1.310493474525567,
+  "oos_mdd": -0.6757371482781651,
+  "oos_wr": 0.41025641025641024,
+  "oos_sharpe": 0.3054035513445057,
+  "oos_hold": 24.920745920745922,
+  "wf_n": 399,
+  "wf_exp": 0.0043842457885411405,
+  "wf_pf": 1.1613248125705182,
+  "is_exp": 0.022480212569956647,
+  "is_n": 911,
+  "pert_frac": 1.0,
+  "universe": [
+    "RELIANCE.NS",
+    "TCS.NS",
+    "INFY.NS",
+    "HDFCBANK.NS",
+    "ICICIBANK.NS",
+    "SBIN.NS",
+    "BHARTIARTL.NS",
+    "ITC.NS",
+    "LT.NS",
+    "AXISBANK.NS",
+    "KOTAKBANK.NS",
+    "HINDUNILVR.NS",
+    "BAJFINANCE.NS",
+    "ASIANPAINT.NS",
+    "MARUTI.NS",
+    "SUNPHARMA.NS",
+    "TITAN.NS",
+    "ULTRACEMCO.NS",
+    "WIPRO.NS",
+    "NESTLEIND.NS"
+  ],
+  "strict": false
+}
