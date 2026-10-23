@@ -17,6 +17,10 @@ keywords = [
   "quant",
   "backtesting",
   "nifty",
+  "open-interest",
+  "funding-rate",
+  "pine-script",
+  "systematic-trading",
 ]
 dependencies = [
   "pandas>=2.2",
@@ -34,6 +38,8 @@ btc-radar = "btc_radar.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/ryaneditraj/trading-ai"
+Repository = "https://github.com/ryaneditraj/trading-ai"
+Issues = "https://github.com/ryaneditraj/trading-ai/issues"
 
 [tool.setuptools.packages.find]
 include = ["btc_radar*"]

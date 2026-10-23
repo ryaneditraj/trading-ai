@@ -17,9 +17,27 @@ research/data/
 .env
 .env.*
 !.env.example
+.envrc
+
+# Local credentials. Never commit these.
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+credentials.json
+*service-account*.json
+secrets/
 
 .DS_Store
 .idea/
 .vscode/
 *.log
-.ipynb_checkpoints/
+.ipynb_checkpoints
+coverage.xml
+.cache/
+
+# Operator-supplied GIFT ticks. The README in that folder stays tracked.
+research/gift_overnight_edge/data/*
+!research/gift_overnight_edge/data/README.md/

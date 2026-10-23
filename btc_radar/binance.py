@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import time
 from typing import Any
 
@@ -12,22 +13,114 @@ import requests
 FAPI = "https://fapi.binance.com"
 DATA = "https://fapi.binance.com/futures/data"
 WS_FORCE = "wss://fstream.binance.com/ws/!forceOrder@arr"
+WS_HOST = "fstream.binance.com"
 DEFAULT_SYMBOL = "BTCUSDT"
 TIMEOUT = 15
+
+# Public market streams only. Caps stop a hostile frame from growing memory.
+_MAX_WS_PAYLOAD = 64 * 1024
+_MAX_WS_BUFFER = 256 * 1024
+_SYMBOL_RE = re.compile(r"^[A-Z0-9]{2,30}$")
+_DATA_PATH_RE = re.compile(r"^/[A-Za-z0-9]+$")
+_KLINE_INTERVALS = frozenset(
+    {"1m", "3m", "5m", "15m", "30m", "1h", "2h", "4h", "6h", "8h", "12h", "1d", "3d", "1w", "1M"}
+)
+_DATA_PERIODS = frozenset({"5m", "15m", "30m", "1h", "2h", "4h", "6h", "12h", "1d"})
+
+
+class WebSocketProtocolError(ValueError):
+    """Liquidation stream sent a frame this client will not buffer."""
+
+
+def _pop_ws_frames(
+    buf: bytes, max_payload: int = _MAX_WS_PAYLOAD
+) -> tuple[list[tuple[int, bytes]], bytes]:
+    """Split complete WebSocket frames off the front of buf.
+
+    Returns (frames, remainder). A declared length above max_payload raises
+    before the body is buffered. Incomplete headers stay in the remainder.
+    """
+    frames: list[tuple[int, bytes]] = []
+    i = 0
+    n = len(buf)
+    while i + 2 <= n:
+        b1, b2 = buf[i], buf[i + 1]
+        opcode = b1 & 0x0F
+        masked = bool(b2 & 0x80)
+        length = b2 & 0x7F
+        j = i + 2
+        if length == 126:
+            if j + 2 > n:
+                break
+            length = int.from_bytes(buf[j : j + 2], "big")
+            j += 2
+        elif length == 127:
+            if j + 8 > n:
+                break
+            length = int.from_bytes(buf[j : j + 8], "big")
+            j += 8
+        if length > max_payload:
+            raise WebSocketProtocolError(
+                f"websocket frame length {length} exceeds cap {max_payload}"
+            )
+        mask_len = 4 if masked else 0
+        if j + mask_len + length > n:
+            break
+        mask = b""
+        if masked:
+            mask = buf[j : j + 4]
+            j += 4
+        payload = bytearray(buf[j : j + length])
+        if mask:
+            for k in range(length):
+                payload[k] ^= mask[k % 4]
+        frames.append((opcode, bytes(payload)))
+        i = j + length
+    return frames, buf[i:]
+
+
+def _absorb_ws(acc: bytes, chunk: bytes) -> tuple[list[tuple[int, bytes]], bytes]:
+    if chunk:
+        acc = acc + chunk
+    if len(acc) > _MAX_WS_BUFFER:
+        raise WebSocketProtocolError(f"websocket buffer {len(acc)} exceeds cap {_MAX_WS_BUFFER}")
+    return _pop_ws_frames(acc)
 
 
 class BinancePublic:
     def __init__(self, symbol: str = DEFAULT_SYMBOL, session: requests.Session | None = None):
-        self.symbol = symbol.upper()
+        self.symbol = symbol.strip().upper()
+        if not _SYMBOL_RE.fullmatch(self.symbol):
+            raise ValueError(
+                f"Unsupported symbol {symbol!r}. Use a Binance USD-M symbol such as BTCUSDT "
+                "(letters and digits only)."
+            )
         self.session = session or requests.Session()
         self.session.headers.update({"User-Agent": "btc-1pct-radar/0.1"})
 
     def _get(self, base: str, path: str, params: dict[str, Any] | None = None) -> Any:
+        if base not in (FAPI, DATA):
+            raise ValueError("Refusing request outside the Binance public futures hosts")
+        if not path.startswith("/") or path.startswith("//") or "\\" in path or ".." in path:
+            raise ValueError(f"Refusing request path {path!r}")
         url = f"{base}{path}"
         last_err: Exception | None = None
         for attempt in range(3):
             try:
-                r = self.session.get(url, params=params or {}, timeout=TIMEOUT)
+                # Redirects stay off so a 3xx cannot move the client to another host.
+                r = self.session.get(
+                    url, params=params or {}, timeout=TIMEOUT, allow_redirects=False
+                )
+                if 300 <= r.status_code < 400:
+                    raise RuntimeError(
+                        f"Refusing HTTP {r.status_code} redirect from the Binance public API"
+                    )
+                if r.status_code == 451:
+                    raise RuntimeError(
+                        "Binance returned HTTP 451 (restricted location). "
+                        "The radar needs the public futures API, or run "
+                        "`python -m btc_radar --demo` offline."
+                    )
                 if r.status_code in (429, 500, 502, 503, 504) and attempt < 2:
                     time.sleep(0.4 * (attempt + 1))
                     continue
@@ -73,6 +166,10 @@ class BinancePublic:
         start_ms: int | None = None,
         end_ms: int | None = None,
     ) -> pd.DataFrame:
+        if interval not in _KLINE_INTERVALS:
+            raise ValueError(f"Unsupported kline interval {interval!r}")
+        if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= 1500:
+            raise ValueError("kline limit must be an integer from 1 to 1500")
         params: dict[str, Any] = {"symbol": self.symbol, "interval": interval, "limit": limit}
         if start_ms is not None:
             params["startTime"] = start_ms
@@ -137,6 +234,12 @@ class BinancePublic:
 
     def futures_data_hist(self, path: str, period: str = "15m", limit: int = 500) -> pd.DataFrame:
         """Fetch /futures/data/* series (Binance keeps ~30 days)."""
+        if not _DATA_PATH_RE.fullmatch(path):
+            raise ValueError(f"Refusing futures data path {path!r}")
+        if period not in _DATA_PERIODS:
+            raise ValueError(f"Unsupported futures-data period {period!r}")
+        if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= 500:
+            raise ValueError("futures-data limit must be an integer from 1 to 500")
         raw = self._get(
             DATA,
             path,
@@ -199,9 +302,13 @@ class BinancePublic:
 
     def force_orders(self, listen_seconds: float = 1.5) -> list[dict[str, Any]]:
         """
-        Sample public liquidation stream briefly.
+        Sample the public liquidation stream briefly.
         REST /fapi/v1/allForceOrders is gone (404); WS !forceOrder@arr is public.
         Returns normalized dicts: side, avgPrice, origQty, symbol, time.
+
+        Frames larger than _MAX_WS_PAYLOAD and buffers larger than _MAX_WS_BUFFER
+        abort the sample. A failure returns whatever was collected (often empty)
+        so scoring still runs.
         """
         import base64
         import os
@@ -211,9 +318,40 @@ class BinancePublic:
 
         out: list[dict[str, Any]] = []
         parsed = urlparse(WS_FORCE)
-        host = parsed.hostname or "fstream.binance.com"
+        host = parsed.hostname or WS_HOST
         path = parsed.path or "/ws/!forceOrder@arr"
+        if parsed.scheme != "wss" or host != WS_HOST or not path.startswith("/ws/"):
+            return out
         key = base64.b64encode(os.urandom(16)).decode()
+
+        def take(frames: list[tuple[int, bytes]]) -> bool:
+            for opcode, payload in frames:
+                if opcode == 0x8:
+                    return True
+                if opcode != 0x1 or not payload:
+                    continue
+                try:
+                    raw = json.loads(payload.decode())
+                except (json.JSONDecodeError, UnicodeDecodeError):
+                    continue
+                if not isinstance(raw, dict):
+                    continue
+                order = raw.get("o") or raw
+                if not isinstance(order, dict):
+                    continue
+                sym = str(order.get("s") or "").upper()
+                if sym and sym != self.symbol:
+                    continue
+                out.append(
+                    {
+                        "symbol": sym or self.symbol,
+                        "side": order.get("S"),
+                        "avgPrice": order.get("ap") or order.get("p"),
+                        "origQty": order.get("q"),
+                        "time": order.get("T"),
+                    }
+                )
+            return False
 
         try:
             ctx = ssl.create_default_context()
@@ -235,79 +373,36 @@ class BinancePublic:
                 if not chunk:
                     break
                 buf += chunk
-            if b"101" not in buf.split(b"\r\n", 1)[0]:
+                if len(buf) > _MAX_WS_BUFFER:
+                    ssock.close()
+                    return out
+            header, sep, rest = buf.partition(b"\r\n\r\n")
+            if sep != b"\r\n\r\n" or b"101" not in header.split(b"\r\n", 1)[0]:
                 ssock.close()
                 return out
 
             ssock.settimeout(0.35)
-            deadline = time.time() + listen_seconds
-            acc = b""
-            while time.time() < deadline:
+            deadline = time.time() + max(0.0, listen_seconds)
+            acc = rest
+            while True:
+                frames, acc = _absorb_ws(acc, b"")
+                if take(frames):
+                    ssock.close()
+                    return out
+                if time.time() >= deadline:
+                    break
                 try:
                     chunk = ssock.recv(8192)
-                    if not chunk:
-                        break
-                    acc += chunk
                 except socket.timeout:
                     continue
                 except Exception:
                     break
-
-                i = 0
-                while i + 2 <= len(acc):
-                    b1, b2 = acc[i], acc[i + 1]
-                    opcode = b1 & 0x0F
-                    masked = bool(b2 & 0x80)
-                    ln = b2 & 0x7F
-                    j = i + 2
-                    if ln == 126:
-                        if j + 2 > len(acc):
-                            break
-                        ln = int.from_bytes(acc[j : j + 2], "big")
-                        j += 2
-                    elif ln == 127:
-                        if j + 8 > len(acc):
-                            break
-                        ln = int.from_bytes(acc[j : j + 8], "big")
-                        j += 8
-                    if masked:
-                        if j + 4 > len(acc):
-                            break
-                        mask = acc[j : j + 4]
-                        j += 4
-                    else:
-                        mask = b""
-                    if j + ln > len(acc):
-                        break
-                    payload = bytearray(acc[j : j + ln])
-                    if mask:
-                        for k in range(len(payload)):
-                            payload[k] ^= mask[k % 4]
-                    i = j + ln
-                    if opcode == 0x8:  # close
-                        acc = acc[i:]
-                        ssock.close()
-                        return out
-                    if opcode != 0x1:
-                        continue
-                    try:
-                        raw = json.loads(payload.decode())
-                    except (json.JSONDecodeError, UnicodeDecodeError):
-                        continue
-                    o = raw.get("o") or raw
-                    sym = (o.get("s") or "").upper()
-                    if sym and sym != self.symbol:
-                        continue
-                    out.append(
-                        {
-                            "symbol": sym or self.symbol,
-                            "side": o.get("S"),
-                            "avgPrice": o.get("ap") or o.get("p"),
-                            "origQty": o.get("q"),
-                            "time": o.get("T"),
-                        }
-                    )
-                acc = acc[i:]
+                if not chunk:
+                    break
+                frames, acc = _absorb_ws(acc, chunk)
+                if take(frames):
+                    ssock.close()
+                    return out
             ssock.close()
         except Exception:
             return out

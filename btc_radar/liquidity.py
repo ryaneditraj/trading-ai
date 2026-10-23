@@ -36,6 +36,8 @@ def _depth_usd_in_band(
     best_px = mid
     best_notional = 0.0
     for row in levels:
+        if not isinstance(row, (list, tuple)) or len(row) < 2:
+            continue
         px = _f(row[0])
         qty = _f(row[1])
         if px < lo or px > hi:
@@ -69,6 +71,8 @@ def extract_liquidity(snapshot: dict, band_pct: float = 0.015) -> LiquidityFeatu
     force_above = 0.0
     force_below = 0.0
     for fo in forces:
+        if not isinstance(fo, dict):
+            continue
         px = _f(fo.get("avgPrice") or fo.get("price"), price)
         qty = _f(fo.get("origQty") or fo.get("executedQty"))
         notional = px * qty

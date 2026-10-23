@@ -6,6 +6,7 @@ Walk-forward + cost-aware backtests on NSE indices/stocks via yfinance.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, asdict, field
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Tuple
@@ -18,6 +19,21 @@ DATA_DIR = Path(__file__).resolve().parent / "data"
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
+# Cache files are local parquet written from ticker symbols. Reject anything
+# that is not a single filename so a symbol cannot escape DATA_DIR.
+_CACHE_NAME = re.compile(r"^[A-Za-z0-9._=+-]+$")
+
+
+def safe_cache_path(filename: str) -> Path:
+    """Return DATA_DIR / filename, or raise if filename could leave that directory."""
+    if not _CACHE_NAME.fullmatch(filename) or ".." in filename or filename.startswith("."):
+        raise ValueError(f"Refusing unsafe cache filename: {filename!r}")
+    root = DATA_DIR.resolve()
+    path = (root / filename).resolve()
+    if path.parent != root:
+        raise ValueError(f"Refusing cache path outside {root}")
+    return path
 
 # India equity round-trip cost assumption (broker+taxes+slippage ballpark)
 DEFAULT_RT_COST = 0.0008  # 0.08% round-trip
@@ -41,7 +57,7 @@ def _flatten_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def fetch_daily(symbol: str, start: str = "2008-01-01") -> pd.DataFrame:
-    cache = DATA_DIR / f"{symbol.replace('^', '').replace('.', '_')}_1d.parquet"
+    cache = safe_cache_path(f"{symbol.replace('^', '').replace('.', '_')}_1d.parquet")
     if cache.exists():
         df = pd.read_parquet(cache)
         if len(df) > 200:
@@ -58,7 +74,7 @@ def fetch_daily(symbol: str, start: str = "2008-01-01") -> pd.DataFrame:
 
 
 def fetch_hourly(symbol: str) -> pd.DataFrame:
-    cache = DATA_DIR / f"{symbol.replace('^', '').replace('.', '_')}_1h.parquet"
+    cache = safe_cache_path(f"{symbol.replace('^', '').replace('.', '_')}_1h.parquet")
     if cache.exists():
         df = pd.read_parquet(cache)
         if len(df) > 200:
