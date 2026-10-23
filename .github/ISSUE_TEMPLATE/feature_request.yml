@@ -1,0 +1,37 @@
+name: Feature request
+description: Suggest a scoring input, a research check, or a docs improvement
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is missing?
+      description: Which decision is harder than it should be?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you change?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - BTC 1% Radar
+        - Nifty / NSE research
+        - Pine Script
+        - Docs
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This does not add live order placement or a required API key
+          required: true

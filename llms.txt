@@ -1,0 +1,31 @@
+# BTC 1% Radar
+
+> Local Python tool that scores Binance USD-M Bitcoin futures and prints LONG, SHORT, or NO TRADE for which side is likelier to reach ±1% first. Includes a walk-forward Nifty / NSE research lab and TradingView Pine Script ports. Public market data only. No API key. No order placement. Not financial advice.
+
+This file is the machine-readable summary of the GitHub repository. There is no separate project website.
+
+## Docs
+
+- [README](https://github.com/ryaneditraj/trading-ai/blob/main/README.md): What the radar does, how to install it, how to run the offline demo, and how the Nifty lab is organized
+- [Security](https://github.com/ryaneditraj/trading-ai/blob/main/SECURITY.md): Threat model, the 23 October 2026 audit, and how to report a vulnerability
+- [Contributing](https://github.com/ryaneditraj/trading-ai/blob/main/CONTRIBUTING.md): Offline tests, what not to add (live execution, secrets), and pull request expectations
+- [Nifty final report](https://github.com/ryaneditraj/trading-ai/blob/main/research/nifty_edge_8h/FINAL_REPORT.md): Walk-forward campaign result and why the paper sleeve stays the simpler twin
+- [Pine scripts](https://github.com/ryaneditraj/trading-ai/blob/main/pinescript/README.md): TradingView Pine Script v5 ports, including the Turtle / Dennis Donchian breakout
+
+## Run
+
+- Offline demo: `python -m btc_radar --demo --macro low`
+- Live public Binance futures: `python -m btc_radar`
+- Tests: `pytest`
+- Package: `btc-1pct-radar` (Python >= 3.11)
+
+## Author
+
+- [Ryan Editraj on GitHub](https://github.com/ryaneditraj)
+- [Ryan Editraj on Instagram](https://instagram.com/ryaneditraj)
+
+## Optional
+
+- [License](https://github.com/ryaneditraj/trading-ai/blob/main/LICENSE): MIT
+- [Code of conduct](https://github.com/ryaneditraj/trading-ai/blob/main/CODE_OF_CONDUCT.md): Contributor Covenant 2.1
+- [Macro calendar](https://github.com/ryaneditraj/trading-ai/blob/main/btc_radar/macro_events.json): Estimated CPI, NFP, and FOMC windows. Not an official calendar.

@@ -33,7 +33,7 @@ import yfinance as yf
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "research"))
 
-from india_edge_engine import RESULTS_DIR, DATA_DIR, time_split  # noqa: E402
+from india_edge_engine import RESULTS_DIR, time_split, safe_cache_path  # noqa: E402
 
 OUT = Path(__file__).resolve().parent / "results"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -51,7 +51,9 @@ def _flat(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def fetch(symbol: str, start: str = "2015-01-01") -> pd.DataFrame:
-    cache = DATA_DIR / f"gift_{symbol.replace('^', '').replace('=', '_').replace('.', '_')}_1d.parquet"
+    cache = safe_cache_path(
+        f"gift_{symbol.replace('^', '').replace('=', '_').replace('.', '_')}_1d.parquet"
+    )
     if cache.exists():
         df = pd.read_parquet(cache)
         if len(df) > 200:

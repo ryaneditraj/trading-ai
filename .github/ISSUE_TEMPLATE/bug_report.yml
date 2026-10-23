@@ -1,0 +1,57 @@
+name: Bug report
+description: The radar, a sleeve, or the research lab did something it should not
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. This project prints research signals. It does not place trades.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What did you expect, and what did you get instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: The exact command helps. Mention --demo if you were offline.
+      placeholder: |
+        python -m btc_radar --demo --macro low
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: "3.12"
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: How did you run it?
+      options:
+        - Offline demo
+        - Live Binance public API
+        - Backtest
+        - Nifty / research script
+        - Tests only
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Output
+      description: Paste the card or traceback. Redact account details if you added any.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I did not include API keys, .env contents, or account identifiers
+          required: true

@@ -15,6 +15,20 @@ def test_ask_heavy_book_awards_above_cluster():
     assert liq.larger_below is False
 
 
+def test_malformed_book_rows_are_skipped():
+    snap = {
+        "premium": {"markPrice": 100_000},
+        "depth": {
+            "bids": ["nope", [], ["99900"]],
+            "asks": [["100100", "20"]],
+        },
+        "force_orders": ["nope", {"avgPrice": "100200", "origQty": "1"}],
+    }
+    liq = extract_liquidity(snap)
+    assert liq.ask_depth_usd > 0
+    assert liq.larger_above is True
+
+
 def test_balanced_book_awards_neither_side():
     snap = {
         "premium": {"markPrice": 100_000},
